@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Intrinsic Density Protocol</title>
+    <meta name="description" content="A design manifesto for the post-mobile-first era. High density, container-driven layouts for modern hardware.">
+    
+    <!-- Google Fonts: Inter (UI) and JetBrains Mono (Data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 0. DESIGN TOKENS --- */
+        :root {
+            /* Palette: Braun / NASA / Swiss Style */
+            --c-canvas: #FFFFFF;
+            --c-surface: #F9FAFB;
+            --c-surface-alt: #F3F4F6;
+            --c-border: #E5E7EB;
+            --c-border-strong: #111827; /* Stark black borders */
+            
+            --c-text-primary: #111827;
+            --c-text-secondary: #4B5563;
+            --c-text-tertiary: #9CA3AF;
+            
+            --c-accent: #0044CC; /* International Klein Blue */
+            --c-danger: #DC2626;
+            --c-success: #059669;
+            --c-warning: #D97706;
+            
+            /* Spacing: Tight Modular Scale */
+            --s-2xs: 0.25rem;
+            --s-xs: 0.5rem;
+            --s-sm: 0.75rem;
+            --s-md: 1rem;
+            --s-lg: 1.5rem;
+            --s-xl: 2.5rem;
+            --s-2xl: 4rem;
+            
+            /* Typography */
+            --f-ui: 'Inter', sans-serif;
+            --f-mono: 'JetBrains Mono', monospace;
+            
+            /* Radius */
+            --r-sm: 2px;
+            --r-md: 6px;
+        }
+
+        /* LEGACY MODE SIMULATION (The "Bad" Web 2012) */
+        [data-mode="legacy"] {
+            --s-xs: 1.5rem; /* Bloated padding */
+            --s-md: 3rem; /* Massive gaps */
+            --c-border-strong: #E5E7EB; /* Weak contrast */
+            /* Legacy mode creates "air" but destroys information density */
+        }
+        
+        /* --- 1. RESET & BASE --- */
+        *, *::before, *::after { box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: var(--f-ui);
+            background-color: var(--c-canvas);
+            color: var(--c-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { margin: 0; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+        p { margin: 0 0 var(--s-md) 0; color: var(--c-text-secondary); max-width: 65ch; text-wrap: pretty; }
+        a { color: var(--c-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+        
+        code { 
+            font-family: var(--f-mono); 
+            font-size: 0.85em; 
+            background: var(--c-surface-alt); 
+            padding: 0.1em 0.3em; 
+            border-radius: var(--r-sm); 
+            border: 1px solid var(--c-border);
+            color: var(--c-text-primary);
+        }
+
+        /* --- 2. LAYOUT ENGINE (THE COCKPIT) --- */
+        
+        .idp-shell {
+            display: grid;
+            min-height: 100vh;
+            /* Mobile First: Header + Content */
+            grid-template-rows: auto 1fr; 
+            grid-template-columns: 1fr;
+        }
+
+        /* DESKTOP (The Shift) */
+        @media (min-width: 1024px) {
+            .idp-shell {
+                /* Sidebar | Main Content | Context Panel */
+                grid-template-columns: 280px 1fr 0px; 
+                grid-template-rows: 1fr;
+            }
+            .idp-shell.has-context {
+                grid-template-columns: 280px minmax(0, 1fr) 340px;
+            }
+        }
+        
+        /* ULTRAWIDE (The Luxury) */
+        @media (min-width: 1800px) {
+            .idp-shell.has-context {
+                /* Sidebar | Content (Restrained) | Context (Expanded) */
+                grid-template-columns: 320px minmax(900px, 1200px) 1fr;
+            }
+        }
+
+        /* --- 3. REGIONS --- */
+
+        /* SIDEBAR / HEADER */
+        .region-nav {
+            background: var(--c-canvas);
+            border-bottom: 1px solid var(--c-border-strong);
+            padding: var(--s-md);
+            z-index: 50;
+        }
+
+        @media (min-width: 1024px) {
+            .region-nav {
+                display: flex;
+                flex-direction: column;
+                border-bottom: none;
+                border-right: 1px solid var(--c-border-strong);
+                padding: var(--s-lg);
+                height: 100vh;
+                position: sticky;
+                top: 0;
+            }
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--c-text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-left: 2px solid transparent;
+            padding-left: 0.5rem;
+            transition: all 0.2s;
+        }
+        .nav-link:hover { color: var(--c-accent); border-left-color: var(--c-accent); }
+        .nav-link.active { color: var(--c-text-primary); font-weight: 600; border-left-color: var(--c-text-primary); }
+
+        /* MAIN CANVAS */
+        .region-main {
+            padding: var(--s-md);
+        }
+        
+        @media (min-width: 1024px) {
+            .region-main { padding: var(--s-2xl); }
+        }
+
+        /* CONTEXT PANEL */
+        .region-context {
+            background: var(--c-surface);
+            border-left: 1px solid var(--c-border);
+            display: none;
+            padding: var(--s-lg);
+            overflow-y: auto;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+        
+        @media (min-width: 1024px) {
+            .region-context { display: block; }
+        }
+
+        /* --- 4. CORE COMPONENTS --- */
+        
+        /* THE BENTO GRID (The Anti-Stack) */
+        .bento-grid {
+            display: grid;
+            gap: var(--s-md);
+            /* Logic: Fit as many as possible, minimum 220px. 
+               On a 400px phone, this puts 2 items side-by-side. */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            width: 100%;
+        }
+        
+        /* LEGACY OVERRIDE: Simulate Bootstrap col-12 behavior */
+        [data-mode="legacy"] .bento-grid {
+            display: flex;
+            flex-direction: column; 
+            gap: var(--s-md); /* Big gaps */
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--c-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: var(--r-md);
+            padding: var(--s-md);
+            container-type: inline-size;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        /* Technical Look */
+        .card.technical {
+            border: 1px solid var(--c-text-primary);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+        }
+        
+        /* ADAPTIVE LAYOUTS INSIDE CARDS */
+        @container (min-width: 380px) {
+            .card.adaptive {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                gap: var(--s-sm);
+            }
+            .card.adaptive .metric-value { text-align: right; font-size: 2rem; }
+        }
+
+        /* --- 5. TYPOGRAPHY & SECTIONS --- */
+
+        .hero-section {
+            margin-bottom: var(--s-2xl);
+            border-bottom: 2px solid var(--c-text-primary);
+            padding-bottom: var(--s-lg);
+        }
+
+        .display-text {
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: var(--s-md);
+            line-height: 0.95;
+            text-transform: uppercase;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: var(--s-md);
+            margin: var(--s-2xl) 0 var(--s-lg) 0;
+            border-bottom: 1px solid var(--c-border);
+            padding-bottom: var(--s-xs);
+        }
+
+        .section-number {
+            font-family: var(--f-mono);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--c-accent);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* --- 6. VISUAL DEMOS --- */
+        
+        .visual-comparison {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--s-md);
+            margin: var(--s-lg) 0;
+            background: var(--c-surface-alt);
+            padding: var(--s-md);
+            border-radius: var(--r-md);
+            border: 1px dashed var(--c-border-strong);
+        }
+        
+        @media(min-width: 768px) {
+            .visual-comparison { grid-template-columns: 1fr 1fr; }
+        }
+
+        .demo-screen {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 12px;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .screen-label {
+            position: absolute;
+            top: 10px; left: 10px;
+            background: #000; color: #fff;
+            padding: 2px 6px; font-size: 0.7rem; font-weight: bold;
+            text-transform: uppercase; z-index: 10;
+        }
+
+        /* Diagrams inside demo screens */
+        .diagram-legacy { padding: 40px 10px; display: flex; flex-direction: column; gap: 10px; height: 100%; overflow-y: hidden; }
+        .diagram-legacy .bar { height: 60px; background: #ddd; width: 90%; margin: 0 auto; border-radius: 4px; flex-shrink: 0; }
+        .diagram-legacy .scroll-fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background: linear-gradient(transparent, white); }
+
+        .diagram-idp { padding: 40px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .diagram-idp .box { height: 60px; background: rgba(37, 99, 235, 0.1); border: 1px solid var(--c-accent); border-radius: 4px; }
+        
+        /* --- 7. UTILITIES --- */
+        .metric-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: var(--c-text-secondary); }
+        .metric-value { font-family: var(--f-mono); font-size: 1.5rem; font-weight: 700; color: var(--c-text-primary); }
+        .badge { display: inline-block; padding: 4px 8px; background: #000; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border-radius: 2px; }
+
+        /* TOGGLE BUTTON */
+        .toggle-float {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            background: var(--c-text-primary);
+            color: var(--c-canvas);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.1s, background 0.2s;
+        }
+        .toggle-float:hover { transform: scale(1.05); }
+        .toggle-float .indicator { width: 10px; height: 10px; background: var(--c-success); border-radius: 50%; }
+        [data-mode="legacy"] .toggle-float .indicator { background: var(--c-danger); }
+        [data-mode="legacy"] .toggle-float { background: var(--c-border-strong); }
+
+    </style>
+</head>
+<body class="idp-shell has-context">
+
+    <!-- TOGGLE CONTROL -->
+    <div class="toggle-float" onclick="toggleMode()">
+        <div class="indicator"></div>
+        <span id="mode-text">IDP Active (Good)</span>
+    </div>
+
+    <!-- REGION: NAVIGATION -->
+    <nav class="region-nav">
+        <div style="margin-bottom: var(--s-lg);">
+            <div style="font-weight: 900; font-size: 1.25rem; letter-spacing: -0.05em; line-height: 1;">THE INTRINSIC<br>DENSITY<br>PROTOCOL</div>
+            <div style="font-family: var(--f-mono); font-size: 0.75rem; color: var(--c-text-tertiary); margin-top: 8px;">v.2025.12</div>
+        </div>
+        
+        <!-- Desktop Nav -->
+        <div style="display: none; @media(min-width: 1024px){ display: block; }">
+            <h4 style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin-bottom: 1rem;">Table of Contents</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="#problem" class="nav-link">01. The Fallacy</a></li>
+                <li><a href="#economics" class="nav-link">02. Pixel Economics</a></li>
+                <li><a href="#mobile" class="nav-link">03. Mobile Density</a></li>
+                <li><a href="#ultrawide" class="nav-link">04. Ultrawide</a></li>
+                <li><a href="#typography" class="nav-link">05. Typography Physics</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- REGION: MAIN CONTENT -->
+    <main class="region-main">
+        
+        <header class="hero-section">
+            <span class="badge" style="margin-bottom: 1rem;">Design Manifesto</span>
+            <h1 class="display-text">The End of<br>Empty Space.</h1>
+            <p style="font-size: 1.2rem; color: var(--c-text-primary);">
+                The "12-column" paradigm is a relic. Modern displays—from 6.7" Retina to 49" Ultrawide—demand <strong>Information Density</strong>, not endless whitespace.
+            </p>
+        </header>
+
+        <!-- SECTION 1: THE PROBLEM -->
+        <section id="problem">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">The 12-Column Fallacy</h2>
+            </div>
+            <p>
+                Bootstrap and similar frameworks were built when the average phone was 320px wide (iPhone 4/5). 
+                The rule was simple: <strong>"On mobile, stack everything in one column."</strong>
+            </p>
+            <p>
+                Today's phones are 400px+ wide with pixel densities (PPI) 3x higher than desktop monitors. 
+                Treating a modern iPhone 15 Max like a low-res device is a waste of hardware.
+            </p>
+
+            <div class="visual-comparison">
+                <div class="demo-screen" style="background: #f0f0f0;">
+                    <span class="screen-label">Legacy (Bootstrap)</span>
+                    <div class="diagram-legacy">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="scroll-fade"></div>
+                    </div>
+                    <div style="text-align: center; margin-top: auto; padding: 10px; font-size: 0.7rem; color: #888;">Low data per viewport</div>
+                </div>
+                <div class="demo-screen">
+                    <span class="screen-label">IDP (Modern)</span>
+                    <div class="diagram-idp">
+                        <div class="box"></div> <div class="box"></div>
+                        <div class="box"></div> <div class="box"></div>
+                        <div class="box"></div> <div class="box"></div>
+                        <div class="box"></div> <div class="box"></div>
+                    </div>
+                     <div style="text-align: center; margin-top: auto; padding: 10px; font-size: 0.7rem; color: var(--c-accent); font-weight: bold;">High data per viewport</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ECONOMICS -->
+        <section id="economics">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">The Scroll Tax</h2>
+            </div>
+            <p>
+                <strong>The Axiom of Cognitive Load:</strong> Scrolling is cognitively expensive. Scanning with peripheral vision is cheap.
+            </p>
+            <p>
+                Every time a user has to scroll to find a metric that could have fit "above the fold," you are taxing their attention span. 
+                Japanese mobile design (Yahoo! JP, Rakuten) understands this: they pack data tightly because they respect the user's time. 
+                Western design (Web 2012) wastes pixels to look "minimalist," but actually forces more work (scrolling) on the user.
+            </p>
+            
+            <div class="bento-grid" style="margin-top: 2rem;">
+                <div class="card">
+                    <div class="metric-label">Vertical Scroll Needed</div>
+                    <div class="metric-value" style="color: var(--c-danger);">High</div>
+                    <p style="font-size: 0.8rem; margin: 0;">In Legacy layouts, simple dashboards become 3,000px tall towers.</p>
+                </div>
+                <div class="card">
+                    <div class="metric-label">Information Velocity</div>
+                    <div class="metric-value" style="color: var(--c-success);">Fast</div>
+                    <p style="font-size: 0.8rem; margin: 0;">In IDP layouts, the eye scans horizontally and vertically simultaneously.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MOBILE DENSITY -->
+        <section id="mobile">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">The Mobile Density Paradox</h2>
+            </div>
+            <p>
+                <strong>The Solution:</strong> Use `minmax(160px, 1fr)`. This allows two functional columns on mobile screens, 
+                doubling the information visible without zooming.
+            </p>
+
+            <h3 style="margin-top: 2rem; font-size: 1rem; text-transform: uppercase; color: var(--c-text-secondary); margin-bottom: 1rem;">Live Demo: The Bento Grid</h3>
+            <p style="font-size: 0.9rem;">Toggle the "Legacy Mode" button bottom-right. Notice how Legacy forces a single column, while IDP adapts.</p>
+
+            <div class="bento-grid technical-grid">
+                <div class="card technical">
+                    <div class="metric-label">Pixel Density</div>
+                    <div class="metric-value">460 PPI</div>
+                </div>
+                <div class="card technical">
+                    <div class="metric-label">Viewable Area</div>
+                    <div class="metric-value">100%</div>
+                </div>
+                <div class="card technical">
+                    <div class="metric-label">Scroll Reduction</div>
+                    <div class="metric-value" style="color: var(--c-success);">-40%</div>
+                </div>
+                <div class="card technical">
+                    <div class="metric-label">Columns</div>
+                    <div class="metric-value">Fluid</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ULTRAWIDE -->
+        <section id="ultrawide">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">The Ultrawide Wasteland</h2>
+            </div>
+            <p>
+                The standard `container { max-width: 1200px; margin: 0 auto; }` is a crime on 21:9 monitors. 
+                It creates two massive bars of empty space (letterboxing).
+            </p>
+            <p>
+                <strong>The Cockpit Solution:</strong> Never center the main container on Ultrawide. Anchor content to the left (Reading Zone) 
+                and use the right side for a <strong>Context Panel</strong> (Metadata, ToC, Previews).
+            </p>
+            
+            <div style="margin-top: 2rem; border: 1px dashed var(--c-border-strong); padding: 2rem; text-align: center; background: var(--c-surface-alt);">
+                <span style="font-family: var(--f-mono); font-size: 0.9rem;">Look to the right of this screen (on Desktop).<br>That panel is the "Wasted Space" reclaimed.</span>
+            </div>
+        </section>
+        
+        <!-- SECTION 5: TYPOGRAPHY -->
+        <section id="typography">
+             <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Typography Physics</h2>
+            </div>
+            <p>
+                Lines of text should never exceed 75 characters (`75ch`). The eye loses tracking on long lines.
+                Legacy web design solves this by adding massive margins. 
+                <strong>IDP solves this by adding columns.</strong>
+            </p>
+            
+            <div style="background: white; border: 1px solid var(--c-border); padding: var(--s-md); margin-top: 1rem;">
+                <p style="max-width: 65ch; border-right: 3px solid var(--c-accent); padding-right: 1rem;">
+                    <strong>This paragraph is capped at 65ch.</strong><br>
+                    In a Legacy layout, the space to the right of this border is empty. 
+                    In an IDP layout, that space is used for the Context Panel you see on the right. 
+                    We maintain readability without sacrificing utility.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- REGION: CONTEXT PANEL (Desktop/Ultrawide) -->
+    <aside class="region-context">
+        <div style="margin-bottom: var(--s-lg);">
+            <div class="metric-label">Context Panel</div>
+            <h3 style="margin-top: 5px;">System Diagnostics</h3>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--s-md);">
+            
+            <div class="card">
+                <div class="metric-label">Viewport Width</div>
+                <div class="metric-value" id="vp-width">Loading...</div>
+                <div class="metric-label" style="margin-top: 5px; color: var(--c-text-tertiary);">CSS Pixels</div>
+            </div>
+
+            <div class="card">
+                <div class="metric-label">Layout Strategy</div>
+                <div class="metric-value" style="font-size: 1.1rem;" id="layout-state">Detecting...</div>
+            </div>
+
+            <div class="card adaptive">
+                <div>
+                    <div class="metric-label">Density Score</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7;">Info/Pixel</div>
+                </div>
+                <div class="metric-value" style="color: var(--c-accent);">A+</div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--c-border); width: 100%;">
+
+            <div>
+                <div class="metric-label" style="margin-bottom: 0.5rem;">The Philosophy</div>
+                <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+                    <strong>1. Pixel Value:</strong> Pixels are expensive real estate. Do not leave them empty "for elegance" if function is sacrificed.
+                </p>
+                <p style="font-size: 0.85rem;">
+                    <strong>2. Intrinsic Sizing:</strong> Components decide their layout based on available space (Container Queries), not the device screen width.
+                </p>
+            </div>
+
+        </div>
+    </aside>
+
+    <script>
+        // --- SCRIPT: LOGIC & TOGGLES ---
+        
+        const toggleBtn = document.querySelector('.toggle-float');
+        const body = document.body;
+        const modeText = document.getElementById('mode-text');
+        const vpDisplay = document.getElementById('vp-width');
+        const layoutState = document.getElementById('layout-state');
+        
+        // 1. Monitor Viewport
+        function updateMetrics() {
+            const w = window.innerWidth;
+            vpDisplay.textContent = w + 'px';
+            
+            if(w < 1024) layoutState.textContent = "Mobile (Bento)";
+            else if(w < 1800) layoutState.textContent = "Desktop (Sidebar)";
+            else layoutState.textContent = "Ultrawide (Cockpit)";
+        }
+        window.addEventListener('resize', updateMetrics);
+        updateMetrics();
+
+        // 2. Toggle Legacy Mode
+        let isLegacy = false;
+        
+        function toggleMode() {
+            isLegacy = !isLegacy;
+            
+            if (isLegacy) {
+                body.setAttribute('data-mode', 'legacy');
+                modeText.textContent = "Legacy Mode (Bad)";
+            } else {
+                body.removeAttribute('data-mode');
+                modeText.textContent = "IDP Active (Good)";
+            }
+        }
+    </script>
+</body>
+</html>
