@@ -1,0 +1,41 @@
+/* =====================================================
+   THE INTRINSIC DENSITY PROTOCOL - CSS FRAMEWORK
+   Version: 2025.12
+   License: MIT
+   
+   A density-first CSS framework for modern displays.
+   https://github.com/your-org/idp-framework
+   ===================================================== */
+
+/* Layer Order Declaration
+   Lower layers can be overridden by higher layers.
+   This eliminates specificity wars. */
+@layer tokens, reset, base, layout, components, utilities;
+
+/* === DESIGN TOKENS === */
+@import "./tokens/colors.css" layer(tokens);
+@import "./tokens/spacing.css" layer(tokens);
+@import "./tokens/typography.css" layer(tokens);
+
+/* === RESET & BASE === */
+@import "./base/reset.css" layer(reset);
+@import "./base/elements.css" layer(base);
+
+/* === LAYOUT SYSTEM === */
+@import "./layout/shell.css" layer(layout);
+@import "./layout/regions.css" layer(layout);
+@import "./layout/bento.css" layer(layout);
+
+/* === COMPONENTS === */
+@import "./components/card.css" layer(components);
+@import "./components/button.css" layer(components);
+@import "./components/form.css" layer(components);
+@import "./components/table.css" layer(components);
+@import "./components/badge.css" layer(components);
+@import "./components/alert.css" layer(components);
+
+/* === UTILITIES === */
+@import "./utilities/spacing.css" layer(utilities);
+@import "./utilities/flex.css" layer(utilities);
+@import "./utilities/text.css" layer(utilities);
+@import "./utilities/display.css" layer(utilities);

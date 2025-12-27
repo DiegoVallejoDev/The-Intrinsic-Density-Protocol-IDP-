@@ -1,0 +1,72 @@
+/* =====================================================
+   DESIGN TOKENS: COLORS
+   ===================================================== */
+
+:root {
+    /* === CANVAS & SURFACES === */
+    --c-canvas: #FFFFFF;
+    --c-surface: #F9FAFB;
+    --c-surface-alt: #F3F4F6;
+
+    /* === BORDERS === */
+    --c-border: #E5E7EB;
+    --c-border-strong: #111827;
+
+    /* === TEXT === */
+    --c-text-primary: #111827;
+    --c-text-secondary: #4B5563;
+    --c-text-tertiary: #9CA3AF;
+    --c-text-inverse: #FFFFFF;
+
+    /* === ACCENT (International Klein Blue) === */
+    --c-accent: #0044CC;
+    --c-accent-hover: #0033AA;
+    --c-accent-light: #E0ECFF;
+
+    /* === SEMANTIC COLORS === */
+    --c-success: #059669;
+    --c-success-light: #D1FAE5;
+    --c-warning: #D97706;
+    --c-warning-light: #FEF3C7;
+    --c-danger: #DC2626;
+    --c-danger-light: #FEE2E2;
+    --c-info: #0284C7;
+    --c-info-light: #E0F2FE;
+
+    /* === GRAY SCALE === */
+    --c-gray-50: #F9FAFB;
+    --c-gray-100: #F3F4F6;
+    --c-gray-200: #E5E7EB;
+    --c-gray-300: #D1D5DB;
+    --c-gray-400: #9CA3AF;
+    --c-gray-500: #6B7280;
+    --c-gray-600: #4B5563;
+    --c-gray-700: #374151;
+    --c-gray-800: #1F2937;
+    --c-gray-900: #111827;
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] {
+        --c-canvas: #111827;
+        --c-surface: #1F2937;
+        --c-surface-alt: #374151;
+        --c-border: #374151;
+        --c-border-strong: #9CA3AF;
+        --c-text-primary: #F9FAFB;
+        --c-text-secondary: #D1D5DB;
+        --c-text-tertiary: #9CA3AF;
+    }
+}
+
+[data-theme="dark"] {
+    --c-canvas: #111827;
+    --c-surface: #1F2937;
+    --c-surface-alt: #374151;
+    --c-border: #374151;
+    --c-border-strong: #9CA3AF;
+    --c-text-primary: #F9FAFB;
+    --c-text-secondary: #D1D5DB;
+    --c-text-tertiary: #9CA3AF;
+}

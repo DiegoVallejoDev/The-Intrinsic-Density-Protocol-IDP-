@@ -1,0 +1,65 @@
+/* =====================================================
+   LEGACY MODE LAYOUT OVERRIDES
+   Simulates Web 2012 centered container with dead zones
+   For demonstration purposes only
+   ===================================================== */
+
+/* Override tokens for bloated spacing */
+[data-mode="legacy"] {
+    --s-xs: 1rem;
+    --s-sm: 1.5rem;
+    --s-md: 2rem;
+    --s-lg: 2.5rem;
+    --gap-tight: 1.5rem;
+    --gap-default: 2rem;
+    --c-border-strong: var(--c-gray-300);
+}
+
+/* Body background for dead zones */
+[data-mode="legacy"] {
+    background: var(--c-surface-alt) !important;
+}
+
+/* Collapse the grid - body has both data-mode AND .idp-shell */
+[data-mode="legacy"].idp-shell {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--c-canvas);
+    /* Create visible dead zone contrast */
+    box-shadow: -100vw 0 0 var(--c-surface-alt), 100vw 0 0 var(--c-surface-alt);
+}
+
+/* Hide sidebar in legacy mode (mobile-first dogma) */
+[data-mode="legacy"] .region-nav {
+    display: none;
+}
+
+/* Single column centered content */
+[data-mode="legacy"] .region-main {
+    max-width: 100%;
+    padding: var(--s-xl) var(--s-lg);
+}
+
+/* Hide context panel (no sidecars in 2012) */
+[data-mode="legacy"] .region-context {
+    display: none !important;
+}
+
+/* Force single column stacking */
+[data-mode="legacy"] .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-lg);
+}
+
+/* Force paragraph full width in legacy */
+[data-mode="legacy"] p {
+    max-width: 100%;
+}
+
+/* Remove technical card styling */
+[data-mode="legacy"] .card--technical {
+    box-shadow: none;
+}

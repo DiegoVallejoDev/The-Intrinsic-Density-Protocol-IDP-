@@ -1,0 +1,183 @@
+/* =====================================================
+   COMPONENT: FORMS
+   Dense, inline-friendly form controls
+   ===================================================== */
+
+/* === BASE INPUT === */
+.input {
+    display: block;
+    width: 100%;
+    padding: var(--s-xs) var(--s-sm);
+
+    font-family: var(--f-ui);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--c-text-primary);
+
+    background: var(--c-canvas);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--c-accent);
+    box-shadow: 0 0 0 3px var(--c-accent-light);
+}
+
+.input::placeholder {
+    color: var(--c-text-tertiary);
+}
+
+.input:disabled {
+    background: var(--c-surface-alt);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* === INPUT SIZES === */
+.input--sm {
+    padding: var(--s-2xs) var(--s-xs);
+    font-size: var(--text-xs);
+}
+
+.input--lg {
+    padding: var(--s-sm) var(--s-md);
+    font-size: var(--text-base);
+}
+
+/* === INPUT STATES === */
+.input--error {
+    border-color: var(--c-danger);
+}
+
+.input--error:focus {
+    box-shadow: 0 0 0 3px var(--c-danger-light);
+}
+
+.input--success {
+    border-color: var(--c-success);
+}
+
+/* === TEXTAREA === */
+.textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* === SELECT === */
+.select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M3 4.5L6 7.5L9 4.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--s-sm) center;
+    padding-right: var(--s-xl);
+}
+
+/* === CHECKBOX & RADIO === */
+.checkbox,
+.radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-xs);
+    cursor: pointer;
+    font-size: var(--text-sm);
+}
+
+.checkbox input,
+.radio input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--c-accent);
+}
+
+/* === FORM LAYOUT === */
+.form-group {
+    margin-bottom: var(--s-md);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--c-text-primary);
+    margin-bottom: var(--s-2xs);
+}
+
+.form-hint {
+    font-size: var(--text-xs);
+    color: var(--c-text-tertiary);
+    margin-top: var(--s-2xs);
+}
+
+.form-error {
+    font-size: var(--text-xs);
+    color: var(--c-danger);
+    margin-top: var(--s-2xs);
+}
+
+/* === HORIZONTAL FORM ROW (Dense/Inline) === */
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+}
+
+.form-row .form-label {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    min-width: 100px;
+}
+
+.form-row .input,
+.form-row .select {
+    flex: 1;
+}
+
+/* === FORM STACK (Vertical) === */
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+}
+
+/* === INPUT GROUP (with addons) === */
+.input-group {
+    display: flex;
+}
+
+.input-group .input {
+    border-radius: 0;
+    flex: 1;
+}
+
+.input-group .input:first-child {
+    border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+.input-group .input:last-child {
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+
+.input-group__addon {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--s-sm);
+    background: var(--c-surface-alt);
+    border: 1px solid var(--c-border);
+    font-size: var(--text-sm);
+    color: var(--c-text-secondary);
+}
+
+.input-group__addon:first-child {
+    border-right: none;
+    border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+.input-group__addon:last-child {
+    border-left: none;
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+}

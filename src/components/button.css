@@ -1,0 +1,183 @@
+/* =====================================================
+   COMPONENT: BUTTONS
+   Dense, high-contrast buttons following IDP
+   ===================================================== */
+
+/* === BASE BUTTON === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+
+    /* Tight padding for density */
+    padding: var(--s-xs) var(--s-md);
+
+    font-family: var(--f-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+
+    border: 1px solid transparent;
+    border-radius: var(--r-md);
+    cursor: pointer;
+
+    transition: all 0.15s ease;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* === BUTTON VARIANTS === */
+
+/* Primary (filled) */
+.btn--primary {
+    background: var(--c-accent);
+    color: var(--c-text-inverse);
+    border-color: var(--c-accent);
+}
+
+.btn--primary:hover {
+    background: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+}
+
+/* Secondary (outlined) */
+.btn--secondary {
+    background: transparent;
+    color: var(--c-text-primary);
+    border-color: var(--c-border-strong);
+}
+
+.btn--secondary:hover {
+    background: var(--c-surface-alt);
+}
+
+/* Ghost (minimal) */
+.btn--ghost {
+    background: transparent;
+    color: var(--c-text-secondary);
+    border-color: transparent;
+}
+
+.btn--ghost:hover {
+    background: var(--c-surface-alt);
+    color: var(--c-text-primary);
+}
+
+/* Danger */
+.btn--danger {
+    background: var(--c-danger);
+    color: var(--c-text-inverse);
+    border-color: var(--c-danger);
+}
+
+.btn--danger:hover {
+    background: #B91C1C;
+    border-color: #B91C1C;
+}
+
+/* Success */
+.btn--success {
+    background: var(--c-success);
+    color: var(--c-text-inverse);
+    border-color: var(--c-success);
+}
+
+.btn--success:hover {
+    background: #047857;
+    border-color: #047857;
+}
+
+/* === BUTTON SIZES === */
+
+/* Extra small */
+.btn--xs {
+    padding: var(--s-2xs) var(--s-sm);
+    font-size: var(--text-xs);
+}
+
+/* Small */
+.btn--sm {
+    padding: var(--s-2xs) var(--s-sm);
+    font-size: var(--text-sm);
+}
+
+/* Large */
+.btn--lg {
+    padding: var(--s-sm) var(--s-lg);
+    font-size: var(--text-base);
+}
+
+/* === ICON BUTTON === */
+.btn--icon {
+    padding: var(--s-xs);
+    aspect-ratio: 1;
+}
+
+.btn--icon.btn--sm {
+    padding: var(--s-2xs);
+}
+
+.btn--icon.btn--lg {
+    padding: var(--s-sm);
+}
+
+/* === BUTTON GROUP === */
+.btn-group {
+    display: inline-flex;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+    border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+.btn-group .btn:last-child {
+    border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+
+.btn-group .btn:not(:last-child) {
+    border-right-width: 0;
+}
+
+/* Vertical button group */
+.btn-group--vertical {
+    flex-direction: column;
+}
+
+.btn-group--vertical .btn {
+    border-radius: 0;
+}
+
+.btn-group--vertical .btn:first-child {
+    border-radius: var(--r-md) var(--r-md) 0 0;
+}
+
+.btn-group--vertical .btn:last-child {
+    border-radius: 0 0 var(--r-md) var(--r-md);
+}
+
+.btn-group--vertical .btn:not(:last-child) {
+    border-right-width: 1px;
+    border-bottom-width: 0;
+}
+
+/* === FULL WIDTH === */
+.btn--block {
+    width: 100%;
+}

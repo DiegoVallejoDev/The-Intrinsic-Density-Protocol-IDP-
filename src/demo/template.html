@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Intrinsic Density Protocol</title>
+    <meta name="description"
+        content="A design manifesto for the post-mobile-first era. High density, container-driven layouts for modern hardware.">
+
+    <!-- Google Fonts: Inter (UI) and JetBrains Mono (Data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- IDP Framework -->
+    <link rel="stylesheet" href="idp-framework.min.css">
+    <!-- Demo-specific styles -->
+    <link rel="stylesheet" href="demo.css">
+</head>
+
+<body class="idp-shell has-context">
+
+    <!-- TOGGLE CONTROL -->
+    <div class="toggle-float" onclick="toggleMode()">
+        <div class="indicator"></div>
+        <span id="mode-text">IDP Active (Good)</span>
+    </div>
+
+    <!-- REGION: NAVIGATION -->
+    <nav class="region-nav">
+        <div style="margin-bottom: var(--s-lg);">
+            <div style="font-weight: 900; font-size: 1.25rem; letter-spacing: -0.05em; line-height: 1;">THE
+                INTRINSIC<br>DENSITY<br>PROTOCOL</div>
+            <div
+                style="font-family: var(--f-mono); font-size: 0.75rem; color: var(--c-text-tertiary); margin-top: 8px;">
+                v.2025.12</div>
+        </div>
+
+        <!-- Desktop Nav -->
+        <div class="nav-desktop">
+            <h4
+                style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin-bottom: 1rem;">
+                Documentation</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="#the-manifesto-stop-designing-for-the-iphone-5" class="nav-link">Manifesto</a></li>
+                <li><a href="#the-three-axioms" class="nav-link">The Three Axioms</a></li>
+                <li><a href="#technical-implementation" class="nav-link">Technical Implementation</a></li>
+                <li><a href="#installation--usage" class="nav-link">Installation & Usage</a></li>
+                <li><a href="#philosophy-pixel-economics" class="nav-link">Philosophy</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+            </ul>
+
+            <h4
+                style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin: 1.5rem 0 1rem;">
+                Quick Links</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="https://github.com/user/idp-framework" class="nav-link" target="_blank">GitHub →</a></li>
+                <li><a href="https://npmjs.com/package/@idp/core" class="nav-link" target="_blank">NPM →</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- REGION: MAIN CONTENT -->
+    <main class="region-main readme-content">
+        {{README_CONTENT}}
+    </main>
+
+    <!-- REGION: CONTEXT PANEL (Desktop/Ultrawide) -->
+    <aside class="region-context">
+
+        <!-- SYSTEM DIAGNOSTICS -->
+        <div class="context-section">
+            <div class="context-section__title">System Diagnostics</div>
+            <div class="bento-grid bento-grid--xs" style="margin-top: var(--s-sm);">
+                <div class="card card--sm">
+                    <div class="metric-label">Viewport</div>
+                    <div class="metric-value" style="font-size: 1.25rem;" id="vp-width">-</div>
+                </div>
+                <div class="card card--sm">
+                    <div class="metric-label">Strategy</div>
+                    <div class="metric-value" style="font-size: 0.9rem;" id="layout-state">-</div>
+                </div>
+                <div class="card card--sm">
+                    <div class="metric-label">Density</div>
+                    <div class="metric-value" style="font-size: 1.25rem; color: var(--c-success);">A+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPONENT SHOWCASE -->
+        <div class="context-section">
+            <div class="context-section__title">Component Showcase</div>
+
+            <!-- Buttons -->
+            <div style="margin-top: var(--s-sm); margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Buttons</div>
+                <div class="flex flex-wrap gap-xs">
+                    <button class="btn btn--primary btn--sm">Primary</button>
+                    <button class="btn btn--secondary btn--sm">Secondary</button>
+                    <button class="btn btn--ghost btn--sm">Ghost</button>
+                </div>
+                <div class="flex flex-wrap gap-xs mt-xs">
+                    <button class="btn btn--success btn--xs">Success</button>
+                    <button class="btn btn--warning btn--xs">Warning</button>
+                    <button class="btn btn--danger btn--xs">Danger</button>
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div style="margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Badges</div>
+                <div class="flex flex-wrap gap-xs items-center">
+                    <span class="badge">Default</span>
+                    <span class="badge badge--primary">Primary</span>
+                    <span class="badge badge--success">Success</span>
+                    <span class="badge badge--warning">Warning</span>
+                    <span class="badge badge--danger">Danger</span>
+                </div>
+                <div class="flex flex-wrap gap-xs items-center mt-xs">
+                    <span class="badge badge--primary-subtle">Subtle</span>
+                    <span class="badge badge--pill badge--info">Pill</span>
+                    <span class="badge badge--dot badge--success"></span>
+                    <span class="badge badge--dot badge--danger"></span>
+                </div>
+            </div>
+
+            <!-- Form Controls -->
+            <div style="margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Form Controls</div>
+                <div class="form-stack" style="gap: var(--s-xs);">
+                    <input type="text" class="input input--sm" placeholder="Text input...">
+                    <select class="input select input--sm">
+                        <option>Select option</option>
+                        <option>Option A</option>
+                        <option>Option B</option>
+                    </select>
+                    <div class="input-group">
+                        <span class="input-group__addon">$</span>
+                        <input type="text" class="input input--sm" placeholder="0.00">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Preview -->
+            <div>
+                <div class="text-xs text-muted mb-xs font-semibold">Card Variants</div>
+                <div class="flex flex-col gap-xs">
+                    <div class="card card--sm card--elevated">
+                        <div class="text-xs font-semibold">Elevated Card</div>
+                        <div class="text-xs text-muted">With shadow</div>
+                    </div>
+                    <div class="card card--sm card--technical">
+                        <div class="text-xs font-semibold">Technical Card</div>
+                        <div class="text-xs text-muted">Retro style</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUICK REFERENCE -->
+        <div class="context-section">
+            <div class="context-section__title">Quick Reference</div>
+
+            <div style="margin-top: var(--s-sm);">
+                <div class="text-xs text-muted mb-xs font-semibold">Spacing Tokens</div>
+                <div class="flex flex-wrap gap-xs">
+                    <code class="text-2xs">--s-xs</code>
+                    <code class="text-2xs">--s-sm</code>
+                    <code class="text-2xs">--s-md</code>
+                    <code class="text-2xs">--s-lg</code>
+                    <code class="text-2xs">--s-xl</code>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Layout Classes</div>
+                <div class="flex flex-wrap gap-xs">
+                    <code class="text-2xs">.bento-grid</code>
+                    <code class="text-2xs">.card</code>
+                    <code class="text-2xs">.flex</code>
+                    <code class="text-2xs">.gap-*</code>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Container Queries</div>
+                <code class="text-2xs" style="display: block; white-space: pre-wrap;">@container (min-width: 300px) {
+  .card--adaptive { ... }
+}</code>
+            </div>
+        </div>
+
+        <!-- COLOR PALETTE -->
+        <div class="context-section">
+            <div class="context-section__title">Color Palette</div>
+            <div class="bento-grid bento-grid--xs" style="margin-top: var(--s-sm);">
+                <div class="card card--sm" style="background: var(--c-accent); color: white;">
+                    <div class="text-xs font-bold">Accent</div>
+                </div>
+                <div class="card card--sm" style="background: var(--c-success); color: white;">
+                    <div class="text-xs font-bold">Success</div>
+                </div>
+                <div class="card card--sm" style="background: var(--c-warning); color: white;">
+                    <div class="text-xs font-bold">Warning</div>
+                </div>
+                <div class="card card--sm" style="background: var(--c-danger); color: white;">
+                    <div class="text-xs font-bold">Danger</div>
+                </div>
+                <div class="card card--sm" style="background: var(--c-gray-800); color: white;">
+                    <div class="text-xs font-bold">Gray 800</div>
+                </div>
+                <div class="card card--sm" style="background: var(--c-gray-200);">
+                    <div class="text-xs font-bold">Gray 200</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHILOSOPHY REMINDER -->
+        <div class="context-section" style="border-bottom: none;">
+            <div class="context-section__title">The Philosophy</div>
+            <div class="alert alert--inline alert--info" style="margin-top: var(--s-sm);">
+                <div class="alert__content">
+                    <p class="text-xs" style="margin: 0;"><strong>Pixels are expensive.</strong> Do not leave them empty
+                        "for elegance" if function is sacrificed.</p>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+    <script src="demo.js"></script>
+</body>
+
+</html>

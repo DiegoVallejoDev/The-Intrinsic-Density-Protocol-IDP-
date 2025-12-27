@@ -1,0 +1,138 @@
+/* =====================================================
+   COMPONENT: TABLES
+   Dense data tables with sticky headers
+   ===================================================== */
+
+/* === TABLE WRAPPER (for scroll) === */
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+}
+
+/* === BASE TABLE === */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+}
+
+.table th,
+.table td {
+    padding: var(--s-xs) var(--s-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--c-border);
+}
+
+.table th {
+    font-weight: var(--weight-semibold);
+    color: var(--c-text-primary);
+    background: var(--c-surface);
+    white-space: nowrap;
+}
+
+.table td {
+    color: var(--c-text-secondary);
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* === TABLE VARIANTS === */
+
+/* Dense: minimal padding */
+.table--dense th,
+.table--dense td {
+    padding: var(--s-2xs) var(--s-xs);
+    font-size: var(--text-xs);
+}
+
+/* Comfortable: more padding */
+.table--comfortable th,
+.table--comfortable td {
+    padding: var(--s-sm) var(--s-md);
+}
+
+/* Striped rows */
+.table--striped tbody tr:nth-child(odd) {
+    background: var(--c-surface);
+}
+
+/* Hoverable rows */
+.table--hoverable tbody tr:hover {
+    background: var(--c-surface-alt);
+}
+
+/* Bordered cells */
+.table--bordered th,
+.table--bordered td {
+    border: 1px solid var(--c-border);
+}
+
+/* === STICKY HEADER === */
+.table--sticky-header {
+    position: relative;
+}
+
+.table--sticky-header thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table--sticky-header th {
+    background: var(--c-canvas);
+    box-shadow: 0 1px 0 var(--c-border);
+}
+
+/* === ALIGNMENT === */
+.table .text-right {
+    text-align: right;
+}
+
+.table .text-center {
+    text-align: center;
+}
+
+/* Numeric cells (monospace, right-aligned) */
+.table .numeric {
+    font-family: var(--f-mono);
+    text-align: right;
+}
+
+/* === TABLE ACTIONS === */
+.table__actions {
+    display: flex;
+    gap: var(--s-2xs);
+    justify-content: flex-end;
+}
+
+/* === EMPTY STATE === */
+.table__empty {
+    text-align: center;
+    padding: var(--s-xl);
+    color: var(--c-text-tertiary);
+}
+
+/* === SORTABLE HEADERS === */
+.table__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2xs);
+    cursor: pointer;
+    user-select: none;
+}
+
+.table__sort:hover {
+    color: var(--c-accent);
+}
+
+.table__sort-icon {
+    opacity: 0.3;
+}
+
+.table__sort--asc .table__sort-icon,
+.table__sort--desc .table__sort-icon {
+    opacity: 1;
+}

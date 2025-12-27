@@ -1,0 +1,126 @@
+/* =====================================================
+   LAYOUT: REGIONS
+   Navigation, main content, and context panel
+   ===================================================== */
+
+/* === NAVIGATION REGION === */
+.region-nav {
+    grid-area: nav;
+    background: var(--c-canvas);
+    border-bottom: 1px solid var(--c-border-strong);
+    padding: var(--s-md);
+    z-index: 50;
+}
+
+@media (min-width: 1024px) {
+    .region-nav {
+        display: flex;
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 1px solid var(--c-border-strong);
+        padding: var(--s-lg);
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+    }
+}
+
+/* === NAV LINKS === */
+.nav-link {
+    display: block;
+    padding: var(--s-xs) var(--s-sm);
+    color: var(--c-text-secondary);
+    font-size: var(--text-sm);
+    border-left: 2px solid transparent;
+    transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+    color: var(--c-accent);
+    border-left-color: var(--c-accent);
+}
+
+.nav-link--active,
+.nav-link.active {
+    color: var(--c-text-primary);
+    font-weight: var(--weight-semibold);
+    border-left-color: var(--c-text-primary);
+}
+
+/* Nav group for sections */
+.nav-group {
+    margin-bottom: var(--s-lg);
+}
+
+.nav-group__title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--c-text-tertiary);
+    margin-bottom: var(--s-sm);
+}
+
+/* === MAIN CONTENT REGION === */
+.region-main {
+    grid-area: main;
+    padding: var(--s-md);
+    min-width: 0;
+    /* Prevent grid blowout */
+}
+
+@media (min-width: 1024px) {
+    .region-main {
+        padding: var(--s-xl) var(--s-2xl);
+    }
+}
+
+/* === CONTEXT PANEL REGION === */
+.region-context {
+    grid-area: context;
+    background: var(--c-surface);
+    border-top: 1px solid var(--c-border);
+    padding: var(--s-md);
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .region-context {
+        display: block;
+        border-top: none;
+        border-left: 1px solid var(--c-border);
+        padding: var(--s-lg);
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        overflow-y: auto;
+    }
+}
+
+/* Force show context on mobile if needed */
+.region-context--mobile-visible {
+    display: block;
+}
+
+/* === CONTEXT PANEL SECTIONS === */
+.context-section {
+    margin-bottom: var(--s-lg);
+    padding-bottom: var(--s-lg);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.context-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.context-section__title {
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--c-text-tertiary);
+    margin-bottom: var(--s-sm);
+}

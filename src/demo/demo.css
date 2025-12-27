@@ -1,0 +1,279 @@
+/* =====================================================
+   DEMO-SPECIFIC STYLES
+   These are NOT part of the IDP framework core.
+   ===================================================== */
+
+/* Desktop navigation visibility */
+.nav-desktop {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .nav-desktop {
+        display: block;
+    }
+}
+
+/* --- README CONTENT STYLING --- */
+.readme-content h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--s-md);
+    line-height: 0.95;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--c-text-primary);
+    padding-bottom: var(--s-lg);
+    margin-bottom: var(--s-2xl);
+}
+
+.readme-content h2 {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s-md);
+    margin: var(--s-2xl) 0 var(--s-lg) 0;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: var(--s-xs);
+    font-size: 1.5rem;
+}
+
+.readme-content h3 {
+    margin: var(--s-lg) 0 var(--s-md) 0;
+    font-size: 1.2rem;
+    color: var(--c-text-primary);
+}
+
+.readme-content h4 {
+    margin: var(--s-md) 0 var(--s-sm) 0;
+    font-size: 1rem;
+    color: var(--c-text-secondary);
+}
+
+.readme-content ul,
+.readme-content ol {
+    padding-left: var(--s-lg);
+    margin-bottom: var(--s-md);
+}
+
+.readme-content li {
+    margin-bottom: var(--s-xs);
+    color: var(--c-text-secondary);
+}
+
+.readme-content blockquote {
+    border-left: 3px solid var(--c-accent);
+    padding-left: var(--s-md);
+    margin: var(--s-md) 0;
+    font-style: italic;
+    color: var(--c-text-secondary);
+}
+
+.readme-content pre {
+    background: var(--c-surface-alt);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    padding: var(--s-md);
+    overflow-x: auto;
+    margin: var(--s-md) 0;
+}
+
+.readme-content pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    font-size: 0.85rem;
+}
+
+.readme-content strong {
+    color: var(--c-text-primary);
+    font-weight: 600;
+}
+
+.readme-content hr {
+    border: none;
+    border-top: 1px solid var(--c-border);
+    margin: var(--s-xl) 0;
+}
+
+/* --- TOGGLE BUTTON --- */
+.toggle-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--c-text-primary);
+    color: var(--c-canvas);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.toggle-float:hover {
+    transform: scale(1.05);
+}
+
+.toggle-float .indicator {
+    width: 10px;
+    height: 10px;
+    background: var(--c-success);
+    border-radius: 50%;
+}
+
+[data-mode="legacy"] .toggle-float .indicator {
+    background: var(--c-danger);
+}
+
+[data-mode="legacy"] .toggle-float {
+    background: var(--c-border-strong);
+}
+
+/* --- VISUAL COMPARISON DIAGRAMS --- */
+.visual-comparison {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-md);
+    margin: var(--s-lg) 0;
+    background: var(--c-surface-alt);
+    padding: var(--s-md);
+    border-radius: var(--r-md);
+    border: 1px dashed var(--c-border-strong);
+}
+
+@media (min-width: 768px) {
+    .visual-comparison {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.demo-screen {
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.diagram-legacy {
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.diagram-legacy .bar {
+    height: 60px;
+    background: #ddd;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.diagram-legacy .scroll-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(transparent, white);
+}
+
+.diagram-idp {
+    padding: 40px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.diagram-idp .box {
+    height: 60px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid var(--c-accent);
+    border-radius: 4px;
+}
+
+/* =====================================================
+   LEGACY MODE SIMULATION
+   Demonstrates "bad" Web 2012 centered layouts
+   This is for demo purposes only, not part of IDP core
+   ===================================================== */
+
+/* Override tokens for bloated spacing */
+[data-mode="legacy"] {
+    --s-xs: 1rem;
+    --s-sm: 1.5rem;
+    --s-md: 2rem;
+    --s-lg: 2.5rem;
+    --gap-tight: 1.5rem;
+    --gap-default: 2rem;
+    --c-border-strong: var(--c-gray-300);
+    background: var(--c-surface-alt) !important;
+}
+
+/* Collapse the grid - body has both data-mode AND .idp-shell */
+[data-mode="legacy"].idp-shell {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--c-canvas);
+    /* Create visible dead zone contrast */
+    box-shadow: -100vw 0 0 var(--c-surface-alt), 100vw 0 0 var(--c-surface-alt);
+}
+
+/* Hide sidebar in legacy mode (mobile-first dogma) */
+[data-mode="legacy"] .region-nav {
+    display: none;
+}
+
+/* Single column centered content */
+[data-mode="legacy"] .region-main {
+    max-width: 100%;
+    padding: var(--s-xl) var(--s-lg);
+}
+
+/* Hide context panel (no sidecars in 2012) */
+[data-mode="legacy"] .region-context {
+    display: none !important;
+}
+
+/* Force single column stacking */
+[data-mode="legacy"] .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-lg);
+}
+
+/* Force paragraph full width in legacy */
+[data-mode="legacy"] p {
+    max-width: 100%;
+}
+
+/* Remove technical card styling */
+[data-mode="legacy"] .card--technical {
+    box-shadow: none;
+}

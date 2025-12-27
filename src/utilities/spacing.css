@@ -1,0 +1,281 @@
+/* =====================================================
+   UTILITIES: SPACING
+   Margin, padding, and gap utilities
+   ===================================================== */
+
+/* === MARGIN === */
+.m-0 {
+    margin: 0;
+}
+
+.m-xs {
+    margin: var(--s-xs);
+}
+
+.m-sm {
+    margin: var(--s-sm);
+}
+
+.m-md {
+    margin: var(--s-md);
+}
+
+.m-lg {
+    margin: var(--s-lg);
+}
+
+.m-xl {
+    margin: var(--s-xl);
+}
+
+.m-auto {
+    margin: auto;
+}
+
+/* Margin X (horizontal) */
+.mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.mx-xs {
+    margin-left: var(--s-xs);
+    margin-right: var(--s-xs);
+}
+
+.mx-sm {
+    margin-left: var(--s-sm);
+    margin-right: var(--s-sm);
+}
+
+.mx-md {
+    margin-left: var(--s-md);
+    margin-right: var(--s-md);
+}
+
+.mx-lg {
+    margin-left: var(--s-lg);
+    margin-right: var(--s-lg);
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Margin Y (vertical) */
+.my-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.my-xs {
+    margin-top: var(--s-xs);
+    margin-bottom: var(--s-xs);
+}
+
+.my-sm {
+    margin-top: var(--s-sm);
+    margin-bottom: var(--s-sm);
+}
+
+.my-md {
+    margin-top: var(--s-md);
+    margin-bottom: var(--s-md);
+}
+
+.my-lg {
+    margin-top: var(--s-lg);
+    margin-bottom: var(--s-lg);
+}
+
+/* Individual margins */
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-xs {
+    margin-top: var(--s-xs);
+}
+
+.mt-sm {
+    margin-top: var(--s-sm);
+}
+
+.mt-md {
+    margin-top: var(--s-md);
+}
+
+.mt-lg {
+    margin-top: var(--s-lg);
+}
+
+.mt-xl {
+    margin-top: var(--s-xl);
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-xs {
+    margin-bottom: var(--s-xs);
+}
+
+.mb-sm {
+    margin-bottom: var(--s-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--s-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--s-lg);
+}
+
+.mb-xl {
+    margin-bottom: var(--s-xl);
+}
+
+.ml-0 {
+    margin-left: 0;
+}
+
+.ml-xs {
+    margin-left: var(--s-xs);
+}
+
+.ml-sm {
+    margin-left: var(--s-sm);
+}
+
+.ml-md {
+    margin-left: var(--s-md);
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-0 {
+    margin-right: 0;
+}
+
+.mr-xs {
+    margin-right: var(--s-xs);
+}
+
+.mr-sm {
+    margin-right: var(--s-sm);
+}
+
+.mr-md {
+    margin-right: var(--s-md);
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+/* === PADDING === */
+.p-0 {
+    padding: 0;
+}
+
+.p-xs {
+    padding: var(--s-xs);
+}
+
+.p-sm {
+    padding: var(--s-sm);
+}
+
+.p-md {
+    padding: var(--s-md);
+}
+
+.p-lg {
+    padding: var(--s-lg);
+}
+
+.p-xl {
+    padding: var(--s-xl);
+}
+
+/* Padding X (horizontal) */
+.px-0 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.px-xs {
+    padding-left: var(--s-xs);
+    padding-right: var(--s-xs);
+}
+
+.px-sm {
+    padding-left: var(--s-sm);
+    padding-right: var(--s-sm);
+}
+
+.px-md {
+    padding-left: var(--s-md);
+    padding-right: var(--s-md);
+}
+
+.px-lg {
+    padding-left: var(--s-lg);
+    padding-right: var(--s-lg);
+}
+
+/* Padding Y (vertical) */
+.py-0 {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.py-xs {
+    padding-top: var(--s-xs);
+    padding-bottom: var(--s-xs);
+}
+
+.py-sm {
+    padding-top: var(--s-sm);
+    padding-bottom: var(--s-sm);
+}
+
+.py-md {
+    padding-top: var(--s-md);
+    padding-bottom: var(--s-md);
+}
+
+.py-lg {
+    padding-top: var(--s-lg);
+    padding-bottom: var(--s-lg);
+}
+
+/* === GAP === */
+.gap-0 {
+    gap: 0;
+}
+
+.gap-xs {
+    gap: var(--s-xs);
+}
+
+.gap-sm {
+    gap: var(--s-sm);
+}
+
+.gap-md {
+    gap: var(--s-md);
+}
+
+.gap-lg {
+    gap: var(--s-lg);
+}
+
+.gap-xl {
+    gap: var(--s-xl);
+}

@@ -1,0 +1,123 @@
+/* =====================================================
+   LAYOUT: BENTO GRID
+   The anti-stack: auto-fill grids for density
+   ===================================================== */
+
+/* === BASE BENTO GRID === */
+.bento-grid {
+    display: grid;
+    gap: var(--gap-tight);
+    /* Auto-fill: fits as many 180px+ columns as possible */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    width: 100%;
+}
+
+/* === SIZE VARIANTS === */
+
+/* Extra small: very dense data */
+.bento-grid--xs {
+    gap: var(--gap-dense);
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+/* Small: compact */
+.bento-grid--sm {
+    gap: var(--gap-dense);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+/* Large: comfortable */
+.bento-grid--lg {
+    gap: var(--gap-default);
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* Extra large: spacious */
+.bento-grid--xl {
+    gap: var(--gap-loose);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* === FIXED COLUMN COUNTS === */
+.bento-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bento-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive fixed columns */
+@media (max-width: 767px) {
+
+    .bento-grid--2,
+    .bento-grid--3,
+    .bento-grid--4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* === GAP MODIFIERS === */
+.bento-grid--gap-none {
+    gap: 0;
+}
+
+.bento-grid--gap-xs {
+    gap: var(--gap-dense);
+}
+
+.bento-grid--gap-sm {
+    gap: var(--gap-tight);
+}
+
+.bento-grid--gap-md {
+    gap: var(--gap-default);
+}
+
+.bento-grid--gap-lg {
+    gap: var(--gap-loose);
+}
+
+/* === SPAN UTILITIES (for grid items) === */
+.span-2 {
+    grid-column: span 2;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.span-full {
+    grid-column: 1 / -1;
+}
+
+.span-row-2 {
+    grid-row: span 2;
+}
+
+.span-row-3 {
+    grid-row: span 3;
+}
+
+/* Responsive spans */
+@media (max-width: 767px) {
+
+    .span-2,
+    .span-3,
+    .span-4 {
+        grid-column: span 1;
+    }
+}
+
+/* === MASONRY-LIKE BEHAVIOR === */
+.bento-grid--masonry {
+    grid-auto-rows: minmax(100px, auto);
+}

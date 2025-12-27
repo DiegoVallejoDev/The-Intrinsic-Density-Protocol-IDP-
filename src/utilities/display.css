@@ -1,0 +1,411 @@
+/* =====================================================
+   UTILITIES: DISPLAY
+   Display, visibility, and sizing utilities
+   ===================================================== */
+
+/* === DISPLAY === */
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.inline {
+    display: inline;
+}
+
+.hidden {
+    display: none;
+}
+
+.contents {
+    display: contents;
+}
+
+/* === VISIBILITY === */
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+/* === OPACITY === */
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-25 {
+    opacity: 0.25;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.opacity-75 {
+    opacity: 0.75;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+/* === WIDTH === */
+.w-full {
+    width: 100%;
+}
+
+.w-auto {
+    width: auto;
+}
+
+.w-screen {
+    width: 100vw;
+}
+
+.w-fit {
+    width: fit-content;
+}
+
+.w-min {
+    width: min-content;
+}
+
+.w-max {
+    width: max-content;
+}
+
+.max-w-none {
+    max-width: none;
+}
+
+.max-w-sm {
+    max-width: 24rem;
+}
+
+.max-w-md {
+    max-width: 28rem;
+}
+
+.max-w-lg {
+    max-width: 32rem;
+}
+
+.max-w-xl {
+    max-width: 36rem;
+}
+
+.max-w-2xl {
+    max-width: 42rem;
+}
+
+.max-w-3xl {
+    max-width: 48rem;
+}
+
+.max-w-4xl {
+    max-width: 56rem;
+}
+
+.max-w-prose {
+    max-width: 65ch;
+}
+
+.max-w-full {
+    max-width: 100%;
+}
+
+.min-w-0 {
+    min-width: 0;
+}
+
+.min-w-full {
+    min-width: 100%;
+}
+
+/* === HEIGHT === */
+.h-full {
+    height: 100%;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.h-screen {
+    height: 100vh;
+}
+
+.h-fit {
+    height: fit-content;
+}
+
+.min-h-0 {
+    min-height: 0;
+}
+
+.min-h-full {
+    min-height: 100%;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+/* === OVERFLOW === */
+.overflow-auto {
+    overflow: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+/* === POSITION === */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky;
+}
+
+.static {
+    position: static;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.left-0 {
+    left: 0;
+}
+
+/* === Z-INDEX === */
+.z-0 {
+    z-index: 0;
+}
+
+.z-10 {
+    z-index: 10;
+}
+
+.z-20 {
+    z-index: 20;
+}
+
+.z-30 {
+    z-index: 30;
+}
+
+.z-40 {
+    z-index: 40;
+}
+
+.z-50 {
+    z-index: 50;
+}
+
+.z-auto {
+    z-index: auto;
+}
+
+/* === BACKGROUND === */
+.bg-canvas {
+    background-color: var(--c-canvas);
+}
+
+.bg-surface {
+    background-color: var(--c-surface);
+}
+
+.bg-surface-alt {
+    background-color: var(--c-surface-alt);
+}
+
+.bg-accent {
+    background-color: var(--c-accent);
+}
+
+.bg-success {
+    background-color: var(--c-success);
+}
+
+.bg-warning {
+    background-color: var(--c-warning);
+}
+
+.bg-danger {
+    background-color: var(--c-danger);
+}
+
+.bg-transparent {
+    background-color: transparent;
+}
+
+/* === BORDER === */
+.border {
+    border: 1px solid var(--c-border);
+}
+
+.border-0 {
+    border: none;
+}
+
+.border-t {
+    border-top: 1px solid var(--c-border);
+}
+
+.border-r {
+    border-right: 1px solid var(--c-border);
+}
+
+.border-b {
+    border-bottom: 1px solid var(--c-border);
+}
+
+.border-l {
+    border-left: 1px solid var(--c-border);
+}
+
+.border-strong {
+    border-color: var(--c-border-strong);
+}
+
+/* === BORDER RADIUS === */
+.rounded-none {
+    border-radius: 0;
+}
+
+.rounded-sm {
+    border-radius: var(--r-sm);
+}
+
+.rounded {
+    border-radius: var(--r-md);
+}
+
+.rounded-lg {
+    border-radius: var(--r-lg);
+}
+
+.rounded-xl {
+    border-radius: var(--r-xl);
+}
+
+.rounded-full {
+    border-radius: var(--r-full);
+}
+
+/* === CURSOR === */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.cursor-grab {
+    cursor: grab;
+}
+
+/* === USER SELECT === */
+.select-none {
+    user-select: none;
+}
+
+.select-text {
+    user-select: text;
+}
+
+.select-all {
+    user-select: all;
+}
+
+/* === RESPONSIVE VISIBILITY === */
+@media (max-width: 767px) {
+    .sm\:hidden {
+        display: none;
+    }
+
+    .sm\:block {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:hidden {
+        display: none;
+    }
+
+    .md\:block {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:hidden {
+        display: none;
+    }
+
+    .lg\:block {
+        display: block;
+    }
+}
