@@ -1,6 +1,6 @@
 {
   "name": "idp-framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Intrinsic Density Protocol - A CSS framework for high-density, container-driven layouts using golden ratio proportions",
   "type": "module",
   "main": "dist/idp-framework.min.css",
@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-/issues"
   },
-  "homepage": "https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-#readme",
+  "homepage": "https://the-intrinsic-density-protocol.vercel.app/",
   "keywords": [
     "css",
     "framework",

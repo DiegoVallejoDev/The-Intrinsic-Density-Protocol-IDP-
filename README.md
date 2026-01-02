@@ -2,14 +2,19 @@
 
 [![npm version](https://img.shields.io/npm/v/idp-framework.svg)](https://www.npmjs.com/package/idp-framework)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Demo](https://img.shields.io/badge/demo-live-success.svg)](https://the-intrinsic-density-protocol.vercel.app/)
+
+<img src="./src/demo/IDP_logo.png" alt="IDP Logo" width="39%">
 
 > A CSS framework for high-density, container-driven layouts using golden ratio proportions.
+
+**[📺 Live Demo](https://the-intrinsic-density-protocol.vercel.app/)** | **[📦 npm](https://www.npmjs.com/package/idp-framework)** | **[📖 GitHub](https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-)**
 
 ```bash
 npm install idp-framework
 ```
 
-**Version:** 1.0.0 | **License:** MIT
+**Version:** 1.0.1 | **License:** MIT
 
 ## The Manifesto: Stop Designing for the iPhone 5
 
@@ -150,6 +155,17 @@ p {
   /* Remaining space is yielded to the Grid Context */
 }
 ```
+
+### 4. Included Components
+
+IDP includes a suite of high-density, unopinionated UI components designed for professional applications:
+
+*   **Forms**: Density-optimized inputs, floating labels, and compact groups.
+*   **Data Vis**: Tables, badges, and metric cards.
+*   **Feedback**: Alerts, callouts, and toast placeholders.
+*   **Navigation**: Sidebar-first principles with mobile fallbacks.
+
+All components adhere to **Axiom II** (Container Queries) and automatically adapt to their available space.
 
 ## Installation & Usage
 

@@ -14,6 +14,144 @@
     }
 }
 
+/* === CUSTOM SCROLLBAR === */
+/* For webkit browsers (Chrome, Safari, Edge) */
+.region-context::-webkit-scrollbar,
+.region-nav::-webkit-scrollbar,
+.aux-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.region-context::-webkit-scrollbar-track,
+.region-nav::-webkit-scrollbar-track,
+.aux-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.region-context::-webkit-scrollbar-thumb,
+.region-nav::-webkit-scrollbar-thumb,
+.aux-scroll::-webkit-scrollbar-thumb {
+    background: var(--c-border);
+    border-radius: 3px;
+}
+
+.region-context::-webkit-scrollbar-thumb:hover,
+.region-nav::-webkit-scrollbar-thumb:hover,
+.aux-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--c-accent);
+}
+
+/* Firefox scrollbar */
+.region-context,
+.region-nav,
+.aux-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-border) transparent;
+}
+
+/* === SELECTION STYLE === */
+::selection {
+    background: var(--c-accent);
+    color: white;
+}
+
+/* === MOBILE NAVIGATION === */
+/* Following the manifesto: "We reject the single-column mobile stack" */
+.nav-mobile {
+    display: flex;
+    gap: var(--s-xs);
+    overflow-x: auto;
+    padding-bottom: var(--s-xs);
+    margin-bottom: var(--s-sm);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.nav-mobile::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.nav-chip {
+    flex-shrink: 0;
+    padding: var(--s-2xs) var(--s-sm);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    font-size: var(--text-xs);
+    color: var(--c-text-secondary);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.nav-chip:hover {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    color: white;
+}
+
+@media (min-width: 1024px) {
+    .nav-mobile {
+        display: none;
+    }
+}
+
+/* === MOBILE STATS BAR === */
+/* MANIFESTO: Show key metrics above the fold on mobile */
+.mobile-stats-bar {
+    display: flex;
+    gap: var(--s-xs);
+    padding: var(--s-xs) var(--s-md);
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--s-2xs) var(--s-sm);
+    background: var(--c-canvas);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.mobile-stat__label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-text-tertiary);
+}
+
+.mobile-stat__value {
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--c-text-primary);
+}
+
+.mobile-stat--accent {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+}
+
+.mobile-stat--accent .mobile-stat__label,
+.mobile-stat--accent .mobile-stat__value {
+    color: white;
+}
+
+@media (min-width: 1024px) {
+    .mobile-stats-bar {
+        display: none;
+    }
+}
+
 /* --- README CONTENT STYLING --- */
 .readme-content h1 {
     font-size: clamp(2rem, 5vw, 4.5rem);
@@ -881,4 +1019,273 @@
     font-size: 0.75rem;
     color: var(--c-text-secondary);
     line-height: 1.3;
+}
+
+/* =====================================================
+   COMPLEX 2D DASHBOARD GRID
+   Demonstrates asymmetric grid with spanning cells
+   Uses Container Queries (Axiom II) to adapt layout
+   ===================================================== */
+
+.dashboard-grid {
+    display: grid;
+    /* Default: Mobile/Narrow - 2 columns */
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "primary primary"
+        "secondary1 secondary2"
+        "status status"
+        "chart chart"
+        "actions actions";
+    gap: 4px;
+    margin-top: var(--s-sm);
+    /* AXIOM II: Enable Container Queries */
+    container-type: inline-size;
+    container-name: context;
+}
+
+/* When context panel has enough space (>300px), upgrade to full Golden Grid */
+@container context (min-width: 300px) {
+    .dashboard-grid {
+        grid-template-columns: 1.618fr 1fr 1fr;
+        grid-template-areas:
+            "primary secondary1 secondary2"
+            "primary status status"
+            "chart chart actions";
+    }
+}
+
+.dashboard-cell {
+    padding: var(--s-xs);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+}
+
+/* Primary cell - spans 2 rows, 1 column */
+.dashboard-cell--primary {
+    grid-area: primary;
+    background: linear-gradient(135deg, var(--c-accent), #3366ff);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--s-sm);
+}
+
+.dashboard-cell--primary .dashboard-cell__label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.dashboard-cell--primary .dashboard-cell__value {
+    font-family: var(--f-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.dashboard-cell__trend {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    margin-top: var(--s-2xs);
+}
+
+.dashboard-cell__trend--up {
+    color: #4ade80;
+}
+
+.dashboard-cell__trend--down {
+    color: #f87171;
+}
+
+/* Secondary cells */
+.dashboard-cell--secondary {
+    grid-area: auto;
+    text-align: center;
+    padding: var(--s-2xs) var(--s-xs);
+}
+
+.dashboard-cell--secondary:nth-of-type(2) {
+    grid-area: secondary1;
+}
+
+.dashboard-cell--secondary:nth-of-type(3) {
+    grid-area: secondary2;
+}
+
+.dashboard-cell--secondary .dashboard-cell__label {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    color: var(--c-text-tertiary);
+}
+
+.dashboard-cell--secondary .dashboard-cell__value {
+    font-family: var(--f-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-text-primary);
+}
+
+/* Status cell - spans full width of right side */
+.dashboard-cell--status {
+    grid-area: status;
+    display: flex;
+    align-items: center;
+    gap: var(--s-xs);
+    padding: var(--s-2xs) var(--s-xs);
+    background: var(--c-canvas);
+}
+
+.dashboard-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.dashboard-status--success {
+    background: var(--c-success);
+    box-shadow: 0 0 4px var(--c-success);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Chart cell */
+.dashboard-cell--chart {
+    grid-area: chart;
+    padding: var(--s-xs);
+    display: flex;
+    align-items: flex-end;
+}
+
+.mini-bars {
+    display: flex;
+    gap: 3px;
+    height: 40px;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.mini-bar {
+    flex: 1;
+    background: var(--c-border);
+    border-radius: 2px 2px 0 0;
+    transition: all 0.2s;
+}
+
+.mini-bar:hover {
+    background: var(--c-accent);
+}
+
+.mini-bar--active {
+    background: var(--c-accent);
+}
+
+/* Actions cell */
+.dashboard-cell--actions {
+    grid-area: actions;
+    display: flex;
+    gap: var(--s-2xs);
+    align-items: center;
+    justify-content: center;
+}
+
+/* =====================================================
+   SYNTAX HIGHLIGHTING FIXES
+   Prevent tokenizer artifacts from inheriting legacy code styles
+   ===================================================== */
+pre code span,
+code[class*="language-"] span,
+.token {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Force dark background for code blocks to match Prism Tomorrow theme */
+pre[class*="language-"] {
+    background: #2d2d2d !important;
+    border: 1px solid var(--c-border-strong) !important;
+}
+
+/* =====================================================
+   LEGACY MODE LAYOUT OVERRIDES
+   Simulates Web 2012 centered container with dead zones
+   For demonstration purposes only
+   ===================================================== */
+
+/* Override tokens for bloated spacing */
+[data-mode="legacy"] {
+    --s-xs: 1rem;
+    --s-sm: 1.5rem;
+    --s-md: 2rem;
+    --s-lg: 2.5rem;
+    --gap-tight: 1.5rem;
+    --gap-default: 2rem;
+    --c-border-strong: var(--c-gray-300);
+}
+
+/* Body background for dead zones */
+[data-mode="legacy"] {
+    background: var(--c-surface-alt) !important;
+}
+
+/* Collapse the grid - body has both data-mode AND .idp-shell */
+[data-mode="legacy"].idp-shell {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--c-canvas);
+    /* Create visible dead zone contrast */
+    box-shadow: -100vw 0 0 var(--c-surface-alt), 100vw 0 0 var(--c-surface-alt);
+}
+
+/* Hide sidebar in legacy mode (mobile-first dogma) */
+[data-mode="legacy"] .region-nav {
+    display: none;
+}
+
+/* Single column centered content */
+[data-mode="legacy"] .region-main {
+    max-width: 100%;
+    padding: var(--s-xl) var(--s-lg);
+}
+
+/* Hide context panel (no sidecars in 2012) */
+[data-mode="legacy"] .region-context {
+    display: none !important;
+}
+
+/* Force single column stacking */
+[data-mode="legacy"] .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-lg);
+}
+
+/* Force paragraph full width in legacy */
+[data-mode="legacy"] p {
+    max-width: 100%;
+}
+
+/* Remove technical card styling */
+[data-mode="legacy"] .card--technical {
+    box-shadow: none;
 }

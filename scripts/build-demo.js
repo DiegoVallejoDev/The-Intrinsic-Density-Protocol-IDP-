@@ -24,7 +24,10 @@ async function build() {
 
     // 2. Build HTML from README
     console.log('📄 Building HTML from README.md...');
-    const readmeContent = fs.readFileSync(PATHS.readme, 'utf8');
+    let readmeContent = fs.readFileSync(PATHS.readme, 'utf8');
+    // remove logo
+    readmeContent = readmeContent.replace('<img src="./src/demo/IDP_logo.png" alt="IDP Logo" width="39%">', '');
+
     const htmlBody = marked.parse(readmeContent);
     const template = fs.readFileSync(PATHS.template, 'utf8');
 

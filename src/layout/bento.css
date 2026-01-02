@@ -51,14 +51,16 @@
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Responsive fixed columns */
+/* Responsive fixed columns - MANIFESTO: "We reject the single-column mobile stack"
+   Maintain 2 columns on mobile for density */
 @media (max-width: 767px) {
 
-    .bento-grid--2,
     .bento-grid--3,
     .bento-grid--4 {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* .bento-grid--2 stays at 2 columns - never collapse to 1! */
 }
 
 /* === GAP MODIFIERS === */
@@ -107,14 +109,16 @@
     grid-row: span 3;
 }
 
-/* Responsive spans */
+/* Responsive spans - MANIFESTO: Never collapse to single column!
+   Maintain at least 2 columns on mobile for density */
 @media (max-width: 767px) {
 
-    .span-2,
     .span-3,
     .span-4 {
-        grid-column: span 1;
+        grid-column: span 2;
     }
+
+    /* Keep span-2 as span-2 on mobile - don't collapse! */
 }
 
 /* === MASONRY-LIKE BEHAVIOR === */

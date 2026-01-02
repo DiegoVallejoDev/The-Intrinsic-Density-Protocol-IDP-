@@ -19,6 +19,19 @@
     <link rel="stylesheet" href="idp-framework.min.css">
     <!-- Demo-specific styles -->
     <link rel="stylesheet" href="demo.css">
+
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <style>
+        /*fixes for highligts*/
+        .tag {
+            background-color: transparent;
+            border: none;
+            color: var(--c-text-primary);
+        }
+    </style>
 </head>
 
 <body class="idp-shell has-context">
@@ -37,6 +50,17 @@
             <div
                 style="font-family: var(--f-mono); font-size: 0.75rem; color: var(--c-text-tertiary); margin-top: 8px;">
                 v.2025.12</div>
+        </div>
+
+        <!-- Mobile Nav - Horizontal scrolling links -->
+        <div class="nav-mobile">
+            <a href="#the-manifesto-stop-designing-for-the-iphone-5" class="nav-chip">Manifesto</a>
+            <a href="#the-three-axioms" class="nav-chip">Axioms</a>
+            <a href="#technical-implementation" class="nav-chip">Technical</a>
+            <a href="#installation--usage" class="nav-chip">Install</a>
+            <a href="https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-" class="nav-chip"
+                target="_blank">GitHub</a>
+            <a href="https://npmjs.com/package/idp-framework" class="nav-chip" target="_blank">NPM</a>
         </div>
 
         <!-- Desktop Nav -->
@@ -62,6 +86,27 @@
             </ul>
         </div>
     </nav>
+
+    <!-- MOBILE STATS BAR - Shows key metrics above the fold on mobile
+         MANIFESTO: "If a metric can be displayed above the fold, hiding it is a design failure" -->
+    <div class="mobile-stats-bar">
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">VP</span>
+            <span class="mobile-stat__value" id="mobile-vp">-</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Layout</span>
+            <span class="mobile-stat__value" id="mobile-layout">-</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Columns</span>
+            <span class="mobile-stat__value" id="mobile-cols">-</span>
+        </div>
+        <div class="mobile-stat mobile-stat--accent">
+            <span class="mobile-stat__label">Density</span>
+            <span class="mobile-stat__value">A+</span>
+        </div>
+    </div>
 
     <!-- REGION: MAIN CONTENT -->
     <main class="region-main readme-content">
@@ -155,6 +200,90 @@
                     <span class="golden-value__num">0.618</span>
                 </div>
             </div>
+        </div>
+
+        <!-- COMPLEX 2D GRID EXAMPLE -->
+        <div class="context-section">
+            <div class="context-section__title">Complex 2D Grid Dashboard</div>
+            <div class="dashboard-grid">
+                <!-- Primary metric - spans 2 cols, 2 rows -->
+                <div class="dashboard-cell dashboard-cell--primary">
+                    <div class="dashboard-cell__label">Revenue</div>
+                    <div class="dashboard-cell__value">$47.2K</div>
+                    <div class="dashboard-cell__trend dashboard-cell__trend--up">↑ 12.4%</div>
+                </div>
+
+                <!-- Secondary metrics - single cells -->
+                <div class="dashboard-cell dashboard-cell--secondary">
+                    <div class="dashboard-cell__label">Users</div>
+                    <div class="dashboard-cell__value">1,847</div>
+                </div>
+                <div class="dashboard-cell dashboard-cell--secondary">
+                    <div class="dashboard-cell__label">Orders</div>
+                    <div class="dashboard-cell__value">342</div>
+                </div>
+
+                <!-- Status row - spans full width -->
+                <div class="dashboard-cell dashboard-cell--status">
+                    <span class="dashboard-status dashboard-status--success"></span>
+                    <span class="text-xs">All systems operational</span>
+                </div>
+
+                <!-- Mini chart area -->
+                <div class="dashboard-cell dashboard-cell--chart">
+                    <div class="mini-bars">
+                        <div class="mini-bar" style="height: 40%;"></div>
+                        <div class="mini-bar" style="height: 65%;"></div>
+                        <div class="mini-bar" style="height: 45%;"></div>
+                        <div class="mini-bar" style="height: 80%;"></div>
+                        <div class="mini-bar" style="height: 60%;"></div>
+                        <div class="mini-bar" style="height: 90%;"></div>
+                        <div class="mini-bar mini-bar--active" style="height: 75%;"></div>
+                    </div>
+                </div>
+
+                <!-- Quick actions -->
+                <div class="dashboard-cell dashboard-cell--actions">
+                    <button class="btn btn--primary btn--xs">View</button>
+                    <button class="btn btn--ghost btn--xs">Export</button>
+                </div>
+            </div>
+            <div class="text-2xs text-muted" style="margin-top: var(--s-xs);">
+                6 cells in 5-area asymmetric grid with spans
+            </div>
+
+            <!-- Code Snippet -->
+            <details style="margin-top: var(--s-md); border-top: 1px solid var(--c-border);">
+                <summary
+                    style="padding: var(--s-sm) 0; cursor: pointer; font-size: 0.75rem; color: var(--c-text-secondary);">
+                    View CSS Source</summary>
+                <div style="max-height: 200px; overflow-y: auto;">
+                    <pre><code class="language-css">.dashboard-grid {
+    display: grid;
+    /* Default: Mobile/Narrow - 2 columns */
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    grid-template-areas:
+        "primary primary"
+        "secondary1 secondary2"
+        "status status"
+        "chart chart"
+        "actions actions";
+}
+
+/* Axiom II: Container Query Upgrade */
+@container context (min-width: 300px) {
+    .dashboard-grid {
+        /* Golden Ratio Asymmetric Grid */
+        grid-template-columns: 1.618fr 1fr 1fr;
+        grid-template-areas:
+            "primary secondary1 secondary2"
+            "primary status status"
+            "chart chart actions";
+    }
+}</code></pre>
+                </div>
+            </details>
         </div>
 
         <!-- PHILOSOPHY BLOCK -->
@@ -298,6 +427,32 @@
                     <span class="text-sm">Dark mode</span>
                 </div>
             </div>
+
+            <!-- Code Snippet -->
+            <details style="margin-top: var(--s-md); border-top: 1px solid var(--c-border);">
+                <summary
+                    style="padding: var(--s-sm) 0; cursor: pointer; font-size: 0.75rem; color: var(--c-text-secondary);">
+                    View HTML Source</summary>
+                <div style="max-height: 200px; overflow-y: auto;">
+                    <pre><code class="language-html">&lt;!-- Input Group --&gt;
+&lt;div class="input-group"&gt;
+    &lt;span class="input-group__addon"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="input" placeholder="Username"&gt;
+&lt;/div&gt;
+
+&lt;!-- Toggle Switch --&gt;
+&lt;label class="toggle"&gt;
+    &lt;input type="checkbox"&gt;
+    &lt;span class="toggle__slider"&gt;&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Styled Checkbox --&gt;
+&lt;label class="checkbox-label"&gt;
+    &lt;input type="checkbox" class="checkbox"&gt;
+    &lt;span&gt;Accept terms&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                </div>
+            </details>
         </div>
 
         <!-- ALERTS -->
@@ -579,6 +734,43 @@
                 </div>
             </div>
 
+            <!-- TYPOGRAPHY SCALE -->
+            <div class="aux-section">
+                <div class="aux-section__title">Typography Scale</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-2xs)')">
+                        <span class="text-2xs" style="width: 30px;">Ag</span>
+                        <span>--text-2xs</span>
+                        <span class="aux-scale__val">0.65rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-xs)')">
+                        <span class="text-xs" style="width: 30px;">Ag</span>
+                        <span>--text-xs</span>
+                        <span class="aux-scale__val">0.75rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-sm)')">
+                        <span class="text-sm" style="width: 30px;">Ag</span>
+                        <span>--text-sm</span>
+                        <span class="aux-scale__val">0.875rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-base)')">
+                        <span class="text-base" style="width: 30px;">Ag</span>
+                        <span>--text-base</span>
+                        <span class="aux-scale__val">1rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-lg)')">
+                        <span class="text-lg" style="width: 30px;">Ag</span>
+                        <span>--text-lg</span>
+                        <span class="aux-scale__val">1.125rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--text-xl)')">
+                        <span class="text-xl" style="width: 30px;">Ag</span>
+                        <span>--text-xl</span>
+                        <span class="aux-scale__val">1.25rem</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- UTILITY CLASSES -->
             <div class="aux-section">
                 <div class="aux-section__title">Common Utilities</div>
@@ -631,6 +823,24 @@
                         title="--c-gray-200"></div>
                 </div>
                 <div class="aux-hint">Click to copy token</div>
+            </div>
+        </div>
+
+        <!-- Image Utilities -->
+        <div class="aux-section" style="border-bottom: none;">
+            <div class="aux-section__title">Image Utilities</div>
+            <div class="aux-snippet" onclick="copySnippet(this)">
+                <code>&lt;img class="w-full rounded"&gt;</code>
+                <span class="aux-snippet__copy">📋</span>
+            </div>
+            <div style="margin: 8px 0;">
+                <img src="https://placehold.co/600x400" class="w-full rounded" alt="Demo Image"
+                    style="border: 1px solid var(--c-border);">
+            </div>
+            <div class="aux-chips">
+                <span class="aux-chip" onclick="copyClass('.w-full')">.w-full</span>
+                <span class="aux-chip" onclick="copyClass('.rounded')">.rounded</span>
+                <span class="aux-chip" onclick="copyClass('.object-cover')">.object-cover</span>
             </div>
         </div>
 

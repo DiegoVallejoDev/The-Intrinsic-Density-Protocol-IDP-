@@ -77,17 +77,25 @@
 }
 
 /* === CONTEXT PANEL REGION === */
+/* MANIFESTO: "If a metric can be displayed above the fold 
+   without compromising legibility, hiding it below the fold 
+   is a design failure." 
+   
+   On mobile, we stack context below main content instead of hiding it. */
 .region-context {
     grid-area: context;
     background: var(--c-surface);
     border-top: 1px solid var(--c-border);
     padding: var(--s-md);
-    display: none;
+    /* Show on mobile as stacked section - don't hide it! */
+    display: block;
+    /* AXIOM II: Enable Container Queries */
+    container-type: inline-size;
+    container-name: context;
 }
 
 @media (min-width: 1024px) {
     .region-context {
-        display: block;
         border-top: none;
         border-left: 1px solid var(--c-border);
         padding: var(--s-lg);
@@ -98,9 +106,15 @@
     }
 }
 
-/* Force show context on mobile if needed */
-.region-context--mobile-visible {
-    display: block;
+/* Hide context on mobile ONLY if explicitly requested */
+.region-context--mobile-hidden {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .region-context--mobile-hidden {
+        display: block;
+    }
 }
 
 /* === CONTEXT PANEL SECTIONS === */
