@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Source files (only dist is published)
+src/
+scripts/
+
+# Build config
+rollup.config.js
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Gemini/AI
+.gemini/
+.agent/
+
+# Git
+.git/
+.gitignore

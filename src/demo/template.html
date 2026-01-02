@@ -212,38 +212,169 @@
                     <span class="badge badge--dot badge--danger"></span>
                 </div>
             </div>
+        </div>
 
-            <!-- Form Controls -->
-            <div style="margin-bottom: var(--s-md);">
-                <div class="text-xs text-muted mb-xs font-semibold">Form Controls</div>
+        <!-- FORM COMPONENTS -->
+        <div class="context-section">
+            <div class="context-section__title">Form Components</div>
+
+            <!-- Text Inputs -->
+            <div style="margin-top: var(--s-sm); margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Text Inputs</div>
                 <div class="form-stack" style="gap: var(--s-xs);">
-                    <input type="text" class="input input--sm" placeholder="Text input...">
-                    <select class="input select input--sm">
-                        <option>Select option</option>
-                        <option>Option A</option>
-                        <option>Option B</option>
-                    </select>
+                    <input type="text" class="input" placeholder="Default input">
+                    <input type="text" class="input input--sm" placeholder="Small input">
+                    <input type="email" class="input input--sm" placeholder="email@example.com">
+                    <input type="password" class="input input--sm" placeholder="Password" value="secret123">
+                </div>
+            </div>
+
+            <!-- Input Groups -->
+            <div style="margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Input Groups</div>
+                <div class="form-stack" style="gap: var(--s-xs);">
                     <div class="input-group">
                         <span class="input-group__addon">$</span>
                         <input type="text" class="input input--sm" placeholder="0.00">
                     </div>
+                    <div class="input-group">
+                        <span class="input-group__addon">@</span>
+                        <input type="text" class="input input--sm" placeholder="username">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input input--sm" placeholder="Search...">
+                        <button class="btn btn--primary btn--sm">Go</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Card Preview -->
-            <div>
-                <div class="text-xs text-muted mb-xs font-semibold">Card Variants</div>
+            <!-- Select & Textarea -->
+            <div style="margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Select & Textarea</div>
+                <div class="form-stack" style="gap: var(--s-xs);">
+                    <select class="input select input--sm">
+                        <option>Select option...</option>
+                        <option>Option A</option>
+                        <option>Option B</option>
+                        <option>Option C</option>
+                    </select>
+                    <textarea class="input input--sm" rows="2" placeholder="Enter message..."></textarea>
+                </div>
+            </div>
+
+            <!-- Checkboxes & Radios -->
+            <div style="margin-bottom: var(--s-md);">
+                <div class="text-xs text-muted mb-xs font-semibold">Checkboxes & Radios</div>
                 <div class="flex flex-col gap-xs">
-                    <div class="card card--sm card--elevated">
-                        <div class="text-xs font-semibold">Elevated Card</div>
-                        <div class="text-xs text-muted">With shadow</div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox" checked>
+                        <span class="text-sm">Enable notifications</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="checkbox">
+                        <span class="text-sm">Subscribe to newsletter</span>
+                    </label>
+                </div>
+                <div class="flex gap-md mt-xs">
+                    <label class="checkbox-label">
+                        <input type="radio" name="demo-radio" class="radio" checked>
+                        <span class="text-sm">Option 1</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="radio" name="demo-radio" class="radio">
+                        <span class="text-sm">Option 2</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Toggle Switch -->
+            <div>
+                <div class="text-xs text-muted mb-xs font-semibold">Toggle Switches</div>
+                <div class="flex gap-md items-center">
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="toggle__slider"></span>
+                    </label>
+                    <span class="text-sm">Dark mode</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="context-section">
+            <div class="context-section__title">Alerts</div>
+            <div class="flex flex-col gap-xs" style="margin-top: var(--s-sm);">
+                <div class="alert alert--info alert--inline">
+                    <div class="alert__content">
+                        <span class="text-xs">ℹ️ Information message</span>
                     </div>
-                    <div class="card card--sm card--technical">
-                        <div class="text-xs font-semibold">Technical Card</div>
-                        <div class="text-xs text-muted">Retro style</div>
+                </div>
+                <div class="alert alert--success alert--inline">
+                    <div class="alert__content">
+                        <span class="text-xs">✓ Success message</span>
+                    </div>
+                </div>
+                <div class="alert alert--warning alert--inline">
+                    <div class="alert__content">
+                        <span class="text-xs">⚠ Warning message</span>
+                    </div>
+                </div>
+                <div class="alert alert--danger alert--inline">
+                    <div class="alert__content">
+                        <span class="text-xs">✕ Error message</span>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- CARD VARIANTS -->
+        <div class="context-section">
+            <div class="context-section__title">Card Variants</div>
+            <div class="flex flex-col gap-xs" style="margin-top: var(--s-sm);">
+                <div class="card card--sm">
+                    <div class="text-xs font-semibold">Default Card</div>
+                    <div class="text-xs text-muted">Basic styling</div>
+                </div>
+                <div class="card card--sm card--elevated">
+                    <div class="text-xs font-semibold">Elevated Card</div>
+                    <div class="text-xs text-muted">With shadow</div>
+                </div>
+                <div class="card card--sm card--technical">
+                    <div class="text-xs font-semibold">Technical Card</div>
+                    <div class="text-xs text-muted">Retro terminal style</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MINI TABLE -->
+        <div class="context-section">
+            <div class="context-section__title">Data Table</div>
+            <table class="table table--sm table--striped" style="margin-top: var(--s-sm);">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alpha</td>
+                        <td><span class="badge badge--success badge--sm">Active</span></td>
+                        <td>1.618</td>
+                    </tr>
+                    <tr>
+                        <td>Beta</td>
+                        <td><span class="badge badge--warning badge--sm">Pending</span></td>
+                        <td>2.618</td>
+                    </tr>
+                    <tr>
+                        <td>Gamma</td>
+                        <td><span class="badge badge--danger badge--sm">Error</span></td>
+                        <td>0.618</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- QUICK REFERENCE -->

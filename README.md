@@ -1,8 +1,15 @@
 # The Intrinsic Density Protocol (IDP)
 
-**Current Version:** 2025.12
-**Status:** Active
-**License:** MIT
+[![npm version](https://img.shields.io/npm/v/idp-framework.svg)](https://www.npmjs.com/package/idp-framework)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+> A CSS framework for high-density, container-driven layouts using golden ratio proportions.
+
+```bash
+npm install idp-framework
+```
+
+**Version:** 1.0.0 | **License:** MIT
 
 ## The Manifesto: Stop Designing for the iPhone 5
 
@@ -146,21 +153,36 @@ p {
 
 ## Installation & Usage
 
-This repository serves as a reference implementation and a Proof of Concept (PoC).
+### Import the Framework
 
-### Quick Start
+Add the IDP CSS to your project:
 
-1. Clone the repository.
+```html
+<link rel="stylesheet" href="dist/idp-framework.min.css">
+```
 
-2. Open `index.html` in any modern browser (Chrome/Edge 105+, Safari 16+, Firefox 110+).
+Or import in your CSS/JS:
 
-3. **Critical Step:** Toggle the "Legacy Mode" button in the bottom-right corner to visualize the structural difference between Standard Responsive Design and IDP.
+```css
+@import 'idp-framework/dist/idp-framework.min.css';
+```
 
-### Structure
+```javascript
+import 'idp-framework/dist/idp-framework.min.css';
+```
 
-* `index.html`: The interactive manifesto and technical demo.
+### Basic Layout
 
-* `idp-core.css` (embedded): The CSS variables and grid logic.
+```html
+<body class="idp-shell has-context">
+    <nav class="region-nav">...</nav>
+    <main class="region-main">...</main>
+    <aside class="region-context">...</aside>
+</body>
+```
+
+### Demo
+if built with `pnpm run build-demo-website`, The `dist/index.html` file contains an interactive demo of the IDP framework. Open it in any modern browser (Chrome/Edge 105+, Safari 16+, Firefox 110+) and toggle the "Legacy Mode" button to compare IDP with traditional responsive design.
 
 ## Philosophy: Pixel Economics
 

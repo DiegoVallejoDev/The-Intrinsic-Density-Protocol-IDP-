@@ -1,26 +1,48 @@
 {
   "name": "idp-framework",
   "version": "1.0.0",
-  "description": "The Intrinsic Density Protocol - A CSS framework for high-density, container-driven layouts",
+  "description": "The Intrinsic Density Protocol - A CSS framework for high-density, container-driven layouts using golden ratio proportions",
   "type": "module",
-  "main": "dist/idp-framework.css",
-  "style": "dist/idp-framework.css",
+  "main": "dist/idp-framework.min.css",
+  "style": "dist/idp-framework.min.css",
   "files": [
-    "dist"
+    "dist/idp-framework.css",
+    "dist/idp-framework.min.css",
+    "dist/idp-framework.css.map",
+    "dist/idp-framework.min.css.map",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
+    "build": "rollup -c",
     "build:framework": "rollup -c",
-    "build-demo-website": "npm run build:framework && node scripts/build-demo.js"
+    "build:demo": "npm run build:framework && node scripts/build-demo.js",
+    "build-demo-website": "npm run build:framework && node scripts/build-demo.js",
+    "prepublishOnly": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-/issues"
+  },
+  "homepage": "https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-#readme",
   "keywords": [
     "css",
     "framework",
+    "css-framework",
     "container-queries",
     "responsive",
     "bento-grid",
-    "information-density"
+    "golden-ratio",
+    "information-density",
+    "ultrawide",
+    "layout",
+    "grid",
+    "design-system"
   ],
-  "author": "",
+  "author": "Diego Vallejo",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
@@ -31,5 +53,13 @@
     "rollup": "^4.9.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.2"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 0.5%"
+  ]
 }
