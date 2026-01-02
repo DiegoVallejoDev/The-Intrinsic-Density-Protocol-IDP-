@@ -39,11 +39,42 @@
     }
 }
 
-/* === ULTRAWIDE OPTIMIZATION === */
+/* =====================================================
+   ULTRAWIDE OPTIMIZATION (1800px+)
+   
+   THE GOLDEN RATIO GRID SYSTEM
+   ============================
+   IDP uses the golden ratio (φ ≈ 1.618) as a CORE DESIGN PRINCIPLE
+   for creating harmonious layouts across all 4 columns.
+   
+   The Fibonacci Sequence & Golden Ratio:
+   1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...
+   Each number ÷ previous ≈ 1.618 (φ)
+   
+   4-Column Golden Proportions:
+   ┌─────────┬─────────────────────┬───────────────┬─────────┐
+   │  0.23fr │       2.09fr        │     1.30fr    │ 0.38fr  │
+   │   NAV   │        MAIN         │    CONTEXT    │   AUX   │
+   │  ~5.75% │       ~52.25%       │    ~32.5%     │  ~9.5%  │
+   └─────────┴─────────────────────┴───────────────┴─────────┘
+   
+   Ratio Relationships:
+   • main : context = 2.09 : 1.30 ≈ 1.607 (≈φ)
+   • context : aux = 1.30 : 0.38 ≈ 3.42 (≈φ²)
+   • nav : aux = 0.23 : 0.38 ≈ 0.605 (≈1/φ)
+   
+   Why This Works:
+   • Fibonacci-derived ratios create natural visual flow
+   • Each panel relates to others through φ
+   • The eye naturally follows golden proportions
+   • Works on any screen width (fr units scale)
+   
+   ===================================================== */
 @media (min-width: 1800px) {
     .idp-shell--context {
-        /* Constrain content, expand context */
-        grid-template-columns: 280px minmax(800px, 1100px) 1fr;
+        /* Golden Ratio 4-Column Grid: nav | main | context | aux */
+        grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
+        grid-template-areas: "nav main context aux";
     }
 }
 
@@ -100,6 +131,8 @@
 
 @media (min-width: 1800px) {
     .idp-shell.has-context {
-        grid-template-columns: 280px minmax(800px, 1100px) 1fr;
+        /* Golden Ratio 4-Column Grid: nav | main | context | aux */
+        grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
+        grid-template-areas: "nav main context aux";
     }
 }

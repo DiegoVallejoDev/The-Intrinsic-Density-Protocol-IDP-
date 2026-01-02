@@ -83,6 +83,37 @@ Replace rigid column classes (`col-6`, `w-1/2`) with intrinsic grid logic.
 }
 ```
 
+### 1.5. The Golden Ratio Grid System
+
+IDP uses the **golden ratio (φ ≈ 1.618)** as a core design principle for creating harmonious layouts. Derived from the Fibonacci sequence, this mathematical constant creates proportions that the human eye naturally finds pleasing.
+
+**The 4-Column Golden Layout:**
+
+```css
+/* Ultrawide optimization: all columns follow golden proportions */
+grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
+/*                      nav    main   context  aux     */
+
+/* Ratio relationships:
+ * main / context  ≈ 1.607 (≈φ)
+ * context / aux   ≈ 3.42  (≈φ²)
+ * nav / aux       ≈ 0.605 (≈1/φ)
+ */
+```
+
+**2D Golden Grid (Recursive Golden Rectangles):**
+
+```css
+.golden-grid-2d {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  grid-template-rows: 1.618fr 1fr;
+  gap: var(--spacing);
+}
+```
+
+> **Why Golden Ratio?** Found in nature (nautilus shells, sunflowers), used in art (Mona Lisa, Parthenon), and proven to create visual harmony. Each element relates to others through φ, creating recursive beauty.
+
 ### 2. The Intrinsic Card (Component Engine)
 
 Components define their own reality.
@@ -142,13 +173,7 @@ On mobile, the bottom 30% of the screen is the primary interaction zone. IDP fav
 **3. Data-Ink Ratio.**
 Borrowing from Edward Tufte: Minimize the non-data ink. Remove heavy borders, drop shadows, and decorative backgrounds. Use spacing (tight) and alignment to define hierarchy.
 
-## Roadmap
 
-* **Phase 1 (Current):** Manifesto and HTML/CSS Reference Implementation.
-
-* **Phase 2:** React/Tailwind Component Library (`@idp/react`).
-
-* **Phase 3:** Figma Design System for "Cockpit" layouts.
 
 ## License
 

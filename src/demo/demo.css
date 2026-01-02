@@ -277,3 +277,608 @@
 [data-mode="legacy"] .card--technical {
     box-shadow: none;
 }
+
+/* =====================================================
+   AUXILIARY PANEL (Ultrawide Only)
+   Shows framework class hierarchy on ultrawide screens
+   ===================================================== */
+
+.region-aux {
+    display: none;
+    background: var(--c-gray-900, #111827);
+    color: var(--c-gray-300, #D1D5DB);
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    border-left: 1px solid var(--c-border-strong);
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+@media (min-width: 1800px) {
+    .region-aux {
+        display: flex;
+    }
+}
+
+/* Hide aux panel in legacy mode */
+[data-mode="legacy"] .region-aux {
+    display: none !important;
+}
+
+.aux-header {
+    padding: var(--s-md);
+    background: var(--c-gray-800, #1F2937);
+    border-bottom: 1px solid var(--c-gray-700, #374151);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--c-gray-100, #F3F4F6);
+    display: flex;
+    align-items: center;
+    gap: var(--s-xs);
+}
+
+.aux-header__icon {
+    font-size: 1rem;
+}
+
+.aux-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--s-sm);
+}
+
+.aux-section {
+    padding-bottom: var(--s-sm);
+    margin-bottom: var(--s-sm);
+    border-bottom: 1px solid var(--c-gray-800, #1F2937);
+}
+
+.aux-section__title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-accent);
+    margin-bottom: var(--s-xs);
+}
+
+.aux-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.aux-tree__item {
+    padding: 2px 0;
+    color: var(--c-gray-400, #9CA3AF);
+    position: relative;
+}
+
+.aux-tree__item--root {
+    color: var(--c-gray-100, #F3F4F6);
+    font-weight: 600;
+}
+
+.aux-tree__item--l1 {
+    padding-left: 1rem;
+}
+
+.aux-tree__item--l1::before {
+    content: "├─";
+    position: absolute;
+    left: 0;
+    color: var(--c-gray-600, #4B5563);
+}
+
+.aux-tree__item--l2 {
+    padding-left: 2rem;
+    color: var(--c-gray-500, #6B7280);
+    font-size: 0.65rem;
+}
+
+.aux-tree__item--l2::before {
+    content: "│ └─";
+    position: absolute;
+    left: 0.5rem;
+    color: var(--c-gray-700, #374151);
+}
+
+.aux-tree__item--active {
+    color: var(--c-success);
+    font-weight: 600;
+}
+
+.aux-tree__item--active::after {
+    content: " ← current";
+    font-size: 0.55rem;
+    font-weight: 400;
+    color: var(--c-gray-500, #6B7280);
+}
+
+/* === SNIPPETS === */
+.aux-snippet {
+    background: var(--c-gray-800, #1F2937);
+    border: 1px solid var(--c-gray-700, #374151);
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.aux-snippet:hover {
+    border-color: var(--c-accent);
+    background: var(--c-gray-700, #374151);
+}
+
+.aux-snippet code {
+    font-size: 0.65rem;
+    color: var(--c-gray-200, #E5E7EB);
+    white-space: pre-wrap;
+    word-break: break-all;
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.aux-snippet--sm {
+    padding: 4px 6px;
+}
+
+.aux-snippet__copy {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.aux-snippet:hover .aux-snippet__copy {
+    opacity: 1;
+}
+
+/* === PATTERNS === */
+.aux-pattern {
+    margin-bottom: 8px;
+}
+
+.aux-pattern__name {
+    font-size: 0.6rem;
+    color: var(--c-gray-400, #9CA3AF);
+    margin-bottom: 2px;
+}
+
+/* === GRID PREVIEW === */
+.aux-grid-preview {
+    display: flex;
+    gap: 4px;
+    margin: 8px 0;
+}
+
+.aux-grid-item {
+    flex: 1;
+    height: 24px;
+    background: var(--c-gray-700, #374151);
+    border: 1px solid var(--c-gray-600, #4B5563);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    color: var(--c-gray-400, #9CA3AF);
+}
+
+/* === HINTS === */
+.aux-hint {
+    font-size: 0.55rem;
+    color: var(--c-gray-500, #6B7280);
+    font-style: italic;
+}
+
+/* === CHIPS === */
+.aux-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.aux-chip {
+    background: var(--c-gray-800, #1F2937);
+    border: 1px solid var(--c-gray-700, #374151);
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 0.6rem;
+    color: var(--c-gray-300, #D1D5DB);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.aux-chip:hover {
+    background: var(--c-gray-700, #374151);
+    border-color: var(--c-accent);
+    color: white;
+}
+
+.aux-chip--primary {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+}
+
+.aux-chip--secondary {
+    border-color: var(--c-gray-500);
+}
+
+.aux-chip--ghost {
+    border-style: dashed;
+}
+
+.aux-chip--success {
+    border-color: var(--c-success);
+    color: var(--c-success);
+}
+
+.aux-chip--danger {
+    border-color: var(--c-danger);
+    color: var(--c-danger);
+}
+
+/* === SPACING SCALE === */
+.aux-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.aux-scale__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 2px 0;
+    transition: color 0.15s;
+}
+
+.aux-scale__item:hover {
+    color: var(--c-accent);
+}
+
+.aux-scale__bar {
+    height: 8px;
+    background: var(--c-accent);
+    border-radius: 2px;
+    min-width: 4px;
+}
+
+.aux-scale__val {
+    margin-left: auto;
+    color: var(--c-gray-500, #6B7280);
+    font-size: 0.55rem;
+}
+
+/* === UTILITY GROUPS === */
+.aux-util-group {
+    margin-bottom: 8px;
+}
+
+.aux-util-label {
+    font-size: 0.55rem;
+    color: var(--c-gray-500, #6B7280);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* === COLOR SWATCHES === */
+.aux-colors {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.aux-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.aux-color:hover {
+    transform: scale(1.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* === TOAST NOTIFICATION === */
+.aux-toast {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--c-success);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.aux-toast--visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =====================================================
+   LAYOUT DIAGRAM
+   Visual representation of the current grid layout
+   ===================================================== */
+
+.layout-diagram {
+    margin-top: var(--s-sm);
+}
+
+.layout-diagram__row {
+    display: flex;
+    gap: 2px;
+    height: 40px;
+}
+
+.layout-diagram__block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.layout-diagram__block--nav {
+    flex: 0.23;
+    background: var(--c-gray-600, #4B5563);
+}
+
+.layout-diagram__block--main {
+    flex: 2.09;
+    background: var(--c-gray-500, #6B7280);
+}
+
+.layout-diagram__block--context {
+    flex: 1.30;
+    background: var(--c-accent);
+}
+
+.layout-diagram__block--aux {
+    flex: 0.38;
+    background: var(--c-gray-700, #374151);
+}
+
+.layout-diagram__block--active {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--c-accent);
+}
+
+.layout-diagram__labels {
+    display: flex;
+    gap: 2px;
+    margin-top: 4px;
+    font-size: 0.55rem;
+    color: var(--c-text-tertiary);
+    font-family: var(--f-mono);
+}
+
+.layout-diagram__labels span {
+    text-align: center;
+}
+
+.layout-diagram__labels span:nth-child(1) {
+    flex: 0.23;
+}
+
+.layout-diagram__labels span:nth-child(2) {
+    flex: 2.09;
+}
+
+.layout-diagram__labels span:nth-child(3) {
+    flex: 1.30;
+}
+
+.layout-diagram__labels span:nth-child(4) {
+    flex: 0.38;
+}
+
+/* =====================================================
+   GOLDEN RATIO VISUAL
+   Visual demonstration of the golden proportion
+   ===================================================== */
+
+.golden-ratio-visual {
+    display: flex;
+    gap: 2px;
+    height: 50px;
+    margin-top: var(--s-sm);
+}
+
+.golden-ratio-visual__large {
+    flex: 1.618;
+    background: linear-gradient(135deg, var(--c-accent), #3366ff);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.golden-ratio-visual__large::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.golden-ratio-visual__small {
+    flex: 1;
+    background: linear-gradient(135deg, var(--c-gray-600, #4B5563), var(--c-gray-700, #374151));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.golden-ratio-visual__label {
+    font-family: var(--f-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.golden-ratio-formula {
+    margin-top: var(--s-xs);
+    text-align: center;
+}
+
+.golden-ratio-formula code {
+    font-size: 0.7rem;
+    background: var(--c-surface-alt);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--c-text-secondary);
+}
+
+/* =====================================================
+   2D GOLDEN GRID
+   Recursive golden rectangle demonstration
+   ===================================================== */
+
+.golden-grid-2d {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    grid-template-rows: 1.618fr 1fr;
+    gap: 2px;
+    height: 100px;
+    margin-top: var(--s-sm);
+}
+
+.golden-grid-2d__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+}
+
+.golden-grid-2d__cell--large {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    background: linear-gradient(135deg, var(--c-accent), #3366ff);
+}
+
+.golden-grid-2d__cell--tall {
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    background: linear-gradient(135deg, var(--c-success), #10b981);
+}
+
+.golden-grid-2d__cell--wide {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    background: linear-gradient(135deg, var(--c-warning), #f59e0b);
+    font-size: 0.65rem;
+}
+
+.golden-grid-2d__cell--small {
+    display: none;
+    /* Hidden for cleaner 3-cell layout */
+}
+
+/* =====================================================
+   GOLDEN VALUES
+   Quick reference for phi calculations
+   ===================================================== */
+
+.golden-values {
+    display: flex;
+    gap: var(--s-xs);
+    margin-top: var(--s-sm);
+    justify-content: center;
+}
+
+.golden-value {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--s-xs) var(--s-sm);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-sm);
+    min-width: 50px;
+}
+
+.golden-value__label {
+    font-family: var(--f-mono);
+    font-size: 0.65rem;
+    color: var(--c-text-tertiary);
+}
+
+.golden-value__num {
+    font-family: var(--f-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-accent);
+}
+
+/* =====================================================
+   AXIOM CARDS
+   Philosophy statements displayed as cards
+   ===================================================== */
+
+.axiom-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xs);
+    margin-top: var(--s-sm);
+}
+
+.axiom-card {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+    padding: var(--s-xs) var(--s-sm);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--r-md);
+    transition: all 0.2s;
+}
+
+.axiom-card:hover {
+    border-color: var(--c-accent);
+    transform: translateX(4px);
+}
+
+.axiom-card__number {
+    font-family: var(--f-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--c-accent);
+    min-width: 24px;
+}
+
+.axiom-card__text {
+    font-size: 0.75rem;
+    color: var(--c-text-secondary);
+    line-height: 1.3;
+}

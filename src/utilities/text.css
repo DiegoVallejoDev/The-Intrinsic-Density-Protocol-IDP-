@@ -258,3 +258,31 @@
 .break-all {
     word-break: break-all;
 }
+
+/* === READING WIDTH === */
+/* For when you want constrained paragraph widths */
+.prose {
+    max-width: 70ch;
+}
+
+.prose p,
+.prose li {
+    max-width: 70ch;
+}
+
+.reading-width {
+    max-width: 65ch;
+}
+
+.reading-width-sm {
+    max-width: 45ch;
+}
+
+.reading-width-lg {
+    max-width: 80ch;
+}
+
+/* Full width - explicitly remove any max-width constraints */
+.w-full-content {
+    max-width: none;
+}

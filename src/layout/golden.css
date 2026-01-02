@@ -1,0 +1,142 @@
+/* =====================================================
+   LAYOUT: GOLDEN RATIO GRID
+   
+   A grid system based on the golden ratio (φ ≈ 1.618)
+   for creating harmonious, aesthetically pleasing layouts.
+   
+   THE FIBONACCI SEQUENCE & GOLDEN RATIO
+   =====================================
+   1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...
+   Each number divided by the previous ≈ 1.618 (φ)
+   
+   Core Values:
+   • φ   = 1.618033...
+   • φ²  = 2.618033...
+   • 1/φ = 0.618033...
+   
+   Why Golden Ratio?
+   • Found throughout nature (nautilus shells, sunflowers)
+   • Used in art (Mona Lisa, Parthenon)
+   • Creates visual harmony the eye naturally follows
+   • Recursive: each part relates to the whole
+   
+   ===================================================== */
+
+/* === 2-COLUMN GOLDEN GRID === */
+.golden-grid-2 {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    gap: var(--s-md);
+}
+
+.golden-grid-2--reverse {
+    grid-template-columns: 1fr 1.618fr;
+}
+
+/* === 3-COLUMN GOLDEN GRID === */
+.golden-grid-3 {
+    display: grid;
+    grid-template-columns: 0.382fr 1fr 0.618fr;
+    gap: var(--s-md);
+}
+
+/* === 4-COLUMN GOLDEN GRID (IDP Standard) === */
+.golden-grid-4 {
+    display: grid;
+    /* nav : main : context : aux = 0.23 : 2.09 : 1.30 : 0.38 */
+    grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
+    gap: var(--s-md);
+}
+
+/* === GOLDEN ROWS === */
+.golden-rows-2 {
+    display: grid;
+    grid-template-rows: 1.618fr 1fr;
+    gap: var(--s-md);
+}
+
+.golden-rows-3 {
+    display: grid;
+    grid-template-rows: 1.618fr 1fr 0.618fr;
+    gap: var(--s-md);
+}
+
+/* === 2D GOLDEN GRID (Recursive Golden Rectangles) === */
+.golden-grid-2d {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    grid-template-rows: 1.618fr 1fr;
+    gap: var(--s-sm);
+}
+
+/* Named areas for 2D golden grid */
+.golden-grid-2d--areas {
+    grid-template-areas:
+        "primary secondary"
+        "tertiary secondary";
+}
+
+.golden-grid-2d--areas> :nth-child(1) {
+    grid-area: primary;
+}
+
+.golden-grid-2d--areas> :nth-child(2) {
+    grid-area: secondary;
+}
+
+.golden-grid-2d--areas> :nth-child(3) {
+    grid-area: tertiary;
+}
+
+/* === FIBONACCI SEQUENCE GRID === */
+/* Based on Fibonacci numbers: 1, 1, 2, 3, 5, 8 */
+.fibonacci-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 3fr 5fr;
+    gap: var(--s-sm);
+}
+
+.fibonacci-grid--reverse {
+    grid-template-columns: 5fr 3fr 2fr 1fr 1fr;
+}
+
+/* === GOLDEN ASPECT RATIOS === */
+.golden-aspect {
+    aspect-ratio: 1.618 / 1;
+}
+
+.golden-aspect--tall {
+    aspect-ratio: 1 / 1.618;
+}
+
+.golden-aspect--square {
+    aspect-ratio: 1 / 1;
+}
+
+/* === GOLDEN SPACING HELPERS === */
+/* For consistent golden-ratio based spacing */
+.golden-gap {
+    gap: calc(var(--s-md) * 1.618);
+}
+
+.golden-gap--sm {
+    gap: calc(var(--s-sm) * 1.618);
+}
+
+.golden-gap--lg {
+    gap: calc(var(--s-lg) * 1.618);
+}
+
+/* === GOLDEN WIDTH UTILITIES === */
+.w-phi {
+    width: 61.8%;
+}
+
+.w-phi-inverse {
+    width: 38.2%;
+}
+
+.w-phi-squared {
+    width: 72.36%;
+    /* φ² / (1 + φ²) */
+}

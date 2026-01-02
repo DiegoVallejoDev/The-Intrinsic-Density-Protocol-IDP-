@@ -25,6 +25,7 @@
 @import "./layout/shell.css" layer(layout);
 @import "./layout/regions.css" layer(layout);
 @import "./layout/bento.css" layer(layout);
+@import "./layout/golden.css" layer(layout);
 
 /* === COMPONENTS === */
 @import "./components/card.css" layer(components);

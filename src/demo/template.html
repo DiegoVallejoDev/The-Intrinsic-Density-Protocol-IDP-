@@ -50,15 +50,15 @@
                 <li><a href="#technical-implementation" class="nav-link">Technical Implementation</a></li>
                 <li><a href="#installation--usage" class="nav-link">Installation & Usage</a></li>
                 <li><a href="#philosophy-pixel-economics" class="nav-link">Philosophy</a></li>
-                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
             </ul>
 
             <h4
                 style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin: 1.5rem 0 1rem;">
                 Quick Links</h4>
             <ul style="list-style: none; padding: 0;">
-                <li><a href="https://github.com/user/idp-framework" class="nav-link" target="_blank">GitHub →</a></li>
-                <li><a href="https://npmjs.com/package/@idp/core" class="nav-link" target="_blank">NPM →</a></li>
+                <li><a href="https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-" class="nav-link"
+                        target="_blank">GitHub →</a></li>
+                <li><a href="https://npmjs.com/package/idp-framework" class="nav-link" target="_blank">NPM →</a></li>
             </ul>
         </div>
     </nav>
@@ -86,6 +86,92 @@
                 <div class="card card--sm">
                     <div class="metric-label">Density</div>
                     <div class="metric-value" style="font-size: 1.25rem; color: var(--c-success);">A+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LAYOUT DIAGRAM -->
+        <div class="context-section">
+            <div class="context-section__title">Golden Ratio Layout</div>
+            <div class="layout-diagram">
+                <div class="layout-diagram__row">
+                    <div class="layout-diagram__block layout-diagram__block--nav">NAV</div>
+                    <div class="layout-diagram__block layout-diagram__block--main">MAIN</div>
+                    <div class="layout-diagram__block layout-diagram__block--context layout-diagram__block--active">CTX
+                    </div>
+                    <div class="layout-diagram__block layout-diagram__block--aux">AUX</div>
+                </div>
+                <div class="layout-diagram__labels">
+                    <span>0.23fr</span>
+                    <span>2.09fr</span>
+                    <span>1.30fr</span>
+                    <span>0.38fr</span>
+                </div>
+            </div>
+            <div class="text-2xs text-muted" style="margin-top: var(--s-xs);">
+                Fibonacci-derived: main/ctx ≈ φ, ctx/aux ≈ φ²
+            </div>
+        </div>
+
+        <!-- 2D GOLDEN GRID -->
+        <div class="context-section">
+            <div class="context-section__title">2D Golden Grid</div>
+            <div class="golden-grid-2d">
+                <div class="golden-grid-2d__cell golden-grid-2d__cell--large">
+                    <span>φ²</span>
+                </div>
+                <div class="golden-grid-2d__cell golden-grid-2d__cell--tall">
+                    <span>φ</span>
+                </div>
+                <div class="golden-grid-2d__cell golden-grid-2d__cell--wide">
+                    <span>φ</span>
+                </div>
+                <div class="golden-grid-2d__cell golden-grid-2d__cell--small">
+                    <span>1</span>
+                </div>
+            </div>
+            <div class="text-2xs text-muted" style="margin-top: var(--s-xs);">
+                Recursive golden rectangles for 2D layouts
+            </div>
+        </div>
+
+        <!-- GOLDEN RATIO FORMULA -->
+        <div class="context-section">
+            <div class="context-section__title">The Math</div>
+            <div class="golden-ratio-formula">
+                <code>φ = (1 + √5) / 2 ≈ 1.618033...</code>
+            </div>
+            <div class="golden-values">
+                <div class="golden-value">
+                    <span class="golden-value__label">φ</span>
+                    <span class="golden-value__num">1.618</span>
+                </div>
+                <div class="golden-value">
+                    <span class="golden-value__label">φ²</span>
+                    <span class="golden-value__num">2.618</span>
+                </div>
+                <div class="golden-value">
+                    <span class="golden-value__label">1/φ</span>
+                    <span class="golden-value__num">0.618</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHILOSOPHY BLOCK -->
+        <div class="context-section">
+            <div class="context-section__title">The Three Axioms</div>
+            <div class="axiom-cards">
+                <div class="axiom-card">
+                    <div class="axiom-card__number">I</div>
+                    <div class="axiom-card__text">Pixels are expensive real estate</div>
+                </div>
+                <div class="axiom-card">
+                    <div class="axiom-card__number">II</div>
+                    <div class="axiom-card__text">Scrolling is cognitively expensive</div>
+                </div>
+                <div class="axiom-card">
+                    <div class="axiom-card__number">III</div>
+                    <div class="axiom-card__text">Components decide their own layout</div>
                 </div>
             </div>
         </div>
@@ -231,7 +317,216 @@
 
     </aside>
 
+    <!-- REGION: AUXILIARY PANEL (Ultrawide Only - Quick Reference) -->
+    <aside class="region-aux">
+        <div class="aux-header">
+            <span class="aux-header__icon">⚡</span>
+            QUICK REFERENCE
+        </div>
+
+        <div class="aux-scroll">
+            <!-- QUICK START -->
+            <div class="aux-section">
+                <div class="aux-section__title">Quick Start</div>
+                <div class="aux-snippet" onclick="copySnippet(this)">
+                    <code>&lt;body class="idp-shell has-context"&gt;</code>
+                    <span class="aux-snippet__copy">📋</span>
+                </div>
+                <div class="aux-snippet" onclick="copySnippet(this)">
+                    <code>&lt;link href="idp-framework.min.css"&gt;</code>
+                    <span class="aux-snippet__copy">📋</span>
+                </div>
+            </div>
+
+            <!-- LAYOUT PATTERNS -->
+            <div class="aux-section">
+                <div class="aux-section__title">Layout Patterns</div>
+                <div class="aux-pattern">
+                    <div class="aux-pattern__name">3-Column Cockpit</div>
+                    <div class="aux-snippet aux-snippet--sm" onclick="copySnippet(this)">
+                        <code>.idp-shell.has-context</code>
+                        <span class="aux-snippet__copy">📋</span>
+                    </div>
+                </div>
+                <div class="aux-pattern">
+                    <div class="aux-pattern__name">Sidebar Only</div>
+                    <div class="aux-snippet aux-snippet--sm" onclick="copySnippet(this)">
+                        <code>.idp-shell--sidebar-only</code>
+                        <span class="aux-snippet__copy">📋</span>
+                    </div>
+                </div>
+                <div class="aux-pattern">
+                    <div class="aux-pattern__name">Full Width</div>
+                    <div class="aux-snippet aux-snippet--sm" onclick="copySnippet(this)">
+                        <code>.idp-shell--full</code>
+                        <span class="aux-snippet__copy">📋</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BENTO GRID EXAMPLES -->
+            <div class="aux-section">
+                <div class="aux-section__title">Bento Grid</div>
+                <div class="aux-snippet" onclick="copySnippet(this)">
+                    <code>&lt;div class="bento-grid"&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code>
+                    <span class="aux-snippet__copy">📋</span>
+                </div>
+                <div class="aux-grid-preview">
+                    <div class="aux-grid-item">xs</div>
+                    <div class="aux-grid-item">sm</div>
+                    <div class="aux-grid-item">md</div>
+                    <div class="aux-grid-item">lg</div>
+                </div>
+                <div class="aux-hint">Grid sizes: --xs (120px) | --sm (160px) | --md (200px) | --lg (280px)</div>
+            </div>
+
+            <!-- CARD VARIANTS -->
+            <div class="aux-section">
+                <div class="aux-section__title">Card Modifiers</div>
+                <div class="aux-chips">
+                    <span class="aux-chip" onclick="copyClass('.card')">📦 .card</span>
+                    <span class="aux-chip" onclick="copyClass('.card--sm')">--sm</span>
+                    <span class="aux-chip" onclick="copyClass('.card--elevated')">--elevated</span>
+                    <span class="aux-chip" onclick="copyClass('.card--technical')">--technical</span>
+                    <span class="aux-chip" onclick="copyClass('.card--adaptive')">--adaptive</span>
+                </div>
+            </div>
+
+            <!-- BUTTON VARIANTS -->
+            <div class="aux-section">
+                <div class="aux-section__title">Button Modifiers</div>
+                <div class="aux-chips">
+                    <span class="aux-chip aux-chip--primary" onclick="copyClass('.btn--primary')">--primary</span>
+                    <span class="aux-chip aux-chip--secondary" onclick="copyClass('.btn--secondary')">--secondary</span>
+                    <span class="aux-chip aux-chip--ghost" onclick="copyClass('.btn--ghost')">--ghost</span>
+                    <span class="aux-chip aux-chip--success" onclick="copyClass('.btn--success')">--success</span>
+                    <span class="aux-chip aux-chip--danger" onclick="copyClass('.btn--danger')">--danger</span>
+                </div>
+                <div class="aux-chips" style="margin-top: 4px;">
+                    <span class="aux-chip" onclick="copyClass('.btn--xs')">--xs</span>
+                    <span class="aux-chip" onclick="copyClass('.btn--sm')">--sm</span>
+                    <span class="aux-chip" onclick="copyClass('.btn--lg')">--lg</span>
+                </div>
+            </div>
+
+            <!-- SPACING TOKENS -->
+            <div class="aux-section">
+                <div class="aux-section__title">Spacing Scale</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-2xs)')">
+                        <span class="aux-scale__bar" style="width: 4px;"></span>
+                        <span>--s-2xs</span>
+                        <span class="aux-scale__val">0.25rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-xs)')">
+                        <span class="aux-scale__bar" style="width: 8px;"></span>
+                        <span>--s-xs</span>
+                        <span class="aux-scale__val">0.5rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-sm)')">
+                        <span class="aux-scale__bar" style="width: 12px;"></span>
+                        <span>--s-sm</span>
+                        <span class="aux-scale__val">0.75rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-md)')">
+                        <span class="aux-scale__bar" style="width: 16px;"></span>
+                        <span>--s-md</span>
+                        <span class="aux-scale__val">1rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-lg)')">
+                        <span class="aux-scale__bar" style="width: 24px;"></span>
+                        <span>--s-lg</span>
+                        <span class="aux-scale__val">1.5rem</span>
+                    </div>
+                    <div class="aux-scale__item" onclick="copyClass('var(--s-xl)')">
+                        <span class="aux-scale__bar" style="width: 40px;"></span>
+                        <span>--s-xl</span>
+                        <span class="aux-scale__val">2.5rem</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UTILITY CLASSES -->
+            <div class="aux-section">
+                <div class="aux-section__title">Common Utilities</div>
+                <div class="aux-util-group">
+                    <div class="aux-util-label">Flex</div>
+                    <div class="aux-chips">
+                        <span class="aux-chip" onclick="copyClass('.flex')">.flex</span>
+                        <span class="aux-chip" onclick="copyClass('.flex-col')">.flex-col</span>
+                        <span class="aux-chip" onclick="copyClass('.items-center')">.items-center</span>
+                        <span class="aux-chip" onclick="copyClass('.gap-md')">.gap-md</span>
+                    </div>
+                </div>
+                <div class="aux-util-group">
+                    <div class="aux-util-label">Text</div>
+                    <div class="aux-chips">
+                        <span class="aux-chip" onclick="copyClass('.text-xs')">.text-xs</span>
+                        <span class="aux-chip" onclick="copyClass('.text-muted')">.text-muted</span>
+                        <span class="aux-chip" onclick="copyClass('.font-bold')">.font-bold</span>
+                    </div>
+                </div>
+                <div class="aux-util-group">
+                    <div class="aux-util-label">Spacing</div>
+                    <div class="aux-chips">
+                        <span class="aux-chip" onclick="copyClass('.m-md')">.m-md</span>
+                        <span class="aux-chip" onclick="copyClass('.p-sm')">.p-sm</span>
+                        <span class="aux-chip" onclick="copyClass('.mt-lg')">.mt-lg</span>
+                        <span class="aux-chip" onclick="copyClass('.mb-xs')">.mb-xs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLOR TOKENS -->
+            <div class="aux-section" style="border-bottom: none;">
+                <div class="aux-section__title">Color Tokens</div>
+                <div class="aux-colors">
+                    <div class="aux-color" onclick="copyClass('var(--c-accent)')" style="background: var(--c-accent);"
+                        title="--c-accent"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-success)')" style="background: var(--c-success);"
+                        title="--c-success"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-warning)')" style="background: var(--c-warning);"
+                        title="--c-warning"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-danger)')" style="background: var(--c-danger);"
+                        title="--c-danger"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-gray-800)')"
+                        style="background: var(--c-gray-800);" title="--c-gray-800"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-gray-500)')"
+                        style="background: var(--c-gray-500);" title="--c-gray-500"></div>
+                    <div class="aux-color" onclick="copyClass('var(--c-gray-200)')"
+                        style="background: var(--c-gray-200); border: 1px solid var(--c-gray-400);"
+                        title="--c-gray-200"></div>
+                </div>
+                <div class="aux-hint">Click to copy token</div>
+            </div>
+        </div>
+
+        <!-- COPY TOAST -->
+        <div class="aux-toast" id="aux-toast">Copied!</div>
+    </aside>
+
     <script src="demo.js"></script>
+    <script>
+        // Copy functionality for auxiliary panel
+        function copySnippet(el) {
+            const code = el.querySelector('code').textContent;
+            navigator.clipboard.writeText(code);
+            showToast();
+        }
+
+        function copyClass(text) {
+            navigator.clipboard.writeText(text);
+            showToast();
+        }
+
+        function showToast() {
+            const toast = document.getElementById('aux-toast');
+            toast.classList.add('aux-toast--visible');
+            setTimeout(() => toast.classList.remove('aux-toast--visible'), 1500);
+        }
+    </script>
 </body>
 
 </html>
