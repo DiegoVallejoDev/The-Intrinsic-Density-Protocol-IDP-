@@ -95,36 +95,160 @@ Replace rigid column classes (`col-6`, `w-1/2`) with intrinsic grid logic.
 }
 ```
 
-### 1.5. The Golden Ratio Grid System
+### 1.5. The Golden Ratio Philosophy
 
-IDP uses the **golden ratio (φ ≈ 1.618)** as a core design principle for creating harmonious layouts. Derived from the Fibonacci sequence, this mathematical constant creates proportions that the human eye naturally finds pleasing.
+IDP uses the **golden ratio (φ ≈ 1.618)** as a comprehensive design principle throughout the entire framework. Every proportion—from micro-spacing to macro-layouts—derives from the golden ratio and Fibonacci sequence, creating a mathematically harmonious design system.
 
-**The 4-Column Golden Layout:**
+#### What is the Golden Ratio?
 
-```css
-/* Ultrawide optimization: all columns follow golden proportions */
-grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
-/*                      nav    main   context  aux     */
+```
+φ (phi) = 1.618033988749895
+1/φ = 0.618033988749895 (≈ 61.8% - the major section)
+φ² = 2.618033988749895
+1/φ² = 0.381966011250105 (≈ 38.2% - the minor section)
 
-/* Ratio relationships:
- * main / context  ≈ 1.607 (≈φ)
- * context / aux   ≈ 3.42  (≈φ²)
- * nav / aux       ≈ 0.605 (≈1/φ)
- */
+Fibonacci sequence: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+(Each number divided by the previous ≈ 1.618)
 ```
 
-**2D Golden Grid (Recursive Golden Rectangles):**
+The golden ratio appears throughout nature (nautilus shells, sunflowers, human proportions), classical art (Mona Lisa, Parthenon), and modern design. It creates proportions that the human eye naturally finds pleasing and harmonious.
+
+#### The Golden Design System in IDP
+
+**1. Fibonacci Spacing Scale**
+
+IDP uses a Fibonacci-derived spacing system instead of arbitrary linear scales:
 
 ```css
-.golden-grid-2d {
-  display: grid;
+/* Fibonacci-based spacing (in pixels): 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 */
+--s-fib-1: 0.0625rem;   /* 1px */
+--s-fib-2: 0.125rem;    /* 2px */
+--s-fib-3: 0.1875rem;   /* 3px */
+--s-fib-5: 0.3125rem;   /* 5px */
+--s-fib-8: 0.5rem;      /* 8px */
+--s-fib-13: 0.8125rem;  /* 13px */
+--s-fib-21: 1.3125rem;  /* 21px */
+--s-fib-34: 2.125rem;   /* 34px */
+--s-fib-55: 3.4375rem;  /* 55px */
+--s-fib-89: 5.5625rem;  /* 89px */
+
+/* Semantic aliases mapped to Fibonacci values */
+--s-xs: var(--s-fib-3);    /* 3px */
+--s-sm: var(--s-fib-5);    /* 5px */
+--s-md: var(--s-fib-8);    /* 8px */
+--s-lg: var(--s-fib-13);   /* 13px */
+--s-xl: var(--s-fib-21);   /* 21px */
+```
+
+**2. φ-Based Typography Scale**
+
+The type scale follows golden ratio progression, with each size multiplying by φ or √φ:
+
+```css
+--text-xs: 0.786rem;    /* base / φ */
+--text-base: 1rem;      /* 16px - the golden base */
+--text-lg: 1.272rem;    /* base × φ^0.5 */
+--text-xl: 1.618rem;    /* base × φ */
+--text-2xl: 2.058rem;   /* base × φ^1.5 */
+--text-3xl: 2.618rem;   /* base × φ² */
+
+/* The golden line height for optimal readability */
+--leading-golden: 1.618;  /* φ line height */
+
+/* Reading widths based on golden proportions */
+--reading-width-narrow: 38.2ch;   /* Minor section */
+--reading-width-golden: 61.8ch;   /* Major section */
+```
+
+**3. Golden Motion System**
+
+Animation durations follow φ progression for natural, harmonious timing:
+
+```css
+--duration-fast: 100ms;       /* Base */
+--duration-normal: 162ms;     /* 100 × φ */
+--duration-moderate: 262ms;   /* 100 × φ^1.5 */
+--duration-slow: 424ms;       /* 100 × φ² */
+
+/* Golden easing using φ control points */
+--ease-golden: cubic-bezier(0.382, 0, 0.618, 1);  /* 1-1/φ, 0, 1/φ, 1 */
+```
+
+**4. Golden Grid Layouts**
+
+Multiple layout patterns based on golden proportions:
+
+```css
+/* Classic 1.618:1 split */
+.golden-split {
   grid-template-columns: 1.618fr 1fr;
-  grid-template-rows: 1.618fr 1fr;
-  gap: var(--spacing);
+}
+
+/* Sidebar using minor section (38.2%) */
+.golden-sidebar {
+  grid-template-columns: 0.382fr 1fr;
+}
+
+/* Three columns: 1:φ:φ² */
+.golden-thirds {
+  grid-template-columns: 1fr 1.618fr 2.618fr;
+}
+
+/* Golden spiral with named areas */
+.golden-spiral {
+  grid-template-columns: 1.618fr 1fr 0.618fr;
+  grid-template-rows: 1.618fr 1fr 0.618fr;
+  grid-template-areas:
+    "hero hero sidebar"
+    "hero hero sidebar"
+    "primary secondary tertiary";
+}
+
+/* Auto-fill with golden minimum */
+.golden-bento {
+  grid-template-columns: repeat(auto-fill, minmax(161.8px, 1fr));
 }
 ```
 
-> **Why Golden Ratio?** Found in nature (nautilus shells, sunflowers), used in art (Mona Lisa, Parthenon), and proven to create visual harmony. Each element relates to others through φ, creating recursive beauty.
+**5. Golden Container Breakpoints**
+
+Container query breakpoints scale from 320px by φ^n:
+
+```
+320px   (mobile baseline)
+518px   (320 × φ - tablet)
+838px   (320 × φ² - desktop)
+1356px  (320 × φ³ - large desktop)
+```
+
+**6. Golden Aspect Ratios**
+
+```css
+.aspect-golden { aspect-ratio: 1.618 / 1; }           /* Classic golden rectangle */
+.aspect-golden-portrait { aspect-ratio: 1 / 1.618; }  /* Vertical golden rectangle */
+.aspect-golden-wide { aspect-ratio: 2.618 / 1; }      /* φ² wide */
+```
+
+**7. Golden Component Proportions**
+
+Components use golden ratios internally:
+
+```css
+/* Card with 38.2%/61.8% header/body split */
+.card--golden .card__header { flex: 0 0 38.2%; }
+.card--golden .card__body { flex: 1; }  /* ≈61.8% */
+
+/* Button padding: vertical / horizontal ≈ 1/φ */
+padding: var(--s-fib-5) var(--s-fib-8);  /* 5px / 8px */
+```
+
+#### Why Use Golden Ratio Throughout?
+
+1. **Visual Harmony**: Creates naturally pleasing proportions recognized subconsciously
+2. **Systematic Coherence**: Every measurement relates mathematically to every other
+3. **Scalability**: Ratios remain harmonious at any scale
+4. **Reduced Decisions**: The math dictates proportions, removing arbitrary choices
+5. **Nature-Inspired**: Aligns with patterns found throughout the natural world
 
 ### 2. The Intrinsic Card (Component Engine)
 
@@ -211,7 +335,47 @@ On mobile, the bottom 30% of the screen is the primary interaction zone. IDP fav
 **3. Data-Ink Ratio.**
 Borrowing from Edward Tufte: Minimize the non-data ink. Remove heavy borders, drop shadows, and decorative backgrounds. Use spacing (tight) and alignment to define hierarchy.
 
+## Golden Ratio Quick Reference
 
+### Core Constants
+```css
+--phi: 1.618033988749895
+--phi-inverse: 0.618033988749895
+--phi-squared: 2.618033988749895
+```
+
+### Golden Percentages
+- **Major section**: 61.8% (1/φ)
+- **Minor section**: 38.2% (1 - 1/φ)
+
+### Fibonacci Spacing
+`1px, 2px, 3px, 5px, 8px, 13px, 21px, 34px, 55px, 89px`
+
+### Golden Layout Classes
+- `.golden-split` - 1.618:1 two-column
+- `.golden-sidebar` - 38.2% sidebar
+- `.golden-thirds` - 1:φ:φ² three-column
+- `.golden-spiral` - 5-zone golden spiral grid
+- `.golden-bento` - Auto-fill with 161.8px minimum
+- `.aspect-golden` - 1.618:1 aspect ratio
+
+### Container Breakpoints
+```
+320px → 518px → 838px → 1356px
+(each step × φ)
+```
+
+### Typography Scale
+```
+xs: 0.786rem → base: 1rem → lg: 1.272rem → xl: 1.618rem → 2xl: 2.058rem → 3xl: 2.618rem
+(each step × φ^0.5 or φ)
+```
+
+### Motion Timing
+```
+fast: 100ms → normal: 162ms → moderate: 262ms → slow: 424ms
+(each step × φ)
+```
 
 ## License
 
