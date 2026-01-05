@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building High-Density Interfaces Without Sacrificing Accessibility - IDP Blog</title>
+    <meta name="description" content="Learn how to balance information density with accessibility requirements using the Intrinsic Density Protocol framework">
+    <meta name="author" content="Sarah Chen">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Building High-Density Interfaces Without Sacrificing Accessibility",
+      "description": "Learn how to balance information density with accessibility requirements using the Intrinsic Density Protocol framework",
+      "image": "https://example.com/images/high-density-a11y.jpg",
+      "author": {
+        "@type": "Person",
+        "name": "Sarah Chen",
+        "url": "https://example.com/authors/sarah-chen"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "IDP Framework",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://example.com/logo.png"
+        }
+      },
+      "datePublished": "2026-01-05T08:00:00Z",
+      "dateModified": "2026-01-05T08:00:00Z",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://example.com/blog/high-density-accessibility"
+      }
+    }
+    </script>
+    
+    <!-- IDP Framework -->
+    <link rel="stylesheet" href="../dist/idp-framework.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="idp-shell has-context">
+    
+    <!-- Skip Links -->
+    <a href="#main-content" class="skip-link">Skip to article</a>
+    <a href="#table-of-contents" class="skip-link">Skip to table of contents</a>
+    
+    <!-- Navigation Sidebar -->
+    <nav class="region-nav" role="navigation" aria-label="Site navigation">
+        <div style="margin-bottom: var(--s-xl);">
+            <a href="/" style="font-size: var(--text-xl); font-weight: var(--weight-bold); text-decoration: none; color: inherit; display: block;">
+                IDP Blog
+            </a>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
+            <a href="#home" class="nav-link">
+                <span aria-hidden="true">🏠</span> Home
+            </a>
+            <a href="#articles" class="nav-link" aria-current="page">
+                <span aria-hidden="true">📝</span> Articles
+            </a>
+            <a href="#guides" class="nav-link">
+                <span aria-hidden="true">📖</span> Guides
+            </a>
+            <a href="#tutorials" class="nav-link">
+                <span aria-hidden="true">🎓</span> Tutorials
+            </a>
+            <a href="#about" class="nav-link">
+                <span aria-hidden="true">ℹ️</span> About
+            </a>
+        </div>
+        
+        <div style="margin-top: auto; padding-top: var(--s-xl);">
+            <label for="search" class="sr-only">Search articles</label>
+            <input 
+                type="search" 
+                id="search" 
+                placeholder="Search articles..." 
+                class="input"
+                style="width: 100%; font-size: var(--text-sm);"
+                aria-label="Search articles"
+            >
+        </div>
+    </nav>
+    
+    <!-- Main Article Content -->
+    <main id="main-content" class="region-main" role="main">
+        <article itemscope itemtype="https://schema.org/BlogPosting" style="max-width: var(--reading-width-golden);">
+            
+            <!-- Article Header -->
+            <header style="margin-bottom: var(--s-2xl); padding-bottom: var(--s-xl); border-bottom: 2px solid var(--c-border-strong);">
+                
+                <!-- Category Badge -->
+                <div style="margin-bottom: var(--s-md);">
+                    <span class="badge" style="background: var(--c-accent-light); color: var(--c-accent); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--tracking-wide);">
+                        Accessibility
+                    </span>
+                </div>
+                
+                <!-- Article Title -->
+                <h1 itemprop="headline" style="font-size: var(--text-4xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0; line-height: var(--leading-tight);">
+                    Building High-Density Interfaces Without Sacrificing Accessibility
+                </h1>
+                
+                <!-- Article Meta -->
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-md); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                    <div style="display: flex; align-items: center; gap: var(--s-xs);">
+                        <span aria-label="Author">By</span>
+                        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <a href="#author" itemprop="url" style="font-weight: var(--weight-medium); color: var(--c-text-primary);">
+                                <span itemprop="name">Sarah Chen</span>
+                            </a>
+                        </span>
+                    </div>
+                    <span aria-hidden="true">•</span>
+                    <time itemprop="datePublished" datetime="2026-01-05T08:00:00Z">
+                        January 5, 2026
+                    </time>
+                    <span aria-hidden="true">•</span>
+                    <span>8 min read</span>
+                </div>
+            </header>
+            
+            <!-- Article Lead -->
+            <p itemprop="description" style="font-size: var(--text-lg); line-height: var(--leading-golden); color: var(--c-text-secondary); margin: 0 0 var(--s-xl) 0;">
+                For years, web designers have believed that accessibility and information density are mutually exclusive. The Intrinsic Density Protocol proves this assumption wrong.
+            </p>
+            
+            <!-- Main Content -->
+            <div itemprop="articleBody">
+                
+                <section id="introduction" aria-labelledby="introduction-heading">
+                    <h2 id="introduction-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: var(--s-2xl) 0 var(--s-lg) 0;">
+                        The False Dichotomy
+                    </h2>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        In traditional responsive design, accessibility recommendations often translate to "more whitespace" and "bigger targets." While well-intentioned, this approach creates bloated interfaces that force users to scroll endlessly through content that could fit in a single viewport.
+                    </p>
+                    
+                    <p style="margin: 0 0 var(--s-xl) 0; line-height: var(--leading-golden);">
+                        IDP takes a different approach: <strong>smart density</strong>. By leveraging modern CSS features like container queries and the golden ratio, we can pack more information into less space while maintaining—or even improving—accessibility.
+                    </p>
+                </section>
+                
+                <section id="wcag-compliance" aria-labelledby="wcag-heading">
+                    <h2 id="wcag-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: var(--s-2xl) 0 var(--s-lg) 0;">
+                        WCAG 2.1 Compliance in High-Density Layouts
+                    </h2>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Meeting WCAG standards doesn't require sacrificing density. Here's how IDP maintains compliance:
+                    </p>
+                    
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+                        1. Touch Target Sizing (WCAG 2.5.5)
+                    </h3>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        WCAG requires minimum 44×44px touch targets. IDP enforces this through CSS:
+                    </p>
+                    
+                    <figure style="margin: var(--s-lg) 0;">
+                        <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">button, [role="button"] {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}</code></pre>
+                        <figcaption style="margin-top: var(--s-sm); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                            Enforcing minimum touch targets automatically
+                        </figcaption>
+                    </figure>
+                    
+                    <aside class="alert" role="note" aria-label="Density tip" style="background: var(--c-info-light); border-left: 3px solid var(--c-info); padding: var(--s-md); margin: var(--s-lg) 0; border-radius: var(--r-sm);">
+                        <p style="margin: 0; font-size: var(--text-sm);">
+                            <strong>Density Tip:</strong> Vertical padding can be minimal (5-8px) as long as the total touch target height reaches 44px. This allows tighter vertical stacking.
+                        </p>
+                    </aside>
+                    
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+                        2. Keyboard Navigation
+                    </h3>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        All IDP components are fully keyboard navigable with visible focus indicators:
+                    </p>
+                    
+                    <ul style="margin: 0 0 var(--s-lg) 0; padding-left: var(--s-xl); line-height: var(--leading-golden);">
+                        <li>Enhanced <code>:focus-visible</code> states with 3px outlines</li>
+                        <li>Skip links for bypassing navigation</li>
+                        <li>Proper tab order through semantic HTML</li>
+                        <li>Arrow key support in custom components</li>
+                    </ul>
+                    
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+                        3. Color Contrast (WCAG 1.4.3)
+                    </h3>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        IDP's color palette is designed for 4.5:1 contrast ratios on all text:
+                    </p>
+                    
+                    <div class="bento-grid" style="grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--s-md); margin: var(--s-lg) 0;">
+                        <div class="card" style="padding: var(--s-md); background: var(--c-text-primary); color: var(--c-text-inverse); text-align: center;">
+                            <div style="font-family: var(--f-mono); font-size: var(--text-sm);">#111827</div>
+                            <div style="font-size: var(--text-xs); margin-top: var(--s-xs);">Primary</div>
+                        </div>
+                        <div class="card" style="padding: var(--s-md); background: var(--c-accent); color: var(--c-text-inverse); text-align: center;">
+                            <div style="font-family: var(--f-mono); font-size: var(--text-sm);">#0044CC</div>
+                            <div style="font-size: var(--text-xs); margin-top: var(--s-xs);">Accent</div>
+                        </div>
+                        <div class="card" style="padding: var(--s-md); background: var(--c-success); color: var(--c-text-inverse); text-align: center;">
+                            <div style="font-family: var(--f-mono); font-size: var(--text-sm);">#059669</div>
+                            <div style="font-size: var(--text-xs); margin-top: var(--s-xs);">Success</div>
+                        </div>
+                        <div class="card" style="padding: var(--s-md); background: var(--c-danger); color: var(--c-text-inverse); text-align: center;">
+                            <div style="font-family: var(--f-mono); font-size: var(--text-sm);">#DC2626</div>
+                            <div style="font-size: var(--text-xs); margin-top: var(--s-xs);">Danger</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="screen-readers" aria-labelledby="screen-readers-heading">
+                    <h2 id="screen-readers-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: var(--s-2xl) 0 var(--s-lg) 0;">
+                        Screen Reader Optimization
+                    </h2>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Dense layouts require extra care for screen reader users. IDP provides utilities and patterns to ensure non-visual users aren't overwhelmed:
+                    </p>
+                    
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+                        Proper Landmark Regions
+                    </h3>
+                    
+                    <figure style="margin: var(--s-lg) 0;">
+                        <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">&lt;nav role="navigation" aria-label="Main navigation"&gt;
+&lt;main role="main"&gt;
+&lt;aside role="complementary" aria-label="Filters and options"&gt;</code></pre>
+                        <figcaption style="margin-top: var(--s-sm); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                            Explicit ARIA landmarks help screen reader users navigate dense layouts
+                        </figcaption>
+                    </figure>
+                    
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+                        Heading Hierarchy
+                    </h3>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Never skip heading levels. Even in compact layouts, maintain semantic structure:
+                    </p>
+                    
+                    <ul style="margin: 0 0 var(--s-lg) 0; padding-left: var(--s-xl); line-height: var(--leading-golden);">
+                        <li><code>&lt;h1&gt;</code>: Page title (one per page)</li>
+                        <li><code>&lt;h2&gt;</code>: Major sections</li>
+                        <li><code>&lt;h3&gt;</code>: Subsections</li>
+                        <li>Use CSS to adjust visual size, not heading level</li>
+                    </ul>
+                </section>
+                
+                <section id="conclusion" aria-labelledby="conclusion-heading">
+                    <h2 id="conclusion-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: var(--s-2xl) 0 var(--s-lg) 0;">
+                        The Path Forward
+                    </h2>
+                    
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Accessibility and density are not enemies—they're partners. By following modern standards and leveraging contemporary CSS features, we can create interfaces that are both information-rich and universally usable.
+                    </p>
+                    
+                    <p style="margin: 0 0 var(--s-xl) 0; line-height: var(--leading-golden);">
+                        The Intrinsic Density Protocol proves that we don't have to choose between efficiency and inclusion. We can have both.
+                    </p>
+                </section>
+                
+            </div>
+            
+            <!-- Share Section -->
+            <footer style="margin-top: var(--s-2xl); padding-top: var(--s-xl); border-top: 1px solid var(--c-border);">
+                <h3 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                    Share this article
+                </h3>
+                
+                <div style="display: flex; gap: var(--s-md); flex-wrap: wrap;">
+                    <button class="btn btn--sm" aria-label="Share on Twitter">
+                        <span aria-hidden="true">🐦</span> Twitter
+                    </button>
+                    <button class="btn btn--sm" aria-label="Share on LinkedIn">
+                        <span aria-hidden="true">💼</span> LinkedIn
+                    </button>
+                    <button class="btn btn--sm" aria-label="Copy link to clipboard">
+                        <span aria-hidden="true">🔗</span> Copy Link
+                    </button>
+                </div>
+            </footer>
+            
+        </article>
+        
+        <!-- Author Card -->
+        <aside id="author" aria-labelledby="author-heading" style="margin-top: var(--s-2xl); max-width: var(--reading-width-golden);">
+            <div class="card" style="padding: var(--s-xl);">
+                <h3 id="author-heading" style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-md) 0;">
+                    About the Author
+                </h3>
+                
+                <div style="display: flex; gap: var(--s-lg); align-items: start;">
+                    <div style="width: 80px; height: 80px; background: var(--c-surface); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl);" aria-hidden="true">
+                        👤
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <p style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+                            Sarah Chen
+                        </p>
+                        <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                            Senior UX Engineer specializing in accessible design systems. Passionate about bridging the gap between aesthetics and usability.
+                        </p>
+                        <a href="#author-profile" class="btn btn--sm">
+                            View Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Related Posts -->
+        <section aria-labelledby="related-heading" style="margin-top: var(--s-2xl); max-width: var(--reading-width-golden);">
+            <h2 id="related-heading" style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Related Articles
+            </h2>
+            
+            <div class="bento-grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--s-md);">
+                
+                <article class="card" style="padding: 0; overflow: hidden;">
+                    <div style="background: var(--c-surface); height: 120px; display: flex; align-items: center; justify-content: center; font-size: var(--text-3xl);" aria-hidden="true">
+                        📐
+                    </div>
+                    <div style="padding: var(--s-md);">
+                        <h3 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+                            <a href="#" style="color: inherit;">
+                                The Golden Ratio in Modern Web Design
+                            </a>
+                        </h3>
+                        <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0;">
+                            Exploring how φ creates harmonious layouts
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="card" style="padding: 0; overflow: hidden;">
+                    <div style="background: var(--c-surface); height: 120px; display: flex; align-items: center; justify-content: center; font-size: var(--text-3xl);" aria-hidden="true">
+                        🎯
+                    </div>
+                    <div style="padding: var(--s-md);">
+                        <h3 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+                            <a href="#" style="color: inherit;">
+                                Container Queries: The Future is Now
+                            </a>
+                        </h3>
+                        <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0;">
+                            Component-first responsive design patterns
+                        </p>
+                    </div>
+                </article>
+                
+                <article class="card" style="padding: 0; overflow: hidden;">
+                    <div style="background: var(--c-surface); height: 120px; display: flex; align-items: center; justify-content: center; font-size: var(--text-3xl);" aria-hidden="true">
+                        ⚡
+                    </div>
+                    <div style="padding: var(--s-md);">
+                        <h3 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+                            <a href="#" style="color: inherit;">
+                                Performance Metrics for Dense UIs
+                            </a>
+                        </h3>
+                        <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0;">
+                            Optimizing complex layouts for speed
+                        </p>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Context Panel: Table of Contents & Meta -->
+    <aside id="table-of-contents" class="region-context" role="complementary" aria-label="Article navigation">
+        
+        <!-- Table of Contents -->
+        <nav aria-labelledby="toc-heading">
+            <h2 id="toc-heading" style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Table of Contents
+            </h2>
+            
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-xs);">
+                <li>
+                    <a href="#introduction" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                        The False Dichotomy
+                    </a>
+                </li>
+                <li>
+                    <a href="#wcag-compliance" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                        WCAG 2.1 Compliance
+                    </a>
+                </li>
+                <li>
+                    <a href="#screen-readers" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                        Screen Reader Optimization
+                    </a>
+                </li>
+                <li>
+                    <a href="#conclusion" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                        The Path Forward
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Article Meta -->
+        <section aria-labelledby="meta-heading" style="margin-top: var(--s-2xl); padding-top: var(--s-2xl); border-top: 1px solid var(--c-border);">
+            <h3 id="meta-heading" style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                Article Info
+            </h3>
+            
+            <dl style="font-size: var(--text-sm); margin: 0;">
+                <dt style="color: var(--c-text-tertiary); margin-bottom: var(--s-xs);">Published</dt>
+                <dd style="margin: 0 0 var(--s-md) 0;">January 5, 2026</dd>
+                
+                <dt style="color: var(--c-text-tertiary); margin-bottom: var(--s-xs);">Reading Time</dt>
+                <dd style="margin: 0 0 var(--s-md) 0;">8 minutes</dd>
+                
+                <dt style="color: var(--c-text-tertiary); margin-bottom: var(--s-xs);">Category</dt>
+                <dd style="margin: 0 0 var(--s-md) 0;">
+                    <span class="badge" style="background: var(--c-accent-light); color: var(--c-accent);">
+                        Accessibility
+                    </span>
+                </dd>
+                
+                <dt style="color: var(--c-text-tertiary); margin-bottom: var(--s-xs);">Tags</dt>
+                <dd style="margin: 0; display: flex; flex-wrap: wrap; gap: var(--s-xs);">
+                    <span class="badge" style="background: var(--c-surface); color: var(--c-text-secondary);">WCAG</span>
+                    <span class="badge" style="background: var(--c-surface); color: var(--c-text-secondary);">a11y</span>
+                    <span class="badge" style="background: var(--c-surface); color: var(--c-text-secondary);">UX</span>
+                </dd>
+            </dl>
+        </section>
+        
+        <!-- Newsletter CTA -->
+        <section aria-labelledby="newsletter-heading" style="margin-top: var(--s-2xl); padding: var(--s-lg); background: var(--c-accent-light); border-radius: var(--r-md);">
+            <h3 id="newsletter-heading" style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-sm) 0;">
+                Stay Updated
+            </h3>
+            <p style="font-size: var(--text-sm); margin: 0 0 var(--s-md) 0;">
+                Get the latest articles delivered to your inbox.
+            </p>
+            <form>
+                <label for="email" class="sr-only">Email address</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="your@email.com" 
+                    class="input"
+                    style="width: 100%; margin-bottom: var(--s-sm);"
+                    required
+                    aria-required="true"
+                >
+                <button type="submit" class="btn btn--primary" style="width: 100%;">
+                    Subscribe
+                </button>
+            </form>
+        </section>
+        
+    </aside>
+    
+</body>
+</html>
