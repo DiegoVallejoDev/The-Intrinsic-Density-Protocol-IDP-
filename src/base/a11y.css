@@ -1,0 +1,127 @@
+/* =====================================================
+   ACCESSIBILITY: Core A11Y Utilities
+   Ensuring IDP density doesn't compromise accessibility
+   ===================================================== */
+
+/* === MINIMUM TOUCH TARGETS === */
+/* WCAG 2.5.5: Minimum 44x44px for touch targets */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Apply to interactive elements by default */
+button:not(.btn--icon),
+[role="button"],
+a.nav-link,
+.checkbox,
+.radio {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* === FOCUS STATES === */
+/* Enhanced focus indicators for keyboard navigation */
+:focus-visible {
+    outline: 3px solid var(--c-accent);
+    outline-offset: 2px;
+    border-radius: var(--r-sm);
+}
+
+/* High contrast focus for dark backgrounds */
+.bg-dark :focus-visible,
+[data-theme="dark"] :focus-visible {
+    outline-color: #FFFFFF;
+}
+
+/* === SKIP LINKS === */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--s-md) var(--s-lg);
+    background: var(--c-accent);
+    color: var(--c-text-inverse);
+    font-weight: var(--weight-semibold);
+    border-radius: var(--r-md);
+    z-index: 9999;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: var(--s-md);
+}
+
+/* === SCREEN READER ONLY === */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Make SR content visible on focus (for skip links) */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* === COLOR CONTRAST HELPERS === */
+.text-high-contrast {
+    color: var(--c-text-primary) !important;
+    text-shadow: none;
+}
+
+/* === REDUCED MOTION === */
+.reduce-motion,
+.reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+/* === FORCED COLORS MODE (Windows High Contrast) === */
+@media (forced-colors: active) {
+    .btn,
+    .card,
+    .input,
+    .badge {
+        border: 2px solid currentColor;
+    }
+    
+    :focus-visible {
+        outline: 3px solid currentColor;
+    }
+}
+
+/* === MINIMUM TEXT SIZE === */
+.text-accessible {
+    font-size: max(var(--text-sm), 14px);
+    line-height: 1.5;
+}
+
+/* === LINK DISTINCTION === */
+/* Links should be distinguishable without color alone */
+a:not(.btn):not(.nav-link):not(.nav-chip) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+a:not(.btn):not(.nav-link):not(.nav-chip):hover {
+    text-decoration-thickness: 2px;
+}
