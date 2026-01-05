@@ -73,6 +73,50 @@ IDP relies exclusively on **Container Queries**. A card component should not kno
 
 2. **Reclaim Right:** The massive empty space on the right is converted into a **Context Panel**. This panel houses metadata, table of contents, related links, or live diagnostics. It is never empty.
 
+## Installation & Usage
+
+### Import the Framework
+
+Add the IDP CSS to your project:
+
+```html
+<link rel="stylesheet" href="dist/idp-framework.min.css">
+```
+
+Or import in your CSS/JS:
+
+```css
+@import 'idp-framework/dist/idp-framework.min.css';
+```
+
+```javascript
+import 'idp-framework/dist/idp-framework.min.css';
+```
+
+### Basic Layout
+
+```html
+<body class="idp-shell has-context">
+    <nav class="region-nav">...</nav>
+    <main class="region-main">...</main>
+    <aside class="region-context">...</aside>
+</body>
+```
+
+### Demo
+if built with `pnpm run build-demo-website`, The `dist/index.html` file contains an interactive demo of the IDP framework. Open it in any modern browser (Chrome/Edge 105+, Safari 16+, Firefox 110+) and toggle the "Legacy Mode" button to compare IDP with traditional responsive design.
+
+## Philosophy: Pixel Economics
+
+**1. The Pixel is Expensive.**
+A pixel on a user's screen represents attention and battery life. Do not squander it on decorative emptiness.
+
+**2. Respect the Thumb.**
+On mobile, the bottom 30% of the screen is the primary interaction zone. IDP favors placing dense navigation and control grids here, rather than hamburger menus at the top.
+
+**3. Data-Ink Ratio.**
+Borrowing from Edward Tufte: Minimize the non-data ink. Remove heavy borders, drop shadows, and decorative backgrounds. Use spacing (tight) and alignment to define hierarchy.
+
 ## Technical Implementation
 
 IDP is agnostic to framework (React, Vue, Svelte) but strict on CSS implementation. It requires no JavaScript for layout logic.
@@ -290,50 +334,6 @@ IDP includes a suite of high-density, unopinionated UI components designed for p
 *   **Navigation**: Sidebar-first principles with mobile fallbacks.
 
 All components adhere to **Axiom II** (Container Queries) and automatically adapt to their available space.
-
-## Installation & Usage
-
-### Import the Framework
-
-Add the IDP CSS to your project:
-
-```html
-<link rel="stylesheet" href="dist/idp-framework.min.css">
-```
-
-Or import in your CSS/JS:
-
-```css
-@import 'idp-framework/dist/idp-framework.min.css';
-```
-
-```javascript
-import 'idp-framework/dist/idp-framework.min.css';
-```
-
-### Basic Layout
-
-```html
-<body class="idp-shell has-context">
-    <nav class="region-nav">...</nav>
-    <main class="region-main">...</main>
-    <aside class="region-context">...</aside>
-</body>
-```
-
-### Demo
-if built with `pnpm run build-demo-website`, The `dist/index.html` file contains an interactive demo of the IDP framework. Open it in any modern browser (Chrome/Edge 105+, Safari 16+, Firefox 110+) and toggle the "Legacy Mode" button to compare IDP with traditional responsive design.
-
-## Philosophy: Pixel Economics
-
-**1. The Pixel is Expensive.**
-A pixel on a user's screen represents attention and battery life. Do not squander it on decorative emptiness.
-
-**2. Respect the Thumb.**
-On mobile, the bottom 30% of the screen is the primary interaction zone. IDP favors placing dense navigation and control grids here, rather than hamburger menus at the top.
-
-**3. Data-Ink Ratio.**
-Borrowing from Edward Tufte: Minimize the non-data ink. Remove heavy borders, drop shadows, and decorative backgrounds. Use spacing (tight) and alignment to define hierarchy.
 
 ## Golden Ratio Quick Reference
 
