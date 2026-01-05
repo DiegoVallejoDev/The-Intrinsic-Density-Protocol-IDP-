@@ -22,7 +22,87 @@
    
    ===================================================== */
 
-/* === 2-COLUMN GOLDEN GRID === */
+/* === GOLDEN SPLIT (2-COLUMN) === */
+/* Classic 1.618:1 ratio for two-column layouts */
+.golden-split {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    gap: var(--gap-default);
+}
+
+.golden-split--reverse {
+    grid-template-columns: 1fr 1.618fr;
+}
+
+/* === GOLDEN THIRDS (3-COLUMN) === */
+/* Three columns based on 1:φ:φ² ratios */
+.golden-thirds {
+    display: grid;
+    grid-template-columns: 1fr 1.618fr 2.618fr;
+    gap: var(--gap-default);
+}
+
+.golden-thirds--balanced {
+    grid-template-columns: 0.382fr 1fr 0.618fr;
+    gap: var(--gap-default);
+}
+
+/* === GOLDEN SIDEBAR === */
+/* Sidebar layouts using minor golden section (38.2%) */
+.golden-sidebar {
+    display: grid;
+    grid-template-columns: 0.382fr 1fr;
+    gap: var(--gap-default);
+}
+
+.golden-sidebar--reverse {
+    grid-template-columns: 1fr 0.382fr;
+}
+
+.golden-sidebar--major {
+    display: grid;
+    grid-template-columns: 0.618fr 1fr;
+    gap: var(--gap-default);
+}
+
+/* === GOLDEN SPIRAL (5-ZONE GRID) === */
+/* Inspired by the golden spiral, creates dynamic focal points */
+.golden-spiral {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr 0.618fr;
+    grid-template-rows: 1.618fr 1fr 0.618fr;
+    gap: var(--gap-tight);
+    grid-template-areas:
+        "hero hero sidebar"
+        "hero hero sidebar"
+        "primary secondary tertiary";
+}
+
+.golden-spiral > :nth-child(1) { grid-area: hero; }
+.golden-spiral > :nth-child(2) { grid-area: primary; }
+.golden-spiral > :nth-child(3) { grid-area: secondary; }
+.golden-spiral > :nth-child(4) { grid-area: tertiary; }
+.golden-spiral > :nth-child(5) { grid-area: sidebar; }
+
+/* === GOLDEN BENTO (AUTO-FILL GRID) === */
+/* Auto-fill grid with golden ratio minmax values */
+.golden-bento {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(161.8px, 100%), 1fr));
+    gap: var(--gap-default);
+}
+
+.golden-bento--dense {
+    grid-template-columns: repeat(auto-fill, minmax(min(100px, 100%), 1fr));
+    gap: var(--gap-tight);
+}
+
+.golden-bento--spacious {
+    grid-template-columns: repeat(auto-fill, minmax(min(261.8px, 100%), 1fr));
+    gap: var(--gap-loose);
+}
+
+/* === 2-COLUMN GOLDEN GRID (Legacy) === */
 .golden-grid-2 {
     display: grid;
     grid-template-columns: 1.618fr 1fr;
@@ -33,7 +113,7 @@
     grid-template-columns: 1fr 1.618fr;
 }
 
-/* === 3-COLUMN GOLDEN GRID === */
+/* === 3-COLUMN GOLDEN GRID (Legacy) === */
 .golden-grid-3 {
     display: grid;
     grid-template-columns: 0.382fr 1fr 0.618fr;
@@ -76,15 +156,15 @@
         "tertiary secondary";
 }
 
-.golden-grid-2d--areas> :nth-child(1) {
+.golden-grid-2d--areas > :nth-child(1) {
     grid-area: primary;
 }
 
-.golden-grid-2d--areas> :nth-child(2) {
+.golden-grid-2d--areas > :nth-child(2) {
     grid-area: secondary;
 }
 
-.golden-grid-2d--areas> :nth-child(3) {
+.golden-grid-2d--areas > :nth-child(3) {
     grid-area: tertiary;
 }
 
@@ -101,15 +181,23 @@
 }
 
 /* === GOLDEN ASPECT RATIOS === */
-.golden-aspect {
+.aspect-golden {
     aspect-ratio: 1.618 / 1;
 }
 
-.golden-aspect--tall {
+.aspect-golden-portrait {
     aspect-ratio: 1 / 1.618;
 }
 
-.golden-aspect--square {
+.aspect-golden-wide {
+    aspect-ratio: 2.618 / 1;
+}
+
+.aspect-golden--tall {
+    aspect-ratio: 1 / 1.618;
+}
+
+.aspect-golden--square {
     aspect-ratio: 1 / 1;
 }
 
@@ -139,4 +227,28 @@
 .w-phi-squared {
     width: 72.36%;
     /* φ² / (1 + φ²) */
+}
+
+/* === RESPONSIVE GOLDEN SHELL VARIANTS === */
+/* Adaptive layouts with golden breakpoints */
+@media (min-width: 518px) {
+    .golden-split--responsive {
+        grid-template-columns: 1.618fr 1fr;
+    }
+}
+
+@media (min-width: 838px) {
+    .golden-thirds--responsive {
+        grid-template-columns: 1fr 1.618fr 2.618fr;
+    }
+    
+    .golden-sidebar--responsive {
+        grid-template-columns: 0.382fr 1fr;
+    }
+}
+
+@media (min-width: 1356px) {
+    .golden-grid-4--responsive {
+        grid-template-columns: 0.23fr 2.09fr 1.30fr 0.38fr;
+    }
 }

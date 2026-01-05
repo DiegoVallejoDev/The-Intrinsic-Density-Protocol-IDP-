@@ -1,5 +1,8 @@
 /* =====================================================
    DESIGN TOKENS: TYPOGRAPHY
+   
+   φ-based (Golden Ratio) modular type scale
+   Each step multiplies by φ (1.618) or φ^0.5 (1.272) for finer gradations
    ===================================================== */
 
 :root {
@@ -9,33 +12,26 @@
     --f-display: var(--f-ui);
 
     /* === FONT SIZES === */
-    --text-2xs: 0.625rem;
-    /* 10px */
-    --text-xs: 0.75rem;
-    /* 12px */
-    --text-sm: 0.875rem;
-    /* 14px */
-    --text-base: 1rem;
-    /* 16px */
-    --text-lg: 1.125rem;
-    /* 18px */
-    --text-xl: 1.25rem;
-    /* 20px */
-    --text-2xl: 1.5rem;
-    /* 24px */
-    --text-3xl: 2rem;
-    /* 32px */
-    --text-4xl: 2.5rem;
-    /* 40px */
-    --text-5xl: 3rem;
-    /* 48px */
+    /* Golden ratio modular scale: base 1rem (16px), each step × φ or φ^0.5 */
+    --text-2xs: 0.61803rem;   /* ~9.89px = base / φ^1.5 */
+    --text-xs: 0.78615rem;    /* ~12.58px = base / φ */
+    --text-sm: 0.875rem;      /* ~14px - practical compromise */
+    --text-base: 1rem;        /* 16px - golden base */
+    --text-lg: 1.27202rem;    /* ~20.35px = base × φ^0.5 */
+    --text-xl: 1.618rem;      /* ~25.89px = base × φ */
+    --text-2xl: 2.058rem;     /* ~32.93px = base × φ^1.5 */
+    --text-3xl: 2.618rem;     /* ~41.89px = base × φ^2 */
+    --text-4xl: 4.236rem;     /* ~67.78px = base × φ^2.5 */
+    --text-5xl: 6.854rem;     /* ~109.66px = base × φ^3 */
 
     /* === LINE HEIGHTS === */
+    /* φ (1.618) is the golden line height for optimal readability */
     --leading-none: 1;
-    --leading-tight: 1.15;
-    --leading-snug: 1.375;
-    --leading-normal: 1.5;
-    --leading-relaxed: 1.625;
+    --leading-tight: 1.272;        /* φ^0.5 - tighter but still golden */
+    --leading-snug: 1.414;         /* √2 - mathematical harmony */
+    --leading-normal: 1.618;       /* φ - the golden line height */
+    --leading-relaxed: 2.058;      /* φ^1.5 - spacious */
+    --leading-golden: 1.618;       /* alias for φ line height */
 
     /* === FONT WEIGHTS === */
     --weight-normal: 400;
@@ -45,9 +41,18 @@
     --weight-black: 900;
 
     /* === LETTER SPACING === */
-    --tracking-tighter: -0.05em;
-    --tracking-tight: -0.025em;
+    /* Golden-derived letter spacing */
+    --tracking-tighter: -0.0618em;  /* -1/φ × 0.1 */
+    --tracking-tight: -0.0382em;    /* -(1-1/φ) × 0.1 */
     --tracking-normal: 0;
-    --tracking-wide: 0.05em;
-    --tracking-wider: 0.1em;
+    --tracking-wide: 0.0382em;      /* (1-1/φ) × 0.1 */
+    --tracking-wider: 0.0618em;     /* 1/φ × 0.1 */
+    --tracking-widest: 0.1em;       /* φ^-1 rounded */
+
+    /* === READING WIDTH === */
+    /* Optimal reading widths based on golden proportions */
+    --reading-width-narrow: 38.2ch;   /* Minor golden section */
+    --reading-width-optimal: 61.8ch;  /* Major golden section */
+    --reading-width-wide: 75ch;       /* Classic typographic max */
+    --reading-width-golden: 61.8ch;   /* Alias for optimal */
 }

@@ -10,13 +10,13 @@
     justify-content: center;
     gap: var(--s-xs);
 
-    /* Tight padding for density */
-    padding: var(--s-xs) var(--s-md);
+    /* Golden ratio padding: vertical = horizontal / φ */
+    padding: var(--s-fib-5) var(--s-fib-8);
 
     font-family: var(--f-ui);
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
-    line-height: 1;
+    line-height: var(--leading-tight);
     text-decoration: none;
     white-space: nowrap;
 
@@ -24,7 +24,7 @@
     border-radius: var(--r-md);
     cursor: pointer;
 
-    transition: all 0.15s ease;
+    transition: var(--transition-colors);
 }
 
 .btn:focus-visible {
@@ -104,19 +104,19 @@
 
 /* Extra small */
 .btn--xs {
-    padding: var(--s-2xs) var(--s-sm);
+    padding: var(--s-fib-2) var(--s-fib-3);
     font-size: var(--text-xs);
 }
 
 /* Small */
 .btn--sm {
-    padding: var(--s-2xs) var(--s-sm);
+    padding: var(--s-fib-3) var(--s-fib-5);
     font-size: var(--text-sm);
 }
 
 /* Large */
 .btn--lg {
-    padding: var(--s-sm) var(--s-lg);
+    padding: var(--s-fib-8) var(--s-fib-13);
     font-size: var(--text-base);
 }
 

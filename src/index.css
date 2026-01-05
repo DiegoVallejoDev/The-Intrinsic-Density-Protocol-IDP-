@@ -1,10 +1,11 @@
 /* =====================================================
    THE INTRINSIC DENSITY PROTOCOL - CSS FRAMEWORK
-   Version: 2025.12
+   Version: 2025.12 - Golden Edition
    License: MIT
    
-   A density-first CSS framework for modern displays.
-   https://github.com/your-org/idp-framework
+   A density-first CSS framework for modern displays
+   with comprehensive golden ratio (φ) design system.
+   https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-
    ===================================================== */
 
 /* Layer Order Declaration
@@ -16,6 +17,7 @@
 @import "./tokens/colors.css" layer(tokens);
 @import "./tokens/spacing.css" layer(tokens);
 @import "./tokens/typography.css" layer(tokens);
+@import "./tokens/motion.css" layer(tokens);
 
 /* === RESET & BASE === */
 @import "./base/reset.css" layer(reset);
@@ -26,6 +28,7 @@
 @import "./layout/regions.css" layer(layout);
 @import "./layout/bento.css" layer(layout);
 @import "./layout/golden.css" layer(layout);
+@import "./layout/container-golden.css" layer(layout);
 
 /* === COMPONENTS === */
 @import "./components/card.css" layer(components);

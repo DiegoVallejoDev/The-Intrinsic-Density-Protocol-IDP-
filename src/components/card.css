@@ -164,3 +164,48 @@
     font-weight: var(--weight-bold);
     color: var(--c-text-primary);
 }
+
+/* === GOLDEN RATIO CARD === */
+/* Card with header/body following 38.2%/61.8% split */
+.card--golden {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.card--golden .card__header {
+    flex: 0 0 38.2%;  /* Minor golden section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0;
+    padding-bottom: var(--s-md);
+    border-bottom: 1px solid var(--c-border);
+}
+
+.card--golden .card__body {
+    flex: 1;  /* Major golden section (≈61.8%) */
+    padding-top: var(--s-md);
+}
+
+/* Golden card with side-by-side layout at larger sizes */
+@container (min-width: 400px) {
+    .card--golden {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .card--golden .card__header {
+        flex: 0 0 38.2%;
+        border-bottom: none;
+        border-right: 1px solid var(--c-border);
+        padding-bottom: 0;
+        padding-right: var(--s-md);
+    }
+    
+    .card--golden .card__body {
+        flex: 1;
+        padding-top: 0;
+        padding-left: var(--s-md);
+    }
+}

@@ -1,0 +1,205 @@
+/* =====================================================
+   LAYOUT: GOLDEN RATIO CONTAINER QUERIES
+   
+   Container breakpoints based on golden ratio progression
+   Starting from 320px (mobile base) and scaling by φ
+   
+   Breakpoint Scale (320px × φ^n):
+   • 320px  (φ^0) - Mobile baseline
+   • 395px  (320 × φ^0.5) - Large mobile
+   • 518px  (320 × φ) - Tablet portrait
+   • 659px  (320 × φ^1.5) - Tablet landscape
+   • 838px  (320 × φ^2) - Desktop small
+   • 1036px (320 × φ^2.5) - Desktop medium
+   • 1356px (320 × φ^3) - Desktop large
+   • 1676px (320 × φ^3.5) - Ultrawide
+   
+   ===================================================== */
+
+:root {
+    /* === GOLDEN CONTAINER BREAKPOINTS === */
+    --container-xs: 320px;    /* φ^0 × 320 */
+    --container-sm: 395px;    /* φ^0.5 × 320 ≈ 407px, practical 395 */
+    --container-md: 518px;    /* φ × 320 */
+    --container-lg: 659px;    /* φ^1.5 × 320 ≈ 652px, practical 659 */
+    --container-xl: 838px;    /* φ^2 × 320 */
+    --container-2xl: 1036px;  /* φ^2.5 × 320 ≈ 1055px, practical 1036 */
+    --container-3xl: 1356px;  /* φ^3 × 320 */
+    --container-4xl: 1676px;  /* φ^3.5 × 320 ≈ 1707px, practical 1676 */
+}
+
+/* === GOLDEN CONTAINER BASE === */
+.golden-container {
+    container-type: inline-size;
+    container-name: golden;
+}
+
+/* === ADAPTIVE CARD WITH GOLDEN BREAKPOINTS === */
+.card--golden-adaptive {
+    container-type: inline-size;
+}
+
+/* Stack layout below 320px */
+@container (max-width: 320px) {
+    .card--golden-adaptive {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-sm);
+    }
+}
+
+/* Two-column at 320px+ (mobile) */
+@container (min-width: 320px) {
+    .card--golden-adaptive {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--s-md);
+    }
+}
+
+/* Golden split at 518px+ (tablet) */
+@container (min-width: 518px) {
+    .card--golden-adaptive {
+        grid-template-columns: 1.618fr 1fr;
+        gap: var(--s-lg);
+    }
+}
+
+/* Three-column at 838px+ (desktop) */
+@container (min-width: 838px) {
+    .card--golden-adaptive {
+        grid-template-columns: 1fr 1.618fr 1fr;
+    }
+}
+
+/* === ADAPTIVE TEXT LAYOUT === */
+.text--golden-adaptive {
+    container-type: inline-size;
+}
+
+@container (min-width: 320px) {
+    .text--golden-adaptive {
+        font-size: var(--text-sm);
+        line-height: var(--leading-normal);
+    }
+}
+
+@container (min-width: 518px) {
+    .text--golden-adaptive {
+        font-size: var(--text-base);
+        line-height: var(--leading-golden);
+    }
+}
+
+@container (min-width: 838px) {
+    .text--golden-adaptive {
+        font-size: var(--text-lg);
+        max-width: var(--reading-width-golden);
+    }
+}
+
+/* === ADAPTIVE SPACING === */
+.spacing--golden-adaptive {
+    container-type: inline-size;
+}
+
+@container (min-width: 320px) {
+    .spacing--golden-adaptive {
+        padding: var(--s-fib-5);
+        gap: var(--s-fib-5);
+    }
+}
+
+@container (min-width: 518px) {
+    .spacing--golden-adaptive {
+        padding: var(--s-fib-8);
+        gap: var(--s-fib-8);
+    }
+}
+
+@container (min-width: 838px) {
+    .spacing--golden-adaptive {
+        padding: var(--s-fib-13);
+        gap: var(--s-fib-13);
+    }
+}
+
+@container (min-width: 1356px) {
+    .spacing--golden-adaptive {
+        padding: var(--s-fib-21);
+        gap: var(--s-fib-21);
+    }
+}
+
+/* === GOLDEN MEDIA OBJECT === */
+/* Adapts from stacked to side-by-side using golden proportions */
+.media--golden {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+}
+
+@container (min-width: 518px) {
+    .media--golden {
+        flex-direction: row;
+        align-items: start;
+    }
+    
+    .media--golden > :first-child {
+        flex: 0 0 38.2%;  /* Minor golden section for image */
+    }
+    
+    .media--golden > :last-child {
+        flex: 1;  /* Major section for content */
+    }
+}
+
+/* === GOLDEN GRID AUTO-FLOW === */
+/* Grid that adapts column count based on container width */
+.grid--golden-auto {
+    container-type: inline-size;
+    display: grid;
+    gap: var(--gap-default);
+}
+
+@container (min-width: 320px) {
+    .grid--golden-auto {
+        grid-template-columns: 1fr;
+    }
+}
+
+@container (min-width: 518px) {
+    .grid--golden-auto {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@container (min-width: 838px) {
+    .grid--golden-auto {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@container (min-width: 1356px) {
+    .grid--golden-auto {
+        grid-template-columns: repeat(5, 1fr);  /* Fibonacci number */
+    }
+}
+
+/* === UTILITY: HIDE AT GOLDEN BREAKPOINTS === */
+@container (max-width: 320px) {
+    .hide-below-xs { display: none; }
+}
+
+@container (max-width: 518px) {
+    .hide-below-md { display: none; }
+}
+
+@container (max-width: 838px) {
+    .hide-below-xl { display: none; }
+}
+
+@container (min-width: 1356px) {
+    .hide-above-3xl { display: none; }
+}

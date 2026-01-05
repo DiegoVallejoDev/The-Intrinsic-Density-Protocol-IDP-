@@ -1,0 +1,55 @@
+/* =====================================================
+   DESIGN TOKENS: MOTION & ANIMATION
+   
+   Golden ratio-based timing and easing for harmonious animations
+   Duration scale follows φ progression for natural rhythms
+   ===================================================== */
+
+:root {
+    /* === GOLDEN DURATION SCALE === */
+    /* Base: 100ms, each step multiplied by φ (1.618) */
+    --duration-instant: 62ms;     /* 100 / φ */
+    --duration-fast: 100ms;       /* Base duration */
+    --duration-normal: 162ms;     /* 100 × φ */
+    --duration-moderate: 262ms;   /* 100 × φ^1.5 */
+    --duration-slow: 424ms;       /* 100 × φ^2 */
+    --duration-slower: 686ms;     /* 100 × φ^2.5 */
+    --duration-slowest: 1110ms;   /* 100 × φ^3 */
+    
+    /* === SEMANTIC DURATION ALIASES === */
+    --duration-ui: var(--duration-fast);        /* Quick UI feedback */
+    --duration-enter: var(--duration-normal);   /* Element entering */
+    --duration-exit: var(--duration-moderate);  /* Element exiting */
+    --duration-complex: var(--duration-slow);   /* Complex animations */
+    
+    /* === GOLDEN EASING CURVES === */
+    /* Using φ-derived control points: 0.382 = 1-1/φ, 0.618 = 1/φ */
+    --ease-golden: cubic-bezier(0.382, 0, 0.618, 1);           /* Golden ease out */
+    --ease-golden-in: cubic-bezier(0.382, 0, 1, 1);            /* Golden ease in */
+    --ease-golden-in-out: cubic-bezier(0.382, 0, 0.618, 1);    /* Golden ease in-out */
+    --ease-golden-spring: cubic-bezier(0.236, 0, 0.236, 1);    /* φ^-2 spring */
+    
+    /* === STANDARD EASING (for compatibility) === */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+    
+    /* === TRANSITION SHORTHANDS === */
+    /* Pre-composed transitions for common use cases */
+    --transition-base: all var(--duration-fast) var(--ease-golden);
+    --transition-colors: color var(--duration-fast) var(--ease-golden),
+                        background-color var(--duration-fast) var(--ease-golden),
+                        border-color var(--duration-fast) var(--ease-golden);
+    --transition-transform: transform var(--duration-normal) var(--ease-golden);
+    --transition-opacity: opacity var(--duration-normal) var(--ease-golden);
+    --transition-all: all var(--duration-normal) var(--ease-golden);
+    
+    /* === ANIMATION DELAYS === */
+    /* Staggered delays following golden ratio */
+    --delay-1: 62ms;     /* φ^-1 × 100 */
+    --delay-2: 100ms;    /* Base */
+    --delay-3: 162ms;    /* φ × 100 */
+    --delay-4: 262ms;    /* φ^1.5 × 100 */
+    --delay-5: 424ms;    /* φ^2 × 100 */
+}
