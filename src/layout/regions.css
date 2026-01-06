@@ -34,6 +34,7 @@
     font-size: var(--text-sm);
     border-left: 2px solid transparent;
     transition: all 0.15s ease;
+    cursor: pointer;
 }
 
 .nav-link:hover {
@@ -73,6 +74,9 @@
 @media (min-width: 1024px) {
     .region-main {
         padding: var(--s-xl) var(--s-2xl);
+        /* Enable internal scrolling while main layout stays fixed */
+        height: 100vh;
+        overflow-y: auto;
     }
 }
 
