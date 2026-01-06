@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Demo](https://img.shields.io/badge/demo-live-success.svg)](https://the-intrinsic-density-protocol.vercel.app/)
 
-<img src="./src/demo/IDP_logo.png" alt="IDP Logo" width="39%">
+<img src="./templates/IDP_logo.png" alt="IDP Logo" width="39%">
 
 > A CSS framework for high-density, container-driven layouts using golden ratio proportions.
 

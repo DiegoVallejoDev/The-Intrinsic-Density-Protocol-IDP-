@@ -89,6 +89,7 @@
 
     <!-- Mobile Horizontal Navigation (visible < 1024px) -->
     <nav class="nav-mobile-bar" role="navigation" aria-label="Mobile navigation">
+        <a href="index.html" class="nav-chip">🏠 Home</a>
         <a href="#introduction" class="nav-chip nav-chip--active">Intro</a>
         <a href="#installation" class="nav-chip">Install</a>
         <a href="#quick-start" class="nav-chip">Start</a>
@@ -99,6 +100,10 @@
     <!-- Navigation Sidebar -->
     <nav class="region-nav" role="navigation" aria-label="Documentation navigation">
         <div style="margin-bottom: var(--s-xl);">
+            <a href="index.html"
+                style="font-size: var(--text-xs); color: var(--c-text-tertiary); text-decoration: none; display: inline-flex; align-items: center; gap: var(--s-2xs); margin-bottom: var(--s-sm);">
+                ← Back to Home
+            </a>
             <h1 style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0;">
                 IDP Docs
             </h1>
@@ -484,9 +489,51 @@
             </ul>
         </nav>
 
+        <!-- Quick Stats Section -->
+        <section aria-labelledby="stats-heading"
+            style="margin-top: var(--s-xl); padding-top: var(--s-lg); border-top: 1px solid var(--c-border);">
+            <h3 id="stats-heading"
+                style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                Framework Stats
+            </h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-sm);">
+                <div class="card card--sm">
+                    <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--c-accent);">~12KB</div>
+                    <div style="font-size: var(--text-xs); color: var(--c-text-tertiary);">gzipped</div>
+                </div>
+                <div class="card card--sm">
+                    <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--c-success);">0</div>
+                    <div style="font-size: var(--text-xs); color: var(--c-text-tertiary);">dependencies</div>
+                </div>
+                <div class="card card--sm">
+                    <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--c-warning);">φ</div>
+                    <div style="font-size: var(--text-xs); color: var(--c-text-tertiary);">golden ratio</div>
+                </div>
+                <div class="card card--sm">
+                    <div style="font-size: var(--text-2xl); font-weight: 700;">MIT</div>
+                    <div style="font-size: var(--text-xs); color: var(--c-text-tertiary);">license</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Browser Support -->
+        <section aria-labelledby="browser-heading"
+            style="margin-top: var(--s-lg); padding-top: var(--s-lg); border-top: 1px solid var(--c-border);">
+            <h3 id="browser-heading"
+                style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-sm) 0;">
+                Browser Support
+            </h3>
+            <div style="display: flex; gap: var(--s-sm); flex-wrap: wrap;">
+                <span class="badge badge--success badge--sm">Chrome 105+</span>
+                <span class="badge badge--success badge--sm">Safari 16+</span>
+                <span class="badge badge--success badge--sm">Firefox 110+</span>
+                <span class="badge badge--success badge--sm">Edge 105+</span>
+            </div>
+        </section>
+
         <!-- Help Section -->
         <section aria-labelledby="help-heading"
-            style="margin-top: var(--s-2xl); padding-top: var(--s-2xl); border-top: 1px solid var(--c-border);">
+            style="margin-top: var(--s-lg); padding-top: var(--s-lg); border-top: 1px solid var(--c-border);">
             <h3 id="help-heading"
                 style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
                 Need Help?
@@ -495,18 +542,21 @@
             <ul
                 style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-sm);">
                 <li>
-                    <a href="https://github.com/issues" style="font-size: var(--text-sm); display: block;">
-                        Report an Issue
+                    <a href="https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-/issues"
+                        style="font-size: var(--text-sm); display: block;">
+                        🐛 Report an Issue
                     </a>
                 </li>
                 <li>
-                    <a href="https://discord.com" style="font-size: var(--text-sm); display: block;">
-                        Join Discord
+                    <a href="https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-"
+                        style="font-size: var(--text-sm); display: block;">
+                        ⭐ Star on GitHub
                     </a>
                 </li>
                 <li>
-                    <a href="https://twitter.com" style="font-size: var(--text-sm); display: block;">
-                        Follow on Twitter
+                    <a href="https://npmjs.com/package/idp-framework"
+                        style="font-size: var(--text-sm); display: block;">
+                        📦 View on NPM
                     </a>
                 </li>
             </ul>
