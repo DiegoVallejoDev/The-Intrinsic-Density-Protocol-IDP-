@@ -142,11 +142,57 @@
 }
 
 /* === 2D GOLDEN GRID (Recursive Golden Rectangles) === */
+/* 
+   A true 2D golden ratio grid where BOTH rows and columns follow φ proportions.
+   This creates harmonious layouts in both dimensions.
+*/
+
+/* Basic 2x2 golden grid */
 .golden-grid-2d {
     display: grid;
     grid-template-columns: 1.618fr 1fr;
     grid-template-rows: 1.618fr 1fr;
     gap: var(--s-sm);
+}
+
+/* 3x3 golden grid with recursive subdivisions */
+.golden-grid-2d--3x3 {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr 0.618fr;
+    grid-template-rows: 1.618fr 1fr 0.618fr;
+    gap: var(--s-sm);
+}
+
+/* 2x3 golden grid (2 columns, 3 rows) */
+.golden-grid-2d--2x3 {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    grid-template-rows: 1.618fr 1fr 0.618fr;
+    gap: var(--s-sm);
+}
+
+/* 3x2 golden grid (3 columns, 2 rows) */
+.golden-grid-2d--3x2 {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr 0.618fr;
+    grid-template-rows: 1.618fr 1fr;
+    gap: var(--s-sm);
+}
+
+/* Dense 2D golden grid with tighter spacing */
+.golden-grid-2d--dense {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    grid-template-rows: 1.618fr 1fr;
+    gap: var(--s-xs);
+}
+
+/* Spacious 2D golden grid */
+.golden-grid-2d--spacious {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    grid-template-rows: 1.618fr 1fr;
+    gap: var(--s-lg);
 }
 
 /* Named areas for 2D golden grid */

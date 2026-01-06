@@ -21,6 +21,9 @@
         grid-template-columns: 260px 1fr;
         grid-template-rows: 1fr;
         grid-template-areas: "nav main";
+        /* Constrain to viewport height for fixed layout */
+        height: 100vh;
+        overflow: hidden;
     }
 }
 
@@ -36,6 +39,9 @@
     .idp-shell--context {
         grid-template-columns: 260px 1fr 320px;
         grid-template-areas: "nav main context";
+        /* Constrain to viewport height for fixed layout */
+        height: 100vh;
+        overflow: hidden;
     }
 }
 
@@ -91,6 +97,9 @@
     .idp-shell--sidebar-only {
         grid-template-columns: 260px 1fr;
         grid-template-areas: "nav main";
+        /* Constrain to viewport height for fixed layout */
+        height: 100vh;
+        overflow: hidden;
     }
 }
 
@@ -105,6 +114,9 @@
     .idp-shell--context-only {
         grid-template-columns: 1fr 320px;
         grid-template-areas: "main context";
+        /* Constrain to viewport height for fixed layout */
+        height: 100vh;
+        overflow: hidden;
     }
 }
 
@@ -126,6 +138,9 @@
     .idp-shell.has-context {
         grid-template-columns: 260px minmax(0, 1fr) 320px;
         grid-template-areas: "nav main context";
+        /* Constrain to viewport height for fixed layout */
+        height: 100vh;
+        overflow: hidden;
     }
 }
 
