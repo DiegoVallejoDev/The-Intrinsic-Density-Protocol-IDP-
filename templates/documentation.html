@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting Started Guide - IDP Framework Documentation</title>
-    <meta name="description" content="Learn how to use the Intrinsic Density Protocol framework for high-density layouts">
-    
+    <meta name="description"
+        content="Learn how to use the Intrinsic Density Protocol framework for high-density layouts">
+
     <!-- IDP Framework -->
     <link rel="stylesheet" href="../dist/idp-framework.min.css">
-    
+    <!-- Demo styles (includes aux panel) -->
+    <link rel="stylesheet" href="../dist/demo.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body class="idp-shell has-context">
-    
+
     <!-- Skip Links -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#table-of-contents" class="skip-link">Skip to table of contents</a>
-    
+
     <!-- Navigation Sidebar -->
     <nav class="region-nav" role="navigation" aria-label="Documentation navigation">
         <div style="margin-bottom: var(--s-xl);">
@@ -30,10 +37,11 @@
                 v1.0.1
             </p>
         </div>
-        
+
         <!-- Getting Started -->
         <section aria-labelledby="nav-getting-started" style="margin-bottom: var(--s-lg);">
-            <h2 id="nav-getting-started" style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
+            <h2 id="nav-getting-started"
+                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
                 Getting Started
             </h2>
             <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
@@ -42,10 +50,11 @@
                 <a href="#quick-start" class="nav-link">Quick Start</a>
             </div>
         </section>
-        
+
         <!-- Core Concepts -->
         <section aria-labelledby="nav-core-concepts" style="margin-bottom: var(--s-lg);">
-            <h2 id="nav-core-concepts" style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
+            <h2 id="nav-core-concepts"
+                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
                 Core Concepts
             </h2>
             <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
@@ -55,10 +64,11 @@
                 <a href="#bento-grid" class="nav-link">Bento Grid</a>
             </div>
         </section>
-        
+
         <!-- Components -->
         <section aria-labelledby="nav-components" style="margin-bottom: var(--s-lg);">
-            <h2 id="nav-components" style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
+            <h2 id="nav-components"
+                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
                 Components
             </h2>
             <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
@@ -68,10 +78,11 @@
                 <a href="#tables" class="nav-link">Tables</a>
             </div>
         </section>
-        
+
         <!-- Resources -->
         <section aria-labelledby="nav-resources">
-            <h2 id="nav-resources" style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
+            <h2 id="nav-resources"
+                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); text-transform: uppercase; color: var(--c-text-tertiary); margin: 0 0 var(--s-xs) 0;">
                 Resources
             </h2>
             <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
@@ -81,66 +92,75 @@
             </div>
         </section>
     </nav>
-    
+
     <!-- Main Content -->
     <main id="main-content" class="region-main" role="main">
-        <article style="max-width: var(--reading-width-golden);">
-            
+        <article>
+
             <!-- Introduction -->
             <header>
                 <h1 style="font-size: var(--text-4xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-md) 0;">
                     Getting Started with IDP
                 </h1>
-                <p style="font-size: var(--text-lg); color: var(--c-text-secondary); margin: 0 0 var(--s-xl) 0; line-height: var(--leading-golden);">
-                    Learn how to integrate the Intrinsic Density Protocol into your projects and start building high-density, accessible interfaces.
+                <p
+                    style="font-size: var(--text-lg); color: var(--c-text-secondary); margin: 0 0 var(--s-xl) 0; line-height: var(--leading-golden);">
+                    Learn how to integrate the Intrinsic Density Protocol into your projects and start building
+                    high-density, accessible interfaces.
                 </p>
             </header>
-            
+
             <!-- Alert: Info -->
-            <aside class="alert" role="note" aria-label="Framework requirements" style="background: var(--c-info-light); border-left: 3px solid var(--c-info); padding: var(--s-md); margin-bottom: var(--s-xl); border-radius: var(--r-sm);">
+            <aside class="alert" role="note" aria-label="Framework requirements"
+                style="background: var(--c-info-light); border-left: 3px solid var(--c-info); padding: var(--s-md); margin-bottom: var(--s-xl); border-radius: var(--r-sm);">
                 <p style="margin: 0; font-size: var(--text-sm);">
-                    <strong>Browser Support:</strong> IDP requires modern browsers with container query support (Chrome 105+, Safari 16+, Firefox 110+).
+                    <strong>Browser Support:</strong> IDP requires modern browsers with container query support (Chrome
+                    105+, Safari 16+, Firefox 110+).
                 </p>
             </aside>
-            
+
             <!-- Installation Section -->
             <section id="installation" aria-labelledby="installation-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="installation-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="installation-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     Installation
                 </h2>
-                
+
                 <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
                     Via npm
                 </h3>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
                     Install the IDP framework using npm or your preferred package manager:
                 </p>
-                
-                <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm);">npm install idp-framework</code></pre>
-                
+
+                <pre
+                    style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm);">npm install idp-framework</code></pre>
+
                 <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
                     Via CDN
                 </h3>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
                     Or include the framework directly from a CDN:
                 </p>
-                
-                <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm);">&lt;link rel="stylesheet" href="https://unpkg.com/idp-framework/dist/idp-framework.min.css"&gt;</code></pre>
+
+                <pre
+                    style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm);">&lt;link rel="stylesheet" href="https://unpkg.com/idp-framework/dist/idp-framework.min.css"&gt;</code></pre>
             </section>
-            
+
             <!-- Quick Start Section -->
             <section id="quick-start" aria-labelledby="quick-start-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="quick-start-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="quick-start-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     Quick Start
                 </h2>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
                     Create a basic IDP layout with the cockpit shell structure:
                 </p>
-                
-                <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-md) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">&lt;body class="idp-shell has-context"&gt;
+
+                <pre
+                    style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-md) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">&lt;body class="idp-shell has-context"&gt;
   &lt;nav class="region-nav"&gt;
     &lt;!-- Navigation sidebar --&gt;
   &lt;/nav&gt;
@@ -153,31 +173,36 @@
     &lt;!-- Context panel --&gt;
   &lt;/aside&gt;
 &lt;/body&gt;</code></pre>
-                
+
                 <p style="margin: 0 0 var(--s-lg) 0; line-height: var(--leading-golden);">
-                    The <code>idp-shell</code> class creates the responsive cockpit layout, while <code>has-context</code> enables the right-side context panel.
+                    The <code>idp-shell</code> class creates the responsive cockpit layout, while
+                    <code>has-context</code> enables the right-side context panel.
                 </p>
             </section>
-            
+
             <!-- Bento Grid Section -->
             <section id="bento-grid" aria-labelledby="bento-grid-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="bento-grid-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="bento-grid-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     Using the Bento Grid
                 </h2>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
-                    The Bento Grid is IDP's solution to the single-column mobile stack. It automatically fits as many columns as possible based on container width:
+                    The Bento Grid is IDP's solution to the single-column mobile stack. It automatically fits as many
+                    columns as possible based on container width:
                 </p>
-                
-                <pre style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">&lt;div class="bento-grid"&gt;
+
+                <pre
+                    style="background: var(--c-gray-900); color: var(--c-gray-50); padding: var(--s-md); border-radius: var(--r-md); overflow-x: auto; margin: 0 0 var(--s-lg) 0;"><code style="font-family: var(--f-mono); font-size: var(--text-sm); display: block; white-space: pre;">&lt;div class="bento-grid"&gt;
   &lt;div class="card"&gt;Card 1&lt;/div&gt;
   &lt;div class="card"&gt;Card 2&lt;/div&gt;
   &lt;div class="card"&gt;Card 3&lt;/div&gt;
   &lt;div class="card"&gt;Card 4&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                
+
                 <!-- Demo Grid -->
-                <div class="bento-grid" style="margin-bottom: var(--s-lg); grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+                <div class="bento-grid"
+                    style="margin-bottom: var(--s-lg); grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
                     <div class="card" style="padding: var(--s-lg); background: var(--c-surface);">
                         <strong>Card 1</strong>
                     </div>
@@ -191,44 +216,51 @@
                         <strong>Card 4</strong>
                     </div>
                 </div>
-                
+
                 <p style="margin: 0; line-height: var(--leading-golden);">
-                    On mobile (390px), this renders 2 columns. On desktop, it expands to 4 or more, maximizing information density without compromising readability.
+                    On mobile (390px), this renders 2 columns. On desktop, it expands to 4 or more, maximizing
+                    information density without compromising readability.
                 </p>
             </section>
-            
+
             <!-- Golden Ratio Section -->
             <section id="golden-ratio" aria-labelledby="golden-ratio-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="golden-ratio-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="golden-ratio-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     The Golden Ratio System
                 </h2>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
-                    IDP uses the golden ratio (φ ≈ 1.618) throughout its design system. Every spacing value, typography scale, and layout proportion derives from this mathematical constant.
+                    IDP uses the golden ratio (φ ≈ 1.618) throughout its design system. Every spacing value, typography
+                    scale, and layout proportion derives from this mathematical constant.
                 </p>
-                
+
                 <figure style="margin: var(--s-lg) 0;">
                     <div class="card" style="padding: var(--s-xl); background: var(--c-surface); text-align: center;">
-                        <div style="font-size: var(--text-5xl); font-weight: var(--weight-bold); font-family: var(--f-mono); color: var(--c-accent);">
+                        <div
+                            style="font-size: var(--text-5xl); font-weight: var(--weight-bold); font-family: var(--f-mono); color: var(--c-accent);">
                             φ
                         </div>
                         <div style="font-size: var(--text-xl); font-family: var(--f-mono); margin-top: var(--s-md);">
                             1.618033988749895
                         </div>
                     </div>
-                    <figcaption style="margin-top: var(--s-sm); font-size: var(--text-sm); color: var(--c-text-secondary); text-align: center;">
+                    <figcaption
+                        style="margin-top: var(--s-sm); font-size: var(--text-sm); color: var(--c-text-secondary); text-align: center;">
                         The golden ratio: nature's perfect proportion
                     </figcaption>
                 </figure>
-                
-                <h3 style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
+
+                <h3
+                    style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: var(--s-xl) 0 var(--s-md) 0;">
                     Fibonacci Spacing Scale
                 </h3>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
-                    Spacing values follow the Fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34, 55, 89), which approximates the golden ratio:
+                    Spacing values follow the Fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34, 55, 89), which approximates
+                    the golden ratio:
                 </p>
-                
+
                 <ul style="margin: 0 0 var(--s-lg) 0; padding-left: var(--s-xl); line-height: var(--leading-golden);">
                     <li><code>--s-xs</code> = 3px (Fibonacci 3)</li>
                     <li><code>--s-sm</code> = 5px (Fibonacci 5)</li>
@@ -237,17 +269,18 @@
                     <li><code>--s-xl</code> = 21px (Fibonacci 21)</li>
                 </ul>
             </section>
-            
+
             <!-- Accessibility Section -->
             <section id="accessibility" aria-labelledby="accessibility-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="accessibility-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="accessibility-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     Accessibility First
                 </h2>
-                
+
                 <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
                     IDP prioritizes accessibility without sacrificing density. All components include:
                 </p>
-                
+
                 <ul style="margin: 0 0 var(--s-lg) 0; padding-left: var(--s-xl); line-height: var(--leading-golden);">
                     <li>Minimum 44×44px touch targets (WCAG 2.5.5)</li>
                     <li>Enhanced focus indicators for keyboard navigation</li>
@@ -256,41 +289,51 @@
                     <li>Reduced motion preferences</li>
                     <li>High contrast mode support</li>
                 </ul>
-                
-                <aside class="alert" role="note" aria-label="Accessibility documentation" style="background: var(--c-success-light); border-left: 3px solid var(--c-success); padding: var(--s-md); margin-top: var(--s-lg); border-radius: var(--r-sm);">
+
+                <aside class="alert" role="note" aria-label="Accessibility documentation"
+                    style="background: var(--c-success-light); border-left: 3px solid var(--c-success); padding: var(--s-md); margin-top: var(--s-lg); border-radius: var(--r-sm);">
                     <p style="margin: 0; font-size: var(--text-sm);">
-                        <strong>Learn More:</strong> Read the complete <a href="#accessibility-guide">Accessibility Guide</a> for detailed implementation guidelines.
+                        <strong>Learn More:</strong> Read the complete <a href="#accessibility-guide">Accessibility
+                            Guide</a> for detailed implementation guidelines.
                     </p>
                 </aside>
             </section>
-            
+
             <!-- Next Steps -->
             <section id="next-steps" aria-labelledby="next-steps-heading" style="margin-bottom: var(--s-2xl);">
-                <h2 id="next-steps-heading" style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                <h2 id="next-steps-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                     Next Steps
                 </h2>
-                
-                <div class="bento-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--s-md);">
-                    <a href="#components" class="card" style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
-                        <h3 style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+
+                <div class="bento-grid"
+                    style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--s-md);">
+                    <a href="#components" class="card"
+                        style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
+                        <h3
+                            style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
                             Explore Components
                         </h3>
                         <p style="margin: 0; font-size: var(--text-sm); color: var(--c-text-secondary);">
                             Browse the complete component library
                         </p>
                     </a>
-                    
-                    <a href="#examples" class="card" style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
-                        <h3 style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+
+                    <a href="#examples" class="card"
+                        style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
+                        <h3
+                            style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
                             View Examples
                         </h3>
                         <p style="margin: 0; font-size: var(--text-sm); color: var(--c-text-secondary);">
                             See real-world implementation patterns
                         </p>
                     </a>
-                    
-                    <a href="https://github.com" class="card" style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
-                        <h3 style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
+
+                    <a href="https://github.com" class="card"
+                        style="padding: var(--s-lg); text-decoration: none; border: 2px solid var(--c-border); transition: border-color 0.2s;">
+                        <h3
+                            style="font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0 0 var(--s-xs) 0;">
                             GitHub Repository
                         </h3>
                         <p style="margin: 0; font-size: var(--text-sm); color: var(--c-text-secondary);">
@@ -299,58 +342,69 @@
                     </a>
                 </div>
             </section>
-            
+
         </article>
     </main>
-    
+
     <!-- Context Panel: Table of Contents -->
     <aside id="table-of-contents" class="region-context" role="complementary" aria-label="Table of contents">
         <nav aria-labelledby="toc-heading">
-            <h2 id="toc-heading" style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+            <h2 id="toc-heading"
+                style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
                 On This Page
             </h2>
-            
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-xs);">
+
+            <ul
+                style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-xs);">
                 <li>
-                    <a href="#installation" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#installation"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Installation
                     </a>
                 </li>
                 <li>
-                    <a href="#quick-start" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#quick-start"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Quick Start
                     </a>
                 </li>
                 <li>
-                    <a href="#bento-grid" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#bento-grid"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Bento Grid
                     </a>
                 </li>
                 <li>
-                    <a href="#golden-ratio" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#golden-ratio"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Golden Ratio System
                     </a>
                 </li>
                 <li>
-                    <a href="#accessibility" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#accessibility"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Accessibility First
                     </a>
                 </li>
                 <li>
-                    <a href="#next-steps" style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                    <a href="#next-steps"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Next Steps
                     </a>
                 </li>
             </ul>
         </nav>
-        
+
         <!-- Help Section -->
-        <section aria-labelledby="help-heading" style="margin-top: var(--s-2xl); padding-top: var(--s-2xl); border-top: 1px solid var(--c-border);">
-            <h3 id="help-heading" style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+        <section aria-labelledby="help-heading"
+            style="margin-top: var(--s-2xl); padding-top: var(--s-2xl); border-top: 1px solid var(--c-border);">
+            <h3 id="help-heading"
+                style="font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
                 Need Help?
             </h3>
-            
-            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-sm);">
+
+            <ul
+                style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--s-sm);">
                 <li>
                     <a href="https://github.com/issues" style="font-size: var(--text-sm); display: block;">
                         Report an Issue
@@ -369,6 +423,107 @@
             </ul>
         </section>
     </aside>
-    
+
+    <!-- Auxiliary Panel (Ultrawide 1800px+) -->
+    <aside class="region-aux" role="complementary" aria-label="Quick reference">
+        <div class="aux-header">
+            <span class="aux-header__icon">⚡</span>
+            QUICK REFERENCE
+        </div>
+
+        <div class="aux-scroll">
+            <!-- Copy Snippets -->
+            <div class="aux-section">
+                <div class="aux-section__title">Quick Start</div>
+                <div class="aux-snippet">
+                    <code>&lt;link href="idp-framework.min.css"&gt;</code>
+                    <span class="aux-snippet__copy">📋</span>
+                </div>
+                <div class="aux-snippet">
+                    <code>&lt;body class="idp-shell has-context"&gt;</code>
+                    <span class="aux-snippet__copy">📋</span>
+                </div>
+            </div>
+
+            <!-- Layout Classes -->
+            <div class="aux-section">
+                <div class="aux-section__title">Layout Classes</div>
+                <div class="aux-chips">
+                    <span class="aux-chip">.idp-shell</span>
+                    <span class="aux-chip">.has-context</span>
+                    <span class="aux-chip">.region-nav</span>
+                    <span class="aux-chip">.region-main</span>
+                    <span class="aux-chip">.region-context</span>
+                    <span class="aux-chip">.bento-grid</span>
+                </div>
+            </div>
+
+            <!-- Component Classes -->
+            <div class="aux-section">
+                <div class="aux-section__title">Components</div>
+                <div class="aux-chips">
+                    <span class="aux-chip">.card</span>
+                    <span class="aux-chip">.btn</span>
+                    <span class="aux-chip">.input</span>
+                    <span class="aux-chip">.badge</span>
+                    <span class="aux-chip">.alert</span>
+                    <span class="aux-chip">.table</span>
+                </div>
+            </div>
+
+            <!-- Spacing Scale -->
+            <div class="aux-section">
+                <div class="aux-section__title">Spacing Scale</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 4px;"></span>
+                        <span>--s-2xs</span>
+                        <span class="aux-scale__val">0.125rem</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 8px;"></span>
+                        <span>--s-xs</span>
+                        <span class="aux-scale__val">0.1875rem</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 12px;"></span>
+                        <span>--s-sm</span>
+                        <span class="aux-scale__val">0.3125rem</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 16px;"></span>
+                        <span>--s-md</span>
+                        <span class="aux-scale__val">0.5rem</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 24px;"></span>
+                        <span>--s-lg</span>
+                        <span class="aux-scale__val">0.8125rem</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version Info -->
+            <div class="aux-section">
+                <div class="aux-section__title">Framework Info</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item">
+                        <span>Version</span>
+                        <span class="aux-scale__val">1.0.1</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span>License</span>
+                        <span class="aux-scale__val">MIT</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span>Size</span>
+                        <span class="aux-scale__val">~12KB gzip</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
 </body>
+
 </html>
