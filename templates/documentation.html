@@ -150,6 +150,8 @@
                 <a href="#cards" class="nav-link">Cards</a>
                 <a href="#forms" class="nav-link">Forms</a>
                 <a href="#tables" class="nav-link">Tables</a>
+                <a href="#badges" class="nav-link">Badges & Tags</a>
+                <a href="#alerts" class="nav-link">Alerts</a>
             </div>
         </section>
 
@@ -393,6 +395,404 @@
                 </aside>
             </section>
 
+            <!-- Components Section -->
+            <section id="components" aria-labelledby="components-heading" style="margin-bottom: var(--s-2xl);">
+                <h2 id="components-heading"
+                    style="font-size: var(--text-2xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                    Component Library
+                </h2>
+                <p style="margin: 0 0 var(--s-xl) 0; line-height: var(--leading-golden);">
+                    IDP provides a comprehensive set of components designed for high-density interfaces. Each component
+                    follows the golden ratio spacing system and includes accessibility features.
+                </p>
+
+                <!-- Buttons -->
+                <section id="buttons" aria-labelledby="buttons-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="buttons-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Buttons
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Dense, high-contrast buttons with multiple variants and sizes.
+                    </p>
+
+                    <!-- Button Variants -->
+                    <div class="card" style="padding: var(--s-lg); margin-bottom: var(--s-md);">
+                        <div
+                            style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                            VARIANTS</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm); align-items: center;">
+                            <button class="btn btn--primary">Primary</button>
+                            <button class="btn btn--secondary">Secondary</button>
+                            <button class="btn btn--ghost">Ghost</button>
+                            <button class="btn btn--danger">Danger</button>
+                            <button class="btn btn--success">Success</button>
+                            <button class="btn btn--warning">Warning</button>
+                        </div>
+                    </div>
+
+                    <!-- Button Sizes -->
+                    <div class="card" style="padding: var(--s-lg); margin-bottom: var(--s-md);">
+                        <div
+                            style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                            SIZES</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm); align-items: center;">
+                            <button class="btn btn--primary btn--xs">Extra Small</button>
+                            <button class="btn btn--primary btn--sm">Small</button>
+                            <button class="btn btn--primary">Default</button>
+                            <button class="btn btn--primary btn--lg">Large</button>
+                        </div>
+                    </div>
+
+                    <!-- Button Groups -->
+                    <div class="card" style="padding: var(--s-lg);">
+                        <div
+                            style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                            BUTTON GROUP</div>
+                        <div class="btn-group">
+                            <button class="btn btn--secondary">Left</button>
+                            <button class="btn btn--secondary">Center</button>
+                            <button class="btn btn--secondary">Right</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cards -->
+                <section id="cards" aria-labelledby="cards-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="cards-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Cards
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Container-query-driven adaptive cards with multiple variants.
+                    </p>
+
+                    <div class="bento-grid"
+                        style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-md); margin-bottom: var(--s-md);">
+                        <!-- Default Card -->
+                        <div class="card">
+                            <div class="card__header">
+                                <span class="card__title">Default Card</span>
+                            </div>
+                            <div class="card__body">
+                                <p style="margin: 0; font-size: var(--text-sm);">Basic card with header and body
+                                    sections.</p>
+                            </div>
+                        </div>
+
+                        <!-- Elevated Card -->
+                        <div class="card card--elevated">
+                            <div class="card__header">
+                                <span class="card__title">Elevated</span>
+                            </div>
+                            <div class="card__body">
+                                <p style="margin: 0; font-size: var(--text-sm);">Card with shadow elevation.</p>
+                            </div>
+                        </div>
+
+                        <!-- Technical Card -->
+                        <div class="card card--technical">
+                            <div class="card__header">
+                                <span class="card__title">Technical</span>
+                            </div>
+                            <div class="card__body">
+                                <p style="margin: 0; font-size: var(--text-sm);">Retro/technical styling.</p>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Card -->
+                        <div class="card card--interactive">
+                            <div class="card__header">
+                                <span class="card__title">Interactive</span>
+                            </div>
+                            <div class="card__body">
+                                <p style="margin: 0; font-size: var(--text-sm);">Hover me for effect!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Metric Cards -->
+                    <div class="bento-grid"
+                        style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--s-sm);">
+                        <div class="card card--metric card--sm">
+                            <div class="metric-label">Users</div>
+                            <div class="metric-value" style="color: var(--c-accent);">2,847</div>
+                        </div>
+                        <div class="card card--metric card--sm">
+                            <div class="metric-label">Revenue</div>
+                            <div class="metric-value" style="color: var(--c-success);">$12.4K</div>
+                        </div>
+                        <div class="card card--metric card--sm">
+                            <div class="metric-label">Growth</div>
+                            <div class="metric-value" style="color: var(--c-warning);">+18%</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Forms -->
+                <section id="forms" aria-labelledby="forms-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="forms-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Forms
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Dense, inline-friendly form controls for high-density interfaces.
+                    </p>
+
+                    <div class="card" style="padding: var(--s-lg);">
+                        <div class="form-stack">
+                            <!-- Text Input -->
+                            <div class="form-group">
+                                <label class="form-label" for="demo-input">Text Input</label>
+                                <input type="text" id="demo-input" class="input" placeholder="Enter text...">
+                                <div class="form-hint">Helper text for the input field.</div>
+                            </div>
+
+                            <!-- Input Sizes -->
+                            <div class="form-group">
+                                <label class="form-label">Input Sizes</label>
+                                <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm); align-items: center;">
+                                    <input type="text" class="input input--sm" placeholder="Small"
+                                        style="width: auto; flex: 1; min-width: 100px;">
+                                    <input type="text" class="input" placeholder="Default"
+                                        style="width: auto; flex: 1; min-width: 100px;">
+                                    <input type="text" class="input input--lg" placeholder="Large"
+                                        style="width: auto; flex: 1; min-width: 100px;">
+                                </div>
+                            </div>
+
+                            <!-- Select -->
+                            <div class="form-group">
+                                <label class="form-label" for="demo-select">Select</label>
+                                <select id="demo-select" class="input select">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                            </div>
+
+                            <!-- Input Group -->
+                            <div class="form-group">
+                                <label class="form-label">Input Group</label>
+                                <div class="input-group">
+                                    <span class="input-group__addon">https://</span>
+                                    <input type="text" class="input" placeholder="example.com">
+                                    <button class="btn btn--primary">Go</button>
+                                </div>
+                            </div>
+
+                            <!-- Checkboxes & Radios -->
+                            <div class="form-group">
+                                <label class="form-label">Checkboxes & Radios</label>
+                                <div style="display: flex; flex-wrap: wrap; gap: var(--s-md);">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox" checked>
+                                        Checkbox 1
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" class="checkbox">
+                                        Checkbox 2
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="radio" name="demo-radio" class="radio" checked>
+                                        Radio 1
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="radio" name="demo-radio" class="radio">
+                                        Radio 2
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Toggle Switch -->
+                            <div class="form-group">
+                                <label class="form-label">Toggle Switch</label>
+                                <div style="display: flex; gap: var(--s-md); align-items: center;">
+                                    <label class="toggle">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span style="font-size: var(--text-sm); color: var(--c-text-secondary);">Enable
+                                        feature</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tables -->
+                <section id="tables" aria-labelledby="tables-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="tables-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Tables
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Dense data tables with variants for different density levels.
+                    </p>
+
+                    <div class="table-wrapper" style="margin-bottom: var(--s-md);">
+                        <table class="table table--striped table--hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th class="numeric">Value</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Item Alpha</td>
+                                    <td><span class="badge badge--success badge--sm">Active</span></td>
+                                    <td class="numeric">$1,234</td>
+                                    <td class="table__actions">
+                                        <button class="btn btn--ghost btn--xs">Edit</button>
+                                        <button class="btn btn--ghost btn--xs">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Item Beta</td>
+                                    <td><span class="badge badge--warning badge--sm">Pending</span></td>
+                                    <td class="numeric">$567</td>
+                                    <td class="table__actions">
+                                        <button class="btn btn--ghost btn--xs">Edit</button>
+                                        <button class="btn btn--ghost btn--xs">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Item Gamma</td>
+                                    <td><span class="badge badge--danger badge--sm">Inactive</span></td>
+                                    <td class="numeric">$89</td>
+                                    <td class="table__actions">
+                                        <button class="btn btn--ghost btn--xs">Edit</button>
+                                        <button class="btn btn--ghost btn--xs">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Badges -->
+                <section id="badges" aria-labelledby="badges-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="badges-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Badges & Tags
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Compact indicators and labels for status, categories, and metadata.
+                    </p>
+
+                    <div class="card" style="padding: var(--s-lg);">
+                        <!-- Badge Colors -->
+                        <div style="margin-bottom: var(--s-md);">
+                            <div
+                                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                                COLORS</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm);">
+                                <span class="badge">Default</span>
+                                <span class="badge badge--primary">Primary</span>
+                                <span class="badge badge--success">Success</span>
+                                <span class="badge badge--warning">Warning</span>
+                                <span class="badge badge--danger">Danger</span>
+                                <span class="badge badge--info">Info</span>
+                            </div>
+                        </div>
+
+                        <!-- Subtle Variants -->
+                        <div style="margin-bottom: var(--s-md);">
+                            <div
+                                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                                SUBTLE</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm);">
+                                <span class="badge badge--muted">Muted</span>
+                                <span class="badge badge--primary-subtle">Primary</span>
+                                <span class="badge badge--success-subtle">Success</span>
+                                <span class="badge badge--warning-subtle">Warning</span>
+                                <span class="badge badge--danger-subtle">Danger</span>
+                            </div>
+                        </div>
+
+                        <!-- Pills & Dots -->
+                        <div style="margin-bottom: var(--s-md);">
+                            <div
+                                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                                PILLS & DOTS</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: var(--s-sm); align-items: center;">
+                                <span class="badge badge--primary badge--pill">Pill Badge</span>
+                                <span class="badge badge--success badge--dot"></span>
+                                <span class="badge badge--warning badge--dot"></span>
+                                <span class="badge badge--danger badge--dot"></span>
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div>
+                            <div
+                                style="font-size: var(--text-sm); font-weight: var(--weight-semibold); margin-bottom: var(--s-sm); color: var(--c-text-tertiary);">
+                                TAGS</div>
+                            <div class="tag-group">
+                                <span class="tag">React<button class="tag__remove">×</button></span>
+                                <span class="tag">TypeScript<button class="tag__remove">×</button></span>
+                                <span class="tag">CSS<button class="tag__remove">×</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Alerts -->
+                <section id="alerts" aria-labelledby="alerts-heading" style="margin-bottom: var(--s-xl);">
+                    <h3 id="alerts-heading"
+                        style="font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0 0 var(--s-md) 0;">
+                        Alerts & Callouts
+                    </h3>
+                    <p style="margin: 0 0 var(--s-md) 0; line-height: var(--leading-golden);">
+                        Minimal vertical space alerts with high visibility.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: var(--s-sm);">
+                        <div class="alert alert--info">
+                            <span class="alert__icon">ℹ️</span>
+                            <div class="alert__content">
+                                <div class="alert__title">Information</div>
+                                <p>This is an informational alert message.</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert--success">
+                            <span class="alert__icon">✓</span>
+                            <div class="alert__content">
+                                <div class="alert__title">Success</div>
+                                <p>Operation completed successfully!</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert--warning">
+                            <span class="alert__icon">⚠️</span>
+                            <div class="alert__content">
+                                <div class="alert__title">Warning</div>
+                                <p>Please review before proceeding.</p>
+                            </div>
+                        </div>
+
+                        <div class="alert alert--danger">
+                            <span class="alert__icon">✕</span>
+                            <div class="alert__content">
+                                <div class="alert__title">Error</div>
+                                <p>Something went wrong. Please try again.</p>
+                            </div>
+                        </div>
+
+                        <!-- Callout -->
+                        <div class="callout" style="margin-top: var(--s-sm);">
+                            <div class="callout__title">💡 Pro Tip</div>
+                            <p style="margin: 0; font-size: var(--text-sm);">Use the <code>.alert--compact</code> class
+                                for reduced padding in dense layouts.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
             <!-- Next Steps -->
             <section id="next-steps" aria-labelledby="next-steps-heading" style="margin-bottom: var(--s-2xl);">
                 <h2 id="next-steps-heading"
@@ -478,6 +878,12 @@
                     <a href="#accessibility"
                         style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
                         Accessibility First
+                    </a>
+                </li>
+                <li>
+                    <a href="#components"
+                        style="display: block; padding: var(--s-xs) 0; font-size: var(--text-sm); color: var(--c-text-secondary); text-decoration: none;">
+                        Component Library
                     </a>
                 </li>
                 <li>
