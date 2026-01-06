@@ -8,10 +8,8 @@ const __dirname = path.dirname(__filename);
 
 const PATHS = {
     readme: path.resolve(__dirname, '../README.md'),
-    template: path.resolve(__dirname, '../src/demo/template.html'),
-    srcDir: path.resolve(__dirname, '../src/demo'),
+    templatesDir: path.resolve(__dirname, '../templates'),
     outDir: path.resolve(__dirname, '../dist'),
-    outHtml: path.resolve(__dirname, '../dist/index.html'),
 };
 
 const PLACEHOLDER = '{{README_CONTENT}}';
@@ -22,28 +20,35 @@ async function build() {
         fs.mkdirSync(PATHS.outDir, { recursive: true });
     }
 
-    // 2. Build HTML from README
-    console.log('📄 Building HTML from README.md...');
+    // 2. Build index.html from README + template
+    console.log('📄 Building index.html from README.md...');
     let readmeContent = fs.readFileSync(PATHS.readme, 'utf8');
-    // remove logo
+
+    // Remove logo from README (it's in the template)
     readmeContent = readmeContent.replace('<img src="./src/demo/IDP_logo.png" alt="IDP Logo" width="39%">', '');
+    readmeContent = readmeContent.replace('<img src="./templates/IDP_logo.png" alt="IDP Logo" width="39%">', '');
 
     const htmlBody = marked.parse(readmeContent);
-    const template = fs.readFileSync(PATHS.template, 'utf8');
+    const templatePath = path.join(PATHS.templatesDir, 'index.html');
+    let template = fs.readFileSync(templatePath, 'utf8');
 
     if (!template.includes(PLACEHOLDER)) {
-        throw new Error(`Missing placeholder ${PLACEHOLDER} in template.html`);
+        throw new Error(`Missing placeholder ${PLACEHOLDER} in index.html`);
     }
 
-    fs.writeFileSync(PATHS.outHtml, template.replace(PLACEHOLDER, htmlBody));
+    // Process index.html: inject README and fix paths
+    let indexHtml = template.replace(PLACEHOLDER, htmlBody);
+    indexHtml = indexHtml.replace(/\.\.\/dist\//g, './');
+
+    fs.writeFileSync(path.join(PATHS.outDir, 'index.html'), indexHtml);
     console.log('✅ Generated dist/index.html');
 
-    // 3. Copy demo assets (flattened to dist/)
-    console.log('📦 Copying demo assets...');
-    const assetsToCopy = ['demo.css', 'demo.js'];
+    // 3. Copy all template assets
+    console.log('📦 Copying template assets...');
+    const assetsToCopy = ['demo.css', 'demo.js', 'IDP_logo.png'];
 
     assetsToCopy.forEach(file => {
-        const src = path.join(PATHS.srcDir, file);
+        const src = path.join(PATHS.templatesDir, file);
         if (fs.existsSync(src)) {
             fs.copyFileSync(src, path.join(PATHS.outDir, file));
             console.log(`   ✅ Copied ${file}`);
@@ -52,7 +57,27 @@ async function build() {
         }
     });
 
+    // 4. Copy other HTML templates and fix paths
+    console.log('📑 Copying HTML templates...');
+    const htmlFiles = fs.readdirSync(PATHS.templatesDir)
+        .filter(f => f.endsWith('.html') && f !== 'index.html');
+
+    htmlFiles.forEach(file => {
+        const src = path.join(PATHS.templatesDir, file);
+        let content = fs.readFileSync(src, 'utf8');
+
+        // Fix CSS paths: ../dist/ -> ./ (since they'll be in the same folder when deployed)
+        content = content.replace(/\.\.\/dist\//g, './');
+
+        fs.writeFileSync(path.join(PATHS.outDir, file), content);
+        console.log(`   ✅ Copied & fixed ${file}`);
+    });
+
     console.log('\n🎉 Demo site build complete!');
+    console.log('📁 Output files in dist/:');
+    console.log('   - index.html (main demo)');
+    htmlFiles.forEach(f => console.log(`   - ${f}`));
+    assetsToCopy.forEach(f => console.log(`   - ${f}`));
 }
 
 build().catch(e => {

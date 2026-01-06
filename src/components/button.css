@@ -100,6 +100,18 @@
     border-color: #047857;
 }
 
+/* Warning */
+.btn--warning {
+    background: var(--c-warning);
+    color: var(--c-text-inverse);
+    border-color: var(--c-warning);
+}
+
+.btn--warning:hover {
+    background: #D97706;
+    border-color: #D97706;
+}
+
 /* === BUTTON SIZES === */
 
 /* Extra small */

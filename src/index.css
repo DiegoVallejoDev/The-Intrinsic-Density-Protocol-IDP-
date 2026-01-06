@@ -11,7 +11,7 @@
 /* Layer Order Declaration
    Lower layers can be overridden by higher layers.
    This eliminates specificity wars. */
-@layer tokens, reset, base, layout, components, utilities;
+@layer tokens, reset, base, a11y, layout, components, utilities;
 
 /* === DESIGN TOKENS === */
 @import "./tokens/colors.css" layer(tokens);
@@ -22,6 +22,7 @@
 /* === RESET & BASE === */
 @import "./base/reset.css" layer(reset);
 @import "./base/elements.css" layer(base);
+@import "./base/a11y.css" layer(a11y);
 
 /* === LAYOUT SYSTEM === */
 @import "./layout/shell.css" layer(layout);

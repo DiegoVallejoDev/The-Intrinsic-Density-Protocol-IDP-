@@ -78,6 +78,15 @@
 
             <h4
                 style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin: 1.5rem 0 1rem;">
+                Templates</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="dashboard.html" class="nav-link">📊 Dashboard</a></li>
+                <li><a href="blog.html" class="nav-link">📝 Blog</a></li>
+                <li><a href="documentation.html" class="nav-link">📚 Documentation</a></li>
+            </ul>
+
+            <h4
+                style="font-size: 0.75rem; text-transform: uppercase; color: var(--c-text-tertiary); margin: 1.5rem 0 1rem;">
                 Quick Links</h4>
             <ul style="list-style: none; padding: 0;">
                 <li><a href="https://github.com/DiegoVallejoDev/The-Intrinsic-Density-Protocol-IDP-" class="nav-link"
@@ -110,6 +119,74 @@
 
     <!-- REGION: MAIN CONTENT -->
     <main class="region-main readme-content">
+
+        <!-- TEMPLATE GALLERY (Links to all templates) -->
+        <section class="template-gallery"
+            style="margin-bottom: var(--s-2xl); padding: var(--s-xl); background: var(--c-surface); border-radius: var(--r-lg); border: 1px solid var(--c-border);">
+            <h2
+                style="font-size: var(--text-2xl); font-weight: 700; margin: 0 0 var(--s-sm) 0; display: flex; align-items: center; gap: var(--s-sm);">
+                <span>🎨</span> Template Gallery
+            </h2>
+            <p style="color: var(--c-text-secondary); margin: 0 0 var(--s-lg) 0;">
+                Explore ready-to-use templates built with the IDP framework. Each template demonstrates high-density
+                layouts optimized for different use cases.
+            </p>
+
+            <div class="bento-grid"
+                style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--s-md);">
+                <!-- Dashboard Template -->
+                <a href="dashboard.html" class="card card--elevated"
+                    style="text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
+                    <div style="display: flex; align-items: center; gap: var(--s-sm); margin-bottom: var(--s-sm);">
+                        <span style="font-size: 1.5rem;">📊</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: 600; margin: 0;">Analytics Dashboard</h3>
+                    </div>
+                    <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0 0 var(--s-sm) 0;">
+                        KPI cards, data tables, transaction logs, and real-time metrics with the bento grid layout.
+                    </p>
+                    <div style="display: flex; gap: var(--s-xs); flex-wrap: wrap;">
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Bento Grid</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Data Viz</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Forms</span>
+                    </div>
+                </a>
+
+                <!-- Blog Template -->
+                <a href="blog.html" class="card card--elevated"
+                    style="text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
+                    <div style="display: flex; align-items: center; gap: var(--s-sm); margin-bottom: var(--s-sm);">
+                        <span style="font-size: 1.5rem;">📝</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: 600; margin: 0;">Blog Article</h3>
+                    </div>
+                    <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0 0 var(--s-sm) 0;">
+                        Long-form content with reading progress, table of contents, and related articles.
+                    </p>
+                    <div style="display: flex; gap: var(--s-xs); flex-wrap: wrap;">
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Typography</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">TOC</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Progress</span>
+                    </div>
+                </a>
+
+                <!-- Documentation Template -->
+                <a href="documentation.html" class="card card--elevated"
+                    style="text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
+                    <div style="display: flex; align-items: center; gap: var(--s-sm); margin-bottom: var(--s-sm);">
+                        <span style="font-size: 1.5rem;">📚</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: 600; margin: 0;">Documentation</h3>
+                    </div>
+                    <p style="font-size: var(--text-sm); color: var(--c-text-secondary); margin: 0 0 var(--s-sm) 0;">
+                        Technical docs with code blocks, navigation sidebar, and quick reference panels.
+                    </p>
+                    <div style="display: flex; gap: var(--s-xs); flex-wrap: wrap;">
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Code</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Navigation</span>
+                        <span class="badge badge--primary-subtle" style="font-size: var(--text-xs);">Reference</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
         {{README_CONTENT}}
     </main>
 

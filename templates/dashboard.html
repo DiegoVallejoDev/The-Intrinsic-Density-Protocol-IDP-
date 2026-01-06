@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - IDP Framework</title>
+    <meta name="description" content="Analytics dashboard demonstrating IDP's high-density, accessible layout system">
+
+    <!-- IDP Framework -->
+    <link rel="stylesheet" href="../dist/idp-framework.min.css">
+    <!-- Demo styles (includes aux panel) -->
+    <link rel="stylesheet" href="../dist/demo.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Mobile-specific responsive overrides -->
+    <style>
+        /* Hide desktop nav on mobile, rely on stats bar for quick info */
+        @media (max-width: 1023px) {
+            .region-nav {
+                display: none !important;
+            }
+
+            /* Reduce heading sizes on mobile */
+            main header h1 {
+                font-size: clamp(1.25rem, 5vw, 2rem) !important;
+            }
+        }
+
+        /* Mobile horizontal navigation */
+        .nav-mobile-bar {
+            display: flex;
+            gap: var(--s-xs);
+            padding: var(--s-sm) var(--s-md);
+            background: var(--c-surface);
+            border-bottom: 1px solid var(--c-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-mobile-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-mobile-bar .nav-chip {
+            flex-shrink: 0;
+            padding: var(--s-2xs) var(--s-sm);
+            background: var(--c-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: var(--r-md);
+            font-size: var(--text-xs);
+            color: var(--c-text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-mobile-bar .nav-chip:hover,
+        .nav-mobile-bar .nav-chip--active {
+            background: var(--c-accent);
+            border-color: var(--c-accent);
+            color: white;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-mobile-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="idp-shell has-context">
+
+    <!-- Skip Links for Keyboard Navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#context-panel" class="skip-link">Skip to context panel</a>
+
+    <!-- Mobile Horizontal Navigation (visible < 1024px) -->
+    <nav class="nav-mobile-bar" role="navigation" aria-label="Mobile navigation">
+        <a href="index.html" class="nav-chip">🏠 Home</a>
+        <a href="#overview" class="nav-chip nav-chip--active">📊 Overview</a>
+        <a href="#metrics" class="nav-chip">📈 Metrics</a>
+        <a href="#users" class="nav-chip">👥 Users</a>
+        <a href="#events" class="nav-chip">⚡ Events</a>
+        <a href="#reports" class="nav-chip">📄 Reports</a>
+    </nav>
+
+    <!-- Navigation Sidebar -->
+    <nav class="region-nav" role="navigation" aria-label="Main navigation">
+        <div style="margin-bottom: var(--s-xl);">
+            <a href="index.html"
+                style="font-size: var(--text-xs); color: var(--c-text-tertiary); text-decoration: none; display: inline-flex; align-items: center; gap: var(--s-2xs); margin-bottom: var(--s-sm);">
+                ← Back to Home
+            </a>
+            <h1 style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0;">
+                Analytics
+            </h1>
+            <p style="font-size: var(--text-sm); color: var(--c-text-tertiary); margin: var(--s-xs) 0 0 0;">
+                Real-time insights
+            </p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
+            <a href="#overview" class="nav-link" aria-current="page">
+                <span aria-hidden="true">📊</span> Overview
+            </a>
+            <a href="#metrics" class="nav-link">
+                <span aria-hidden="true">📈</span> Metrics
+            </a>
+            <a href="#users" class="nav-link">
+                <span aria-hidden="true">👥</span> Users
+            </a>
+            <a href="#events" class="nav-link">
+                <span aria-hidden="true">⚡</span> Events
+            </a>
+            <a href="#reports" class="nav-link">
+                <span aria-hidden="true">📄</span> Reports
+            </a>
+        </div>
+
+        <div style="margin-top: auto; padding-top: var(--s-xl); border-top: 1px solid var(--c-border);">
+            <a href="#settings" class="nav-link">
+                <span aria-hidden="true">⚙️</span> Settings
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile Stats Bar - Key metrics above the fold on mobile -->
+    <div class="mobile-stats-bar">
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">VP</span>
+            <span class="mobile-stat__value" id="mobile-vp">-</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Users</span>
+            <span class="mobile-stat__value">128K</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Revenue</span>
+            <span class="mobile-stat__value">$94K</span>
+        </div>
+        <div class="mobile-stat mobile-stat--accent">
+            <span class="mobile-stat__label">Status</span>
+            <span class="mobile-stat__value">Live</span>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main id="main-content" class="region-main" role="main">
+
+        <!-- Page Header -->
+        <header style="margin-bottom: var(--s-xl);">
+            <h1 style="font-size: var(--text-3xl); font-weight: var(--weight-bold); margin: 0;">
+                Dashboard Overview
+            </h1>
+            <p style="font-size: var(--text-base); color: var(--c-text-secondary); margin: var(--s-sm) 0 0 0;">
+                Last updated: <time datetime="2026-01-05T07:50:00Z">2 minutes ago</time>
+            </p>
+        </header>
+
+        <!-- KPI Cards - Bento Grid (Dense Layout) -->
+        <section aria-labelledby="kpi-heading" style="margin-bottom: var(--s-2xl);">
+            <h2 id="kpi-heading" class="sr-only">Key Performance Indicators</h2>
+
+            <div class="bento-grid"
+                style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--s-md);">
+
+                <!-- KPI: Total Users -->
+                <article class="card" role="article" aria-labelledby="kpi-users">
+                    <h3 id="kpi-users"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Total Users
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="128,432 users">
+                            128,432
+                        </span>
+                        <span class="badge" style="background: var(--c-success-light); color: var(--c-success);"
+                            aria-label="Up 12.5%">
+                            +12.5%
+                        </span>
+                    </div>
+                </article>
+
+                <!-- KPI: Revenue -->
+                <article class="card" role="article" aria-labelledby="kpi-revenue">
+                    <h3 id="kpi-revenue"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Revenue (MRR)
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="$94,256">
+                            $94.2K
+                        </span>
+                        <span class="badge" style="background: var(--c-success-light); color: var(--c-success);"
+                            aria-label="Up 8.3%">
+                            +8.3%
+                        </span>
+                    </div>
+                </article>
+
+                <!-- KPI: Active Sessions -->
+                <article class="card" role="article" aria-labelledby="kpi-sessions">
+                    <h3 id="kpi-sessions"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Active Sessions
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="3,847 sessions">
+                            3,847
+                        </span>
+                        <span class="badge" style="background: var(--c-info-light); color: var(--c-info);"
+                            aria-label="Live now">
+                            Live
+                        </span>
+                    </div>
+                </article>
+
+                <!-- KPI: Conversion Rate -->
+                <article class="card" role="article" aria-labelledby="kpi-conversion">
+                    <h3 id="kpi-conversion"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Conversion Rate
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="4.2%">
+                            4.2%
+                        </span>
+                        <span class="badge" style="background: var(--c-warning-light); color: var(--c-warning);"
+                            aria-label="Down 0.3%">
+                            -0.3%
+                        </span>
+                    </div>
+                </article>
+
+                <!-- KPI: Avg Response Time -->
+                <article class="card" role="article" aria-labelledby="kpi-response">
+                    <h3 id="kpi-response"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Avg Response
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="127 milliseconds">
+                            127ms
+                        </span>
+                        <span class="badge" style="background: var(--c-success-light); color: var(--c-success);"
+                            aria-label="Down 15 milliseconds, faster">
+                            -15ms
+                        </span>
+                    </div>
+                </article>
+
+                <!-- KPI: Error Rate -->
+                <article class="card" role="article" aria-labelledby="kpi-errors">
+                    <h3 id="kpi-errors"
+                        style="font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0 0 var(--s-xs) 0;">
+                        Error Rate
+                    </h3>
+                    <div style="display: flex; align-items: baseline; gap: var(--s-xs);">
+                        <span
+                            style="font-size: var(--text-3xl); font-weight: var(--weight-bold); font-family: var(--f-mono);"
+                            aria-label="0.12%">
+                            0.12%
+                        </span>
+                        <span class="badge" style="background: var(--c-success-light); color: var(--c-success);"
+                            aria-label="Down 0.05%, improved">
+                            -0.05%
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Data Table: Recent Transactions -->
+        <section aria-labelledby="transactions-heading" style="margin-bottom: var(--s-2xl);">
+            <h2 id="transactions-heading"
+                style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Recent Transactions
+            </h2>
+
+            <div class="card" style="padding: 0; overflow-x: auto;">
+                <table role="table" aria-label="Recent transactions" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--c-border-strong); background: var(--c-surface);">
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                Transaction ID
+                            </th>
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                Customer
+                            </th>
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                Amount
+                            </th>
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                Status
+                            </th>
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                Time
+                            </th>
+                            <th scope="col"
+                                style="text-align: left; padding: var(--s-md); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                <span class="sr-only">Actions</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--c-border);">
+                            <td style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm);">
+                                TXN-9847
+                            </td>
+                            <td style="padding: var(--s-md); font-size: var(--text-sm);">
+                                Alice Johnson
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                $2,499.00
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <span class="badge"
+                                    style="background: var(--c-success-light); color: var(--c-success);">
+                                    Completed
+                                </span>
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                                <time datetime="2026-01-05T07:45:00Z">2 min ago</time>
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <button class="btn btn--sm" aria-label="View transaction TXN-9847 details">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--c-border);">
+                            <td style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm);">
+                                TXN-9846
+                            </td>
+                            <td style="padding: var(--s-md); font-size: var(--text-sm);">
+                                Bob Smith
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                $899.00
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <span class="badge"
+                                    style="background: var(--c-warning-light); color: var(--c-warning);">
+                                    Pending
+                                </span>
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                                <time datetime="2026-01-05T07:42:00Z">5 min ago</time>
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <button class="btn btn--sm" aria-label="View transaction TXN-9846 details">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--c-border);">
+                            <td style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm);">
+                                TXN-9845
+                            </td>
+                            <td style="padding: var(--s-md); font-size: var(--text-sm);">
+                                Carol Williams
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                $1,299.00
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <span class="badge"
+                                    style="background: var(--c-success-light); color: var(--c-success);">
+                                    Completed
+                                </span>
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                                <time datetime="2026-01-05T07:38:00Z">9 min ago</time>
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <button class="btn btn--sm" aria-label="View transaction TXN-9845 details">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm);">
+                                TXN-9844
+                            </td>
+                            <td style="padding: var(--s-md); font-size: var(--text-sm);">
+                                David Brown
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-family: var(--f-mono); font-size: var(--text-sm); font-weight: var(--weight-semibold);">
+                                $499.00
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <span class="badge" style="background: var(--c-danger-light); color: var(--c-danger);">
+                                    Failed
+                                </span>
+                            </td>
+                            <td
+                                style="padding: var(--s-md); font-size: var(--text-sm); color: var(--c-text-secondary);">
+                                <time datetime="2026-01-05T07:30:00Z">17 min ago</time>
+                            </td>
+                            <td style="padding: var(--s-md);">
+                                <button class="btn btn--sm" aria-label="View transaction TXN-9844 details">
+                                    View
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Chart Placeholder -->
+        <section aria-labelledby="chart-heading" style="margin-bottom: var(--s-2xl);">
+            <h2 id="chart-heading"
+                style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Revenue Trend
+            </h2>
+
+            <div class="card"
+                style="padding: var(--s-xl); min-height: 300px; display: flex; align-items: center; justify-content: center; background: var(--c-surface);">
+                <div style="text-align: center;">
+                    <p
+                        style="font-size: var(--text-lg); font-weight: var(--weight-medium); color: var(--c-text-secondary); margin: 0;">
+                        📊 Chart visualization area
+                    </p>
+                    <p style="font-size: var(--text-sm); color: var(--c-text-tertiary); margin: var(--s-sm) 0 0 0;">
+                        Integrate with your preferred charting library
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Context Panel (Right Sidebar) -->
+    <aside id="context-panel" class="region-context" role="complementary" aria-label="Filters and activity">
+
+        <!-- Filters -->
+        <section aria-labelledby="filters-heading" style="margin-bottom: var(--s-2xl);">
+            <h2 id="filters-heading"
+                style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Filters
+            </h2>
+
+            <form>
+                <!-- Date Range -->
+                <div style="margin-bottom: var(--s-lg);">
+                    <label for="date-range"
+                        style="display: block; font-size: var(--text-sm); font-weight: var(--weight-medium); margin-bottom: var(--s-xs);">
+                        Date Range
+                    </label>
+                    <select id="date-range" class="input" style="width: 100%;">
+                        <option>Last 7 days</option>
+                        <option selected>Last 30 days</option>
+                        <option>Last 90 days</option>
+                        <option>Custom range</option>
+                    </select>
+                </div>
+
+                <!-- Status Filter -->
+                <div style="margin-bottom: var(--s-lg);">
+                    <fieldset style="border: none; padding: 0; margin: 0;">
+                        <legend
+                            style="font-size: var(--text-sm); font-weight: var(--weight-medium); margin-bottom: var(--s-xs);">
+                            Status
+                        </legend>
+                        <div style="display: flex; flex-direction: column; gap: var(--s-xs);">
+                            <label style="display: flex; align-items: center; gap: var(--s-xs); cursor: pointer;">
+                                <input type="checkbox" checked aria-label="Show completed transactions">
+                                <span style="font-size: var(--text-sm);">Completed</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--s-xs); cursor: pointer;">
+                                <input type="checkbox" checked aria-label="Show pending transactions">
+                                <span style="font-size: var(--text-sm);">Pending</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--s-xs); cursor: pointer;">
+                                <input type="checkbox" aria-label="Show failed transactions">
+                                <span style="font-size: var(--text-sm);">Failed</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Apply Button -->
+                <button type="submit" class="btn btn--primary" style="width: 100%;" aria-label="Apply filters">
+                    Apply Filters
+                </button>
+            </form>
+        </section>
+
+        <!-- Live Activity Feed -->
+        <section aria-labelledby="activity-heading" aria-live="polite">
+            <h2 id="activity-heading"
+                style="font-size: var(--text-lg); font-weight: var(--weight-bold); margin: 0 0 var(--s-lg) 0;">
+                Live Activity
+            </h2>
+
+            <div style="display: flex; flex-direction: column; gap: var(--s-md);">
+                <!-- Activity Item -->
+                <article
+                    style="padding: var(--s-sm); background: var(--c-canvas); border-radius: var(--r-sm); border: 1px solid var(--c-border);">
+                    <p style="font-size: var(--text-sm); margin: 0 0 var(--s-xs) 0;">
+                        <strong>New user</strong> signed up
+                    </p>
+                    <time datetime="2026-01-05T07:48:00Z"
+                        style="font-size: var(--text-xs); color: var(--c-text-tertiary);">
+                        30 seconds ago
+                    </time>
+                </article>
+
+                <article
+                    style="padding: var(--s-sm); background: var(--c-canvas); border-radius: var(--r-sm); border: 1px solid var(--c-border);">
+                    <p style="font-size: var(--text-sm); margin: 0 0 var(--s-xs) 0;">
+                        <strong>Payment received</strong> $2,499
+                    </p>
+                    <time datetime="2026-01-05T07:45:00Z"
+                        style="font-size: var(--text-xs); color: var(--c-text-tertiary);">
+                        2 minutes ago
+                    </time>
+                </article>
+
+                <article
+                    style="padding: var(--s-sm); background: var(--c-canvas); border-radius: var(--r-sm); border: 1px solid var(--c-border);">
+                    <p style="font-size: var(--text-sm); margin: 0 0 var(--s-xs) 0;">
+                        <strong>Error spike</strong> detected
+                    </p>
+                    <time datetime="2026-01-05T07:40:00Z"
+                        style="font-size: var(--text-xs); color: var(--c-text-tertiary);">
+                        7 minutes ago
+                    </time>
+                </article>
+
+                <article
+                    style="padding: var(--s-sm); background: var(--c-canvas); border-radius: var(--r-sm); border: 1px solid var(--c-border);">
+                    <p style="font-size: var(--text-sm); margin: 0 0 var(--s-xs) 0;">
+                        <strong>API limit</strong> reached 80%
+                    </p>
+                    <time datetime="2026-01-05T07:35:00Z"
+                        style="font-size: var(--text-xs); color: var(--c-text-tertiary);">
+                        12 minutes ago
+                    </time>
+                </article>
+            </div>
+        </section>
+
+    </aside>
+
+    <!-- Auxiliary Panel (Ultrawide 1800px+) -->
+    <aside class="region-aux" role="complementary" aria-label="Quick actions">
+        <div class="aux-header">
+            <span class="aux-header__icon">⚡</span>
+            QUICK ACTIONS
+        </div>
+
+        <div class="aux-scroll">
+            <!-- Keyboard Shortcuts -->
+            <div class="aux-section">
+                <div class="aux-section__title">Keyboard Shortcuts</div>
+                <div class="aux-snippet">
+                    <code>Ctrl + K</code>
+                    <span style="color: var(--c-gray-500);">Quick Search</span>
+                </div>
+                <div class="aux-snippet">
+                    <code>Ctrl + N</code>
+                    <span style="color: var(--c-gray-500);">New Record</span>
+                </div>
+                <div class="aux-snippet">
+                    <code>Ctrl + E</code>
+                    <span style="color: var(--c-gray-500);">Export Data</span>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="aux-section">
+                <div class="aux-section__title">System Status</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 100%; background: var(--c-success);"></span>
+                        <span>API</span>
+                        <span class="aux-scale__val">100%</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 85%; background: var(--c-success);"></span>
+                        <span>Database</span>
+                        <span class="aux-scale__val">85%</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span class="aux-scale__bar" style="width: 72%; background: var(--c-warning);"></span>
+                        <span>Cache</span>
+                        <span class="aux-scale__val">72%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Exports -->
+            <div class="aux-section">
+                <div class="aux-section__title">Recent Exports</div>
+                <div class="aux-pattern">
+                    <div class="aux-pattern__name">transactions_dec.csv</div>
+                    <div class="aux-snippet aux-snippet--sm">
+                        <code>2 minutes ago</code>
+                        <span class="aux-snippet__copy">📥</span>
+                    </div>
+                </div>
+                <div class="aux-pattern">
+                    <div class="aux-pattern__name">users_report.pdf</div>
+                    <div class="aux-snippet aux-snippet--sm">
+                        <code>1 hour ago</code>
+                        <span class="aux-snippet__copy">📥</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Metrics -->
+            <div class="aux-section">
+                <div class="aux-section__title">Today's Snapshot</div>
+                <div class="aux-chips">
+                    <span class="aux-chip aux-chip--success">↑ 12% Revenue</span>
+                    <span class="aux-chip aux-chip--primary">847 Signups</span>
+                    <span class="aux-chip aux-chip--danger">3 Alerts</span>
+                </div>
+            </div>
+
+            <!-- Time Zones -->
+            <div class="aux-section">
+                <div class="aux-section__title">Team Time Zones</div>
+                <div class="aux-scale">
+                    <div class="aux-scale__item">
+                        <span>🇺🇸 NYC</span>
+                        <span class="aux-scale__val">10:04 AM</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span>🇬🇧 London</span>
+                        <span class="aux-scale__val">3:04 PM</span>
+                    </div>
+                    <div class="aux-scale__item">
+                        <span>🇯🇵 Tokyo</span>
+                        <span class="aux-scale__val">12:04 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Update viewport width display
+        function updateViewport() {
+            const width = window.innerWidth;
+            const mobileVp = document.getElementById('mobile-vp');
+            if (mobileVp) mobileVp.textContent = width + 'px';
+        }
+
+        // Copy snippet to clipboard
+        function copySnippet(element) {
+            const code = element.querySelector('code');
+            if (code) {
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    const copyIcon = element.querySelector('.aux-snippet__copy');
+                    if (copyIcon) {
+                        const original = copyIcon.textContent;
+                        copyIcon.textContent = '✓';
+                        setTimeout(() => copyIcon.textContent = original, 1500);
+                    }
+                });
+            }
+        }
+
+        // Add click handlers to aux snippets
+        document.querySelectorAll('.aux-snippet').forEach(snippet => {
+            snippet.addEventListener('click', () => copySnippet(snippet));
+        });
+
+        // Initialize
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+    </script>
+
+</body>
+
+</html>
