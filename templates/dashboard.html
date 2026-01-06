@@ -18,6 +18,62 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+
+    <!-- Mobile-specific responsive overrides -->
+    <style>
+        /* Hide desktop nav on mobile, rely on stats bar for quick info */
+        @media (max-width: 1023px) {
+            .region-nav {
+                display: none !important;
+            }
+
+            /* Reduce heading sizes on mobile */
+            main header h1 {
+                font-size: clamp(1.25rem, 5vw, 2rem) !important;
+            }
+        }
+
+        /* Mobile horizontal navigation */
+        .nav-mobile-bar {
+            display: flex;
+            gap: var(--s-xs);
+            padding: var(--s-sm) var(--s-md);
+            background: var(--c-surface);
+            border-bottom: 1px solid var(--c-border);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-mobile-bar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-mobile-bar .nav-chip {
+            flex-shrink: 0;
+            padding: var(--s-2xs) var(--s-sm);
+            background: var(--c-canvas);
+            border: 1px solid var(--c-border);
+            border-radius: var(--r-md);
+            font-size: var(--text-xs);
+            color: var(--c-text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-mobile-bar .nav-chip:hover,
+        .nav-mobile-bar .nav-chip--active {
+            background: var(--c-accent);
+            border-color: var(--c-accent);
+            color: white;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-mobile-bar {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="idp-shell has-context">
@@ -25,6 +81,15 @@
     <!-- Skip Links for Keyboard Navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <a href="#context-panel" class="skip-link">Skip to context panel</a>
+
+    <!-- Mobile Horizontal Navigation (visible < 1024px) -->
+    <nav class="nav-mobile-bar" role="navigation" aria-label="Mobile navigation">
+        <a href="#overview" class="nav-chip nav-chip--active">📊 Overview</a>
+        <a href="#metrics" class="nav-chip">📈 Metrics</a>
+        <a href="#users" class="nav-chip">👥 Users</a>
+        <a href="#events" class="nav-chip">⚡ Events</a>
+        <a href="#reports" class="nav-chip">📄 Reports</a>
+    </nav>
 
     <!-- Navigation Sidebar -->
     <nav class="region-nav" role="navigation" aria-label="Main navigation">
@@ -61,6 +126,26 @@
             </a>
         </div>
     </nav>
+
+    <!-- Mobile Stats Bar - Key metrics above the fold on mobile -->
+    <div class="mobile-stats-bar">
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">VP</span>
+            <span class="mobile-stat__value" id="mobile-vp">-</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Users</span>
+            <span class="mobile-stat__value">128K</span>
+        </div>
+        <div class="mobile-stat">
+            <span class="mobile-stat__label">Revenue</span>
+            <span class="mobile-stat__value">$94K</span>
+        </div>
+        <div class="mobile-stat mobile-stat--accent">
+            <span class="mobile-stat__label">Status</span>
+            <span class="mobile-stat__value">Live</span>
+        </div>
+    </div>
 
     <!-- Main Content Area -->
     <main id="main-content" class="region-main" role="main">
@@ -581,6 +666,40 @@
             </div>
         </div>
     </aside>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Update viewport width display
+        function updateViewport() {
+            const width = window.innerWidth;
+            const mobileVp = document.getElementById('mobile-vp');
+            if (mobileVp) mobileVp.textContent = width + 'px';
+        }
+
+        // Copy snippet to clipboard
+        function copySnippet(element) {
+            const code = element.querySelector('code');
+            if (code) {
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    const copyIcon = element.querySelector('.aux-snippet__copy');
+                    if (copyIcon) {
+                        const original = copyIcon.textContent;
+                        copyIcon.textContent = '✓';
+                        setTimeout(() => copyIcon.textContent = original, 1500);
+                    }
+                });
+            }
+        }
+
+        // Add click handlers to aux snippets
+        document.querySelectorAll('.aux-snippet').forEach(snippet => {
+            snippet.addEventListener('click', () => copySnippet(snippet));
+        });
+
+        // Initialize
+        updateViewport();
+        window.addEventListener('resize', updateViewport);
+    </script>
 
 </body>
 
