@@ -1,0 +1,205 @@
+/* =====================================================
+   COMPONENT: AVATAR
+   IDP v2.0 - User avatars with groups
+   ===================================================== */
+
+/* === BASE AVATAR === */
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    /* 40px */
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--surface-alt);
+    color: var(--text-secondary);
+    font-family: var(--f-ui);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === AVATAR SIZES === */
+/* Using golden-adjacent values for harmony */
+.avatar--xs {
+    width: 1.5rem;
+    /* 24px */
+    height: 1.5rem;
+    font-size: var(--text-xs);
+}
+
+.avatar--sm {
+    width: 2rem;
+    /* 32px */
+    height: 2rem;
+    font-size: var(--text-xs);
+}
+
+.avatar--lg {
+    width: 3rem;
+    /* 48px */
+    height: 3rem;
+    font-size: var(--text-base);
+}
+
+.avatar--xl {
+    width: 4rem;
+    /* 64px */
+    height: 4rem;
+    font-size: var(--text-lg);
+}
+
+.avatar--2xl {
+    width: 5rem;
+    /* 80px */
+    height: 5rem;
+    font-size: var(--text-xl);
+}
+
+/* === AVATAR VARIANTS === */
+
+/* Rounded square */
+.avatar--rounded {
+    border-radius: var(--radius-lg);
+}
+
+/* With border */
+.avatar--bordered {
+    border: 2px solid var(--canvas);
+    box-shadow: 0 0 0 1px var(--border);
+}
+
+/* Status indicator */
+.avatar--status {
+    position: relative;
+}
+
+.avatar--status::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 25%;
+    height: 25%;
+    min-width: 8px;
+    min-height: 8px;
+    background: var(--text-muted);
+    border: 2px solid var(--canvas);
+    border-radius: 50%;
+}
+
+.avatar--status.is-online::after {
+    background: var(--success);
+}
+
+.avatar--status.is-busy::after {
+    background: var(--danger);
+}
+
+.avatar--status.is-away::after {
+    background: var(--warning);
+}
+
+/* Color variants */
+.avatar--primary {
+    background: var(--accent-subtle);
+    color: var(--accent);
+}
+
+.avatar--success {
+    background: var(--success-subtle);
+    color: var(--success);
+}
+
+.avatar--warning {
+    background: var(--warning-subtle);
+    color: var(--warning);
+}
+
+.avatar--danger {
+    background: var(--danger-subtle);
+    color: var(--danger);
+}
+
+/* === AVATAR GROUP === */
+.avatar-group {
+    display: inline-flex;
+    flex-direction: row-reverse;
+}
+
+.avatar-group .avatar {
+    margin-left: -0.75rem;
+    border: 2px solid var(--canvas);
+    transition: transform var(--duration-fast, 100ms) ease;
+}
+
+.avatar-group .avatar:last-child {
+    margin-left: 0;
+}
+
+.avatar-group .avatar:hover {
+    transform: translateY(-2px);
+    z-index: 1;
+}
+
+/* Size adjustments for groups */
+.avatar-group--sm .avatar {
+    width: 2rem;
+    height: 2rem;
+    margin-left: -0.5rem;
+}
+
+.avatar-group--lg .avatar {
+    width: 3rem;
+    height: 3rem;
+    margin-left: -1rem;
+}
+
+/* More count indicator */
+.avatar-group__more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--surface-alt);
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-bold);
+    border: 2px solid var(--canvas);
+    margin-left: -0.75rem;
+}
+
+/* === AVATAR WITH TEXT === */
+.avatar-with-text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.avatar-with-text__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.avatar-with-text__name {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+}
+
+.avatar-with-text__role {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}

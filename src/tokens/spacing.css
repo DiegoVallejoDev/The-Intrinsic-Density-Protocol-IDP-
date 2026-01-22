@@ -1,9 +1,9 @@
 /* =====================================================
    DESIGN TOKENS: SPACING
-   IDP uses a Fibonacci-derived scale based on the Golden Ratio
+   IDP v2.0 - Simplified API, Fibonacci-powered
    
-   The Golden Ratio (φ ≈ 1.618) and Fibonacci sequence create
-   harmonious proportions found throughout nature and classical art.
+   All values derive from the Fibonacci sequence
+   for golden-ratio harmony across the design.
    ===================================================== */
 
 :root {
@@ -11,48 +11,104 @@
     --phi: 1.618033988749895;
     --phi-inverse: 0.618033988749895;
     --phi-squared: 2.618033988749895;
-    
-    /* === FIBONACCI SPACING SCALE === */
-    /* Based on Fibonacci sequence: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 */
-    --s-0: 0;
-    --s-px: 1px;
-    --s-fib-1: 0.0625rem;   /* 1px */
-    --s-fib-2: 0.125rem;    /* 2px */
-    --s-fib-3: 0.1875rem;   /* 3px */
-    --s-fib-5: 0.3125rem;   /* 5px */
-    --s-fib-8: 0.5rem;      /* 8px */
-    --s-fib-13: 0.8125rem;  /* 13px */
-    --s-fib-21: 1.3125rem;  /* 21px */
-    --s-fib-34: 2.125rem;   /* 34px */
-    --s-fib-55: 3.4375rem;  /* 55px */
-    --s-fib-89: 5.5625rem;  /* 89px */
+    --phi-minor: 0.381966011250105;
+    /* 1 - 1/φ = 38.2% */
+    --phi-major: 0.618033988749895;
+    /* 1/φ = 61.8% */
 
-    /* === SEMANTIC SPACING ALIASES === */
-    /* Mapped to Fibonacci values for golden proportions */
-    --s-2xs: var(--s-fib-2);   /* 2px */
-    --s-xs: var(--s-fib-3);    /* 3px */
-    --s-sm: var(--s-fib-5);    /* 5px */
-    --s-md: var(--s-fib-8);    /* 8px */
-    --s-lg: var(--s-fib-13);   /* 13px */
-    --s-xl: var(--s-fib-21);   /* 21px */
-    --s-2xl: var(--s-fib-34);  /* 34px */
-    --s-3xl: var(--s-fib-55);  /* 55px */
-    --s-4xl: var(--s-fib-89);  /* 89px */
+    /* === SPACING SCALE === */
+    /* Fibonacci-based: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 */
+    --space-0: 0;
+    --space-px: 1px;
+    --space-2xs: 0.125rem;
+    /* 2px  - Fib 2 */
+    --space-xs: 0.1875rem;
+    /* 3px  - Fib 3 */
+    --space-sm: 0.3125rem;
+    /* 5px  - Fib 5 */
+    --space-md: 0.5rem;
+    /* 8px  - Fib 8 ★ Base unit */
+    --space-lg: 0.8125rem;
+    /* 13px - Fib 13 */
+    --space-xl: 1.3125rem;
+    /* 21px - Fib 21 */
+    --space-2xl: 2.125rem;
+    /* 34px - Fib 34 */
+    --space-3xl: 3.4375rem;
+    /* 55px - Fib 55 */
+    --space-4xl: 5.5625rem;
+    /* 89px - Fib 89 */
 
-    /* === GAP ALIASES (for grids) === */
-    /* Using Fibonacci values for harmonious spacing */
-    --gap-dense: var(--s-fib-3);    /* 3px */
-    --gap-tight: var(--s-fib-5);    /* 5px */
-    --gap-default: var(--s-fib-8);  /* 8px */
-    --gap-loose: var(--s-fib-13);   /* 13px */
+    /* === LEGACY ALIASES (v1.x compatibility) === */
+    --s-0: var(--space-0);
+    --s-px: var(--space-px);
+    --s-fib-1: 0.0625rem;
+    --s-fib-2: var(--space-2xs);
+    --s-fib-3: var(--space-xs);
+    --s-fib-5: var(--space-sm);
+    --s-fib-8: var(--space-md);
+    --s-fib-13: var(--space-lg);
+    --s-fib-21: var(--space-xl);
+    --s-fib-34: var(--space-2xl);
+    --s-fib-55: var(--space-3xl);
+    --s-fib-89: var(--space-4xl);
+
+    /* Legacy semantic aliases */
+    --s-2xs: var(--space-2xs);
+    --s-xs: var(--space-xs);
+    --s-sm: var(--space-sm);
+    --s-md: var(--space-md);
+    --s-lg: var(--space-lg);
+    --s-xl: var(--space-xl);
+    --s-2xl: var(--space-2xl);
+    --s-3xl: var(--space-3xl);
+    --s-4xl: var(--space-4xl);
+
+    /* === GAP SCALE (for grids) === */
+    --gap-xs: var(--space-2xs);
+    /* 2px */
+    --gap-sm: var(--space-xs);
+    /* 3px */
+    --gap-md: var(--space-sm);
+    /* 5px */
+    --gap-lg: var(--space-md);
+    /* 8px */
+    --gap-xl: var(--space-lg);
+    /* 13px */
+
+    /* Legacy gap aliases */
+    --gap-dense: var(--gap-sm);
+    --gap-tight: var(--gap-md);
+    --gap-default: var(--gap-lg);
+    --gap-loose: var(--gap-xl);
 
     /* === BORDER RADIUS === */
-    /* Fibonacci-based radius for consistent proportions */
-    --r-none: 0;
-    --r-sm: 2px;      /* Fib 2 */
-    --r-md: 5px;      /* Fib 5 */
-    --r-lg: 8px;      /* Fib 8 */
-    --r-xl: 13px;     /* Fib 13 */
-    --r-2xl: 21px;    /* Fib 21 */
-    --r-full: 9999px;
+    /* Fibonacci-based for consistent proportions */
+    --radius-none: 0;
+    --radius-sm: 2px;
+    /* Fib 2 */
+    --radius-md: 5px;
+    /* Fib 5 */
+    --radius-lg: 8px;
+    /* Fib 8 */
+    --radius-xl: 13px;
+    /* Fib 13 */
+    --radius-2xl: 21px;
+    /* Fib 21 */
+    --radius-full: 9999px;
+
+    /* Legacy radius aliases */
+    --r-none: var(--radius-none);
+    --r-sm: var(--radius-sm);
+    --r-md: var(--radius-md);
+    --r-lg: var(--radius-lg);
+    --r-xl: var(--radius-xl);
+    --r-2xl: var(--radius-2xl);
+    --r-full: var(--radius-full);
+
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }

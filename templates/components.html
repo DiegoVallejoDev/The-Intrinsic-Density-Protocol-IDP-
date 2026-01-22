@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v2.0 Components Showcase - IDP Framework</title>
+    <meta name="description" content="Showcase of all new components in IDP Framework v2.0">
+
+    <!-- IDP Framework -->
+    <link rel="stylesheet" href="../dist/idp-framework.min.css">
+    <!-- Demo styles -->
+    <link rel="stylesheet" href="../dist/demo.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="idp-shell">
+    <!-- Skip Links -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation Sidebar -->
+    <nav class="region-nav" role="navigation" aria-label="Main navigation">
+        <div style="margin-bottom: var(--space-xl);">
+            <a href="index.html" class="nav-item" style="margin-bottom: var(--space-sm);">
+                ← Back to Home
+            </a>
+            <h1 style="font-size: var(--text-xl); font-weight: var(--weight-bold); margin: 0;">
+                v2.0 Components
+            </h1>
+            <p style="font-size: var(--text-sm); color: var(--text-muted); margin: var(--space-xs) 0 0 0;">
+                New in IDP v2.0
+            </p>
+        </div>
+
+        <!-- v2.0 Sidebar Navigation -->
+        <nav class="nav nav--vertical">
+            <a href="#grids" class="nav-item">🔲 Grid System</a>
+            <a href="#avatars" class="nav-item">👤 Avatars</a>
+            <a href="#progress" class="nav-item">📊 Progress</a>
+            <a href="#tabs" class="nav-item">📑 Tabs</a>
+            <a href="#navigation" class="nav-item">🧭 Navigation</a>
+            <a href="#tooltips" class="nav-item">💬 Tooltips</a>
+            <a href="#modals" class="nav-item">🪟 Modals</a>
+            <a href="#utilities" class="nav-item">🛠️ Utilities</a>
+        </nav>
+
+        <!-- Theme Toggle -->
+        <div style="margin-top: auto; padding-top: var(--space-xl); border-top: 1px solid var(--border);">
+            <button class="btn btn--secondary" id="theme-toggle" style="width: 100%;">
+                🌙 Toggle Dark Mode
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="region-main" role="main">
+        <header style="margin-bottom: var(--space-2xl);">
+            <h1 style="font-size: var(--text-3xl); font-weight: var(--weight-bold); margin: 0;">
+                IDP v2.0 Component Showcase
+            </h1>
+            <p style="font-size: var(--text-lg); color: var(--text-secondary); margin: var(--space-sm) 0 0 0;">
+                Explore all new components and features introduced in version 2.0
+            </p>
+        </header>
+
+        <!-- Grid System Section -->
+        <section id="grids" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                🔲 Unified Grid System
+            </h2>
+            <p class="prose" style="margin-bottom: var(--space-lg);">
+                The new <code>idp-grid</code> combines all grid functionality with intuitive data attributes.
+            </p>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Golden 2-Column (φ:1
+                ratio)</h3>
+            <div class="idp-grid" data-cols="golden-2" style="margin-bottom: var(--space-xl);">
+                <div class="box" style="background: var(--accent-subtle);">61.8% (Major)</div>
+                <div class="box" style="background: var(--warning-subtle);">38.2% (Minor)</div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Golden 3-Column (1:φ:φ²)
+            </h3>
+            <div class="idp-grid" data-cols="golden-3" style="margin-bottom: var(--space-xl);">
+                <div class="box">1</div>
+                <div class="box" style="background: var(--accent-subtle);">φ</div>
+                <div class="box" style="background: var(--success-subtle);">φ²</div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Auto-fill Grid with
+                Density</h3>
+            <div class="idp-grid" data-density="compact">
+                <div class="box">Item 1</div>
+                <div class="box">Item 2</div>
+                <div class="box">Item 3</div>
+                <div class="box">Item 4</div>
+                <div class="box">Item 5</div>
+                <div class="box">Item 6</div>
+            </div>
+        </section>
+
+        <!-- Avatars Section -->
+        <section id="avatars" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                👤 Avatars
+            </h2>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Sizes</h3>
+            <div class="row" style="margin-bottom: var(--space-lg);">
+                <span class="avatar avatar--xs">XS</span>
+                <span class="avatar avatar--sm">SM</span>
+                <span class="avatar">MD</span>
+                <span class="avatar avatar--lg">LG</span>
+                <span class="avatar avatar--xl">XL</span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Colors</h3>
+            <div class="row" style="margin-bottom: var(--space-lg);">
+                <span class="avatar avatar--primary">AB</span>
+                <span class="avatar avatar--success">CD</span>
+                <span class="avatar avatar--warning">EF</span>
+                <span class="avatar avatar--danger">GH</span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">With Status</h3>
+            <div class="row" style="margin-bottom: var(--space-lg);">
+                <span class="avatar avatar--status is-online">ON</span>
+                <span class="avatar avatar--status is-busy">BU</span>
+                <span class="avatar avatar--status is-away">AW</span>
+                <span class="avatar avatar--status">OF</span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Avatar Group</h3>
+            <div class="avatar-group" style="margin-bottom: var(--space-lg);">
+                <span class="avatar avatar--primary">A</span>
+                <span class="avatar avatar--success">B</span>
+                <span class="avatar avatar--warning">C</span>
+                <span class="avatar avatar--danger">D</span>
+                <span class="avatar-group__more">+5</span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Avatar with Text</h3>
+            <div class="avatar-with-text">
+                <span class="avatar avatar--lg avatar--primary">JD</span>
+                <div class="avatar-with-text__info">
+                    <span class="avatar-with-text__name">John Doe</span>
+                    <span class="avatar-with-text__role">Senior Developer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                📊 Progress & Loading
+            </h2>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Progress Bars</h3>
+            <div class="stack" style="margin-bottom: var(--space-lg);">
+                <div class="progress-labeled">
+                    <div class="progress-labeled__header">
+                        <span class="progress-labeled__label">Default</span>
+                        <span class="progress-labeled__value">65%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress__bar" style="width: 65%"></div>
+                    </div>
+                </div>
+                <div class="progress progress--success">
+                    <div class="progress__bar" style="width: 85%"></div>
+                </div>
+                <div class="progress progress--warning">
+                    <div class="progress__bar" style="width: 45%"></div>
+                </div>
+                <div class="progress progress--danger">
+                    <div class="progress__bar" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Striped & Animated</h3>
+            <div class="stack" style="margin-bottom: var(--space-lg);">
+                <div class="progress progress--striped">
+                    <div class="progress__bar" style="width: 70%"></div>
+                </div>
+                <div class="progress progress--striped progress--animated">
+                    <div class="progress__bar" style="width: 50%"></div>
+                </div>
+                <div class="progress progress--indeterminate">
+                    <div class="progress__bar"></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Spinners</h3>
+            <div class="row" style="margin-bottom: var(--space-lg);">
+                <span class="spinner spinner--xs"></span>
+                <span class="spinner spinner--sm"></span>
+                <span class="spinner"></span>
+                <span class="spinner spinner--lg"></span>
+                <span class="spinner spinner--xl"></span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Dot Loader</h3>
+            <div class="loader-dots" style="margin-bottom: var(--space-lg);">
+                <span class="loader-dots__dot"></span>
+                <span class="loader-dots__dot"></span>
+                <span class="loader-dots__dot"></span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Skeleton Loading</h3>
+            <div class="box" style="margin-bottom: var(--space-lg);">
+                <div class="row" style="margin-bottom: var(--space-md);">
+                    <div class="skeleton skeleton--avatar"></div>
+                    <div class="stack stack--xs" style="flex: 1;">
+                        <div class="skeleton skeleton--heading"></div>
+                        <div class="skeleton skeleton--text" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skeleton skeleton--text"></div>
+                <div class="skeleton skeleton--text" style="width: 90%; margin-top: var(--space-xs);"></div>
+            </div>
+        </section>
+
+        <!-- Tabs Section -->
+        <section id="tabs" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                📑 Tabs
+            </h2>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Default Tabs</h3>
+            <div class="tabs">
+                <button class="tab is-active">Overview</button>
+                <button class="tab">Details</button>
+                <button class="tab">Settings</button>
+                <button class="tab" disabled>Disabled</button>
+            </div>
+            <div class="tab-panel is-active" style="padding: var(--space-lg);">
+                Content for the Overview tab goes here.
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Pill Tabs</h3>
+            <div class="tabs tabs--pills" style="margin-bottom: var(--space-lg);">
+                <button class="tab is-active">All</button>
+                <button class="tab">Active</button>
+                <button class="tab">Pending</button>
+                <button class="tab">Completed</button>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Tabs with Badges</h3>
+            <div class="tabs">
+                <button class="tab is-active">
+                    Inbox <span class="tab__badge">12</span>
+                </button>
+                <button class="tab">
+                    Sent <span class="tab__badge">3</span>
+                </button>
+                <button class="tab">
+                    Drafts <span class="tab__badge">1</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Navigation Section -->
+        <section id="navigation" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                🧭 Navigation
+            </h2>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Horizontal Navigation
+            </h3>
+            <nav class="nav" style="margin-bottom: var(--space-lg);">
+                <a class="nav-item is-active" href="#">Dashboard</a>
+                <a class="nav-item" href="#">Projects</a>
+                <a class="nav-item" href="#">Team</a>
+                <a class="nav-item" href="#">Settings</a>
+            </nav>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Pill Navigation</h3>
+            <nav class="nav nav--pills" style="margin-bottom: var(--space-lg);">
+                <a class="nav-item is-active" href="#">All</a>
+                <a class="nav-item" href="#">Active</a>
+                <a class="nav-item" href="#">Archived</a>
+            </nav>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Breadcrumb</h3>
+            <nav class="nav nav--breadcrumb" style="margin-bottom: var(--space-lg);">
+                <a class="nav-item" href="#">Home</a>
+                <a class="nav-item" href="#">Products</a>
+                <a class="nav-item" href="#">Category</a>
+                <span class="nav-item">Current Page</span>
+            </nav>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Navbar</h3>
+            <header class="navbar" style="margin-bottom: var(--space-lg);">
+                <a class="navbar__brand" href="#">🚀 MyApp</a>
+                <nav class="navbar__nav">
+                    <a class="nav-item is-active" href="#">Home</a>
+                    <a class="nav-item" href="#">Features</a>
+                    <a class="nav-item" href="#">Pricing</a>
+                </nav>
+                <div class="navbar__actions">
+                    <button class="btn btn--ghost">Log in</button>
+                    <button class="btn btn--primary">Sign up</button>
+                </div>
+            </header>
+        </section>
+
+        <!-- Tooltips Section -->
+        <section id="tooltips" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                💬 Tooltips
+            </h2>
+            <p class="prose" style="margin-bottom: var(--space-lg);">
+                Pure CSS tooltips using <code>data-tooltip</code> attributes. No JavaScript required!
+            </p>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Positions</h3>
+            <div class="row row--lg" style="margin-bottom: var(--space-xl);">
+                <button class="btn btn--secondary" data-tooltip="Tooltip on top (default)">Top</button>
+                <button class="btn btn--secondary" data-tooltip="Tooltip on bottom"
+                    data-tooltip-pos="bottom">Bottom</button>
+                <button class="btn btn--secondary" data-tooltip="Tooltip on left" data-tooltip-pos="left">Left</button>
+                <button class="btn btn--secondary" data-tooltip="Tooltip on right"
+                    data-tooltip-pos="right">Right</button>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">Themes</h3>
+            <div class="row row--lg" style="margin-bottom: var(--space-xl);">
+                <button class="btn btn--secondary" data-tooltip="Default dark theme">Default</button>
+                <button class="btn btn--secondary" data-tooltip="Light theme" data-tooltip-theme="light">Light</button>
+                <button class="btn btn--primary" data-tooltip="Primary color"
+                    data-tooltip-theme="primary">Primary</button>
+                <button class="btn btn--success" data-tooltip="Success message"
+                    data-tooltip-theme="success">Success</button>
+            </div>
+        </section>
+
+        <!-- Modals Section -->
+        <section id="modals" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                🪟 Modals
+            </h2>
+
+            <div class="row" style="margin-bottom: var(--space-lg);">
+                <button class="btn btn--primary"
+                    onclick="document.getElementById('demo-modal').classList.add('is-open')">
+                    Open Modal
+                </button>
+                <button class="btn btn--secondary"
+                    onclick="document.getElementById('demo-modal-sm').classList.add('is-open')">
+                    Small Modal
+                </button>
+            </div>
+
+            <!-- Demo Modal -->
+            <div id="demo-modal" class="modal">
+                <div class="modal__content">
+                    <div class="modal__header">
+                        <h3 class="modal__title">Modal Title</h3>
+                        <button class="modal__close"
+                            onclick="this.closest('.modal').classList.remove('is-open')">✕</button>
+                    </div>
+                    <div class="modal__body">
+                        <p>This is a modal dialog built with IDP v2.0. It uses golden ratio proportions for the
+                            max-width (38.2rem ≈ 610px).</p>
+                        <p style="margin-top: var(--space-md);">The modal is fully accessible with keyboard navigation
+                            and proper focus management.</p>
+                    </div>
+                    <div class="modal__footer">
+                        <button class="btn btn--ghost"
+                            onclick="this.closest('.modal').classList.remove('is-open')">Cancel</button>
+                        <button class="btn btn--primary"
+                            onclick="this.closest('.modal').classList.remove('is-open')">Confirm</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Small Modal -->
+            <div id="demo-modal-sm" class="modal modal--sm">
+                <div class="modal__content">
+                    <div class="modal__header">
+                        <h3 class="modal__title">Small Modal</h3>
+                        <button class="modal__close"
+                            onclick="this.closest('.modal').classList.remove('is-open')">✕</button>
+                    </div>
+                    <div class="modal__body">
+                        <p>A smaller modal for quick confirmations or simple forms.</p>
+                    </div>
+                    <div class="modal__footer">
+                        <button class="btn btn--primary btn--block"
+                            onclick="this.closest('.modal').classList.remove('is-open')">Got it!</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utilities Section -->
+        <section id="utilities" class="section">
+            <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-lg);">
+                🛠️ Quick Utilities
+            </h2>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">.stack</h3>
+            <div class="stack box" style="margin-bottom: var(--space-lg);">
+                <div class="box" style="background: var(--accent-subtle);">Item 1</div>
+                <div class="box" style="background: var(--accent-subtle);">Item 2</div>
+                <div class="box" style="background: var(--accent-subtle);">Item 3</div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">.row</h3>
+            <div class="row box" style="margin-bottom: var(--space-lg);">
+                <div class="box" style="background: var(--success-subtle);">Item 1</div>
+                <div class="box" style="background: var(--success-subtle);">Item 2</div>
+                <div class="box" style="background: var(--success-subtle);">Item 3</div>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">.spread</h3>
+            <div class="spread box" style="margin-bottom: var(--space-lg);">
+                <span>Left content</span>
+                <span>Right content</span>
+            </div>
+
+            <h3 style="font-size: var(--text-lg); margin: var(--space-xl) 0 var(--space-md) 0;">.box variants</h3>
+            <div class="idp-grid" data-cols="3">
+                <div class="box">.box (default)</div>
+                <div class="box box--elevated">.box--elevated</div>
+                <div class="box box--ghost">.box--ghost</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+            this.textContent = currentTheme === 'dark' ? '🌙 Toggle Dark Mode' : '☀️ Toggle Light Mode';
+        });
+
+        // Close modal on backdrop click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    this.classList.remove('is-open');
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.is-open').forEach(modal => {
+                    modal.classList.remove('is-open');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

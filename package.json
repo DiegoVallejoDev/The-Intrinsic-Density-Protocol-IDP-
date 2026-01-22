@@ -1,7 +1,7 @@
 {
   "name": "idp-framework",
-  "version": "1.0.2",
-  "description": "The Intrinsic Density Protocol - A CSS framework for high-density, container-driven layouts using golden ratio proportions",
+  "version": "1.2.0",
+  "description": "The Intrinsic Density Protocol v2 - A density-first CSS framework with golden ratio design, container queries, and 12+ production-ready components",
   "type": "module",
   "main": "dist/idp-framework.min.css",
   "style": "dist/idp-framework.min.css",

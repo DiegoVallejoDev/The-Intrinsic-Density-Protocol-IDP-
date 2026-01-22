@@ -1,0 +1,357 @@
+/* =====================================================
+   LAYOUT: UNIFIED GRID SYSTEM
+   IDP v2.0 - One grid to rule them all
+   
+   Uses data attributes for intuitive configuration.
+   All proportions follow the golden ratio (φ ≈ 1.618).
+   ===================================================== */
+
+/* === BASE IDP GRID === */
+.idp-grid {
+    --grid-min: 10rem;
+    /* 160px ≈ 100 × φ */
+    --grid-gap: var(--space-md);
+
+    display: grid;
+    gap: var(--grid-gap);
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-min), 100%), 1fr));
+    width: 100%;
+}
+
+/* === COLUMN PRESETS (Data Attributes) === */
+
+/* Golden 2-column: φ:1 ratio (61.8% / 38.2%) */
+.idp-grid[data-cols="golden-2"] {
+    grid-template-columns: 1.618fr 1fr;
+}
+
+.idp-grid[data-cols="golden-2-reverse"] {
+    grid-template-columns: 1fr 1.618fr;
+}
+
+/* Golden 3-column: 1:φ:φ² ratio */
+.idp-grid[data-cols="golden-3"] {
+    grid-template-columns: 1fr 1.618fr 2.618fr;
+}
+
+.idp-grid[data-cols="golden-3-reverse"] {
+    grid-template-columns: 2.618fr 1.618fr 1fr;
+}
+
+/* Sidebar layout: 38.2% sidebar + main */
+.idp-grid[data-cols="sidebar"] {
+    grid-template-columns: minmax(180px, 0.382fr) 1fr;
+}
+
+.idp-grid[data-cols="sidebar-reverse"] {
+    grid-template-columns: 1fr minmax(180px, 0.382fr);
+}
+
+/* Equal columns */
+.idp-grid[data-cols="2"] {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.idp-grid[data-cols="3"] {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.idp-grid[data-cols="4"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Golden spiral: 5-zone layout */
+.idp-grid[data-cols="spiral"] {
+    grid-template-columns: 1.618fr 1fr 0.618fr;
+    grid-template-rows: 1.618fr 1fr 0.618fr;
+    grid-template-areas:
+        "hero hero aside"
+        "hero hero aside"
+        "primary secondary tertiary";
+}
+
+.idp-grid[data-cols="spiral"]> :nth-child(1) {
+    grid-area: hero;
+}
+
+.idp-grid[data-cols="spiral"]> :nth-child(2) {
+    grid-area: primary;
+}
+
+.idp-grid[data-cols="spiral"]> :nth-child(3) {
+    grid-area: secondary;
+}
+
+.idp-grid[data-cols="spiral"]> :nth-child(4) {
+    grid-area: tertiary;
+}
+
+.idp-grid[data-cols="spiral"]> :nth-child(5) {
+    grid-area: aside;
+}
+
+/* === DENSITY PRESETS === */
+
+/* Dense: Compact data displays */
+.idp-grid[data-density="dense"] {
+    --grid-min: 6rem;
+    /* 96px */
+    --grid-gap: var(--space-xs);
+}
+
+/* Compact: Slightly tighter than default */
+.idp-grid[data-density="compact"] {
+    --grid-min: 8rem;
+    /* 128px */
+    --grid-gap: var(--space-sm);
+}
+
+/* Comfortable: Default but with more breathing room */
+.idp-grid[data-density="comfortable"] {
+    --grid-min: 12rem;
+    /* 192px */
+    --grid-gap: var(--space-lg);
+}
+
+/* Spacious: Editorial, hero sections */
+.idp-grid[data-density="spacious"] {
+    --grid-min: 16rem;
+    /* 256px */
+    --grid-gap: var(--space-xl);
+}
+
+/* === GAP MODIFIERS === */
+.idp-grid[data-gap="none"] {
+    --grid-gap: 0;
+}
+
+.idp-grid[data-gap="xs"] {
+    --grid-gap: var(--space-2xs);
+}
+
+.idp-grid[data-gap="sm"] {
+    --grid-gap: var(--space-xs);
+}
+
+.idp-grid[data-gap="md"] {
+    --grid-gap: var(--space-sm);
+}
+
+.idp-grid[data-gap="lg"] {
+    --grid-gap: var(--space-md);
+}
+
+.idp-grid[data-gap="xl"] {
+    --grid-gap: var(--space-lg);
+}
+
+/* === ALIGNMENT === */
+.idp-grid[data-align="start"] {
+    align-items: start;
+}
+
+.idp-grid[data-align="center"] {
+    align-items: center;
+}
+
+.idp-grid[data-align="end"] {
+    align-items: end;
+}
+
+.idp-grid[data-align="stretch"] {
+    align-items: stretch;
+}
+
+/* === SPAN UTILITIES (for grid items) === */
+.span-2 {
+    grid-column: span 2;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.span-full {
+    grid-column: 1 / -1;
+}
+
+.span-row-2 {
+    grid-row: span 2;
+}
+
+.span-row-3 {
+    grid-row: span 3;
+}
+
+/* === RESPONSIVE BEHAVIOR === */
+/* IDP Manifesto: "We reject the single-column mobile stack" */
+/* Maintain at least 2 columns on mobile for density */
+@media (max-width: 480px) {
+
+    .idp-grid[data-cols="golden-2"],
+    .idp-grid[data-cols="golden-2-reverse"],
+    .idp-grid[data-cols="sidebar"],
+    .idp-grid[data-cols="sidebar-reverse"] {
+        grid-template-columns: 1fr;
+    }
+
+    .idp-grid[data-cols="golden-3"],
+    .idp-grid[data-cols="golden-3-reverse"],
+    .idp-grid[data-cols="3"],
+    .idp-grid[data-cols="4"] {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .span-3,
+    .span-4 {
+        grid-column: span 2;
+    }
+
+    .idp-grid[data-cols="spiral"] {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "hero"
+            "primary"
+            "secondary"
+            "tertiary"
+            "aside";
+    }
+}
+
+/* === LEGACY SUPPORT (v1.x compatibility) === */
+.bento-grid {
+    display: grid;
+    gap: var(--gap-lg);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    width: 100%;
+}
+
+.bento-grid--xs {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--gap-sm);
+}
+
+.bento-grid--sm {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--gap-sm);
+}
+
+.bento-grid--lg {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--gap-lg);
+}
+
+.bento-grid--xl {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--gap-xl);
+}
+
+.bento-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.bento-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bento-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.bento-grid--gap-none {
+    gap: 0;
+}
+
+.bento-grid--gap-xs {
+    gap: var(--gap-sm);
+}
+
+.bento-grid--gap-sm {
+    gap: var(--gap-md);
+}
+
+.bento-grid--gap-md {
+    gap: var(--gap-lg);
+}
+
+.bento-grid--gap-lg {
+    gap: var(--gap-xl);
+}
+
+/* Legacy golden grids */
+.golden-split {
+    display: grid;
+    grid-template-columns: 1.618fr 1fr;
+    gap: var(--gap-lg);
+}
+
+.golden-split--reverse {
+    display: grid;
+    grid-template-columns: 1fr 1.618fr;
+    gap: var(--gap-lg);
+}
+
+.golden-thirds {
+    display: grid;
+    grid-template-columns: 1fr 1.618fr 2.618fr;
+    gap: var(--gap-lg);
+}
+
+.golden-sidebar {
+    display: grid;
+    grid-template-columns: 0.382fr 1fr;
+    gap: var(--gap-lg);
+}
+
+.golden-sidebar--reverse {
+    display: grid;
+    grid-template-columns: 1fr 0.382fr;
+    gap: var(--gap-lg);
+}
+
+/* Legacy golden bento */
+.golden-bento {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(161.8px, 100%), 1fr));
+    gap: var(--gap-lg);
+}
+
+/* === GOLDEN ASPECT RATIOS === */
+.aspect-golden {
+    aspect-ratio: 1.618 / 1;
+}
+
+.aspect-golden-portrait {
+    aspect-ratio: 1 / 1.618;
+}
+
+.aspect-golden-wide {
+    aspect-ratio: 2.618 / 1;
+}
+
+/* === GOLDEN WIDTH UTILITIES === */
+.w-phi {
+    width: 61.8%;
+}
+
+.w-phi-inverse {
+    width: 38.2%;
+}
+
+.w-phi-squared {
+    width: 72.36%;
+}
+
+/* === MASONRY-LIKE BEHAVIOR === */
+.idp-grid[data-layout="masonry"] {
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.bento-grid--masonry {
+    grid-auto-rows: minmax(100px, auto);
+}

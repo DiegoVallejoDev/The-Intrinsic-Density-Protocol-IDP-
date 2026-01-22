@@ -1,6 +1,6 @@
 /* =====================================================
    THE INTRINSIC DENSITY PROTOCOL - CSS FRAMEWORK
-   Version: 2025.12 - Golden Edition
+   Version: 2.0.0 - Golden Ratio Edition
    License: MIT
    
    A density-first CSS framework for modern displays
@@ -27,20 +27,31 @@
 /* === LAYOUT SYSTEM === */
 @import "./layout/shell.css" layer(layout);
 @import "./layout/regions.css" layer(layout);
+@import "./layout/grid.css" layer(layout);
+/* Legacy layout files (for backward compatibility) */
 @import "./layout/bento.css" layer(layout);
 @import "./layout/golden.css" layer(layout);
 @import "./layout/container-golden.css" layer(layout);
 
 /* === COMPONENTS === */
+/* Core v1.x components */
 @import "./components/card.css" layer(components);
 @import "./components/button.css" layer(components);
 @import "./components/form.css" layer(components);
 @import "./components/table.css" layer(components);
 @import "./components/badge.css" layer(components);
 @import "./components/alert.css" layer(components);
+/* New v2.0 components */
+@import "./components/modal.css" layer(components);
+@import "./components/tabs.css" layer(components);
+@import "./components/nav.css" layer(components);
+@import "./components/avatar.css" layer(components);
+@import "./components/progress.css" layer(components);
+@import "./components/tooltip.css" layer(components);
 
 /* === UTILITIES === */
 @import "./utilities/spacing.css" layer(utilities);
 @import "./utilities/flex.css" layer(utilities);
 @import "./utilities/text.css" layer(utilities);
 @import "./utilities/display.css" layer(utilities);
+@import "./utilities/quickstart.css" layer(utilities);
