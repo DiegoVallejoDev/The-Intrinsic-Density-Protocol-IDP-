@@ -14,7 +14,7 @@
 npm install idp-framework
 ```
 
-**Version:** 1.0.1 | **License:** MIT
+**Version:** 1.0.2 | **License:** MIT
 
 ## The Manifesto: Stop Designing for the iPhone 5
 

@@ -30,6 +30,7 @@
 
 .badge--success {
     background: var(--c-success);
+    color: var(--c-gray-900);
 }
 
 .badge--warning {
@@ -43,6 +44,7 @@
 
 .badge--info {
     background: var(--c-info);
+    color: var(--c-gray-900);
 }
 
 /* Subtle/muted variants */

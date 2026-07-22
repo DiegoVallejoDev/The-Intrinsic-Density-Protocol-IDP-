@@ -16,20 +16,20 @@
         rel="stylesheet">
 
     <!-- IDP Framework -->
-    <link rel="stylesheet" href="idp-framework.min.css">
+    <link rel="stylesheet" href="../dist/idp-framework.min.css">
     <!-- Demo-specific styles -->
-    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="../dist/demo.css">
 
     <!-- Prism.js for code highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
     <style>
-        /*fixes for highligts*/
-        .tag {
+        /* Scoped reset so Prism token classes don't pick up IDP component styles */
+        .token.tag {
             background-color: transparent;
             border: none;
-            color: var(--c-text-primary);
+            padding: 0;
         }
     </style>
 </head>
@@ -37,10 +37,10 @@
 <body class="idp-shell has-context">
 
     <!-- TOGGLE CONTROL -->
-    <div class="toggle-float" onclick="toggleMode()">
+    <button type="button" class="toggle-float" id="toggle-mode" aria-pressed="false">
         <div class="indicator"></div>
         <span id="mode-text">IDP Active (Good)</span>
-    </div>
+    </button>
 
     <!-- REGION: NAVIGATION -->
     <nav class="region-nav">
@@ -681,7 +681,7 @@
     </aside>
 
     <!-- REGION: AUXILIARY PANEL (Ultrawide Only - Quick Reference) -->
-    <aside class="region-aux">
+    <aside class="region-aux" role="complementary" aria-label="Quick reference">
         <div class="aux-header">
             <span class="aux-header__icon">⚡</span>
             QUICK REFERENCE
@@ -925,7 +925,7 @@
         <div class="aux-toast" id="aux-toast">Copied!</div>
     </aside>
 
-    <script src="demo.js"></script>
+    <script src="../dist/demo.js"></script>
     <script>
         // Copy functionality for auxiliary panel
         function copySnippet(el) {
