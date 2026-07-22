@@ -29,8 +29,11 @@
 
 /* === WITH CONTEXT PANEL (3-Column Cockpit) === */
 .idp-shell--context {
+    /* Mobile: stacked layout with optional top stats bar */
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
         "nav"
+        "stats"
         "main"
         "context";
 }
@@ -128,8 +131,11 @@
 
 /* Backwards compatibility */
 .idp-shell.has-context {
+    /* Mobile: stacked layout with optional top stats bar */
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
         "nav"
+        "stats"
         "main"
         "context";
 }

@@ -2,6 +2,7 @@
 
 const body = document.body;
 const modeText = document.getElementById('mode-text');
+const toggleBtn = document.getElementById('toggle-mode');
 const vpDisplay = document.getElementById('vp-width');
 const layoutState = document.getElementById('layout-state');
 
@@ -56,7 +57,9 @@ function toggleMode() {
         body.removeAttribute('data-mode');
         if (modeText) modeText.textContent = "IDP Active (Good)";
     }
+
+    if (toggleBtn) toggleBtn.setAttribute('aria-pressed', String(isLegacy));
 }
 
-// Expose to global scope for onclick handler
-window.toggleMode = toggleMode;
+// Wire up the accessible toggle button
+if (toggleBtn) toggleBtn.addEventListener('click', toggleMode);

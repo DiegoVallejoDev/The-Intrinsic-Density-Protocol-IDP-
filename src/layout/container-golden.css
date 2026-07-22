@@ -40,7 +40,7 @@
 }
 
 /* Stack layout below 320px */
-@container (max-width: 320px) {
+@container (max-width: 319.98px) {
     .card--golden-adaptive {
         display: flex;
         flex-direction: column;
@@ -188,15 +188,15 @@
 }
 
 /* === UTILITY: HIDE AT GOLDEN BREAKPOINTS === */
-@container (max-width: 320px) {
+@container (max-width: 319.98px) {
     .hide-below-xs { display: none; }
 }
 
-@container (max-width: 518px) {
+@container (max-width: 517.98px) {
     .hide-below-md { display: none; }
 }
 
-@container (max-width: 838px) {
+@container (max-width: 837.98px) {
     .hide-below-xl { display: none; }
 }
 

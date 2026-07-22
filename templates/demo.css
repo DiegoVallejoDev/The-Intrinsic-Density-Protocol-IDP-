@@ -422,6 +422,7 @@
    ===================================================== */
 
 .region-aux {
+    grid-area: aux;
     display: none;
     background: var(--c-gray-900, #111827);
     color: var(--c-gray-300, #D1D5DB);
@@ -444,6 +445,17 @@
 /* Hide aux panel in legacy mode */
 [data-mode="legacy"] .region-aux {
     display: none !important;
+}
+
+/* === MOBILE SHELL PLACEMENT === */
+/* The shell grid exposes optional "stats" and "nav" areas; these demo bars
+   are hidden on larger breakpoints so the real nav/aux panels take over. */
+.nav-mobile-bar {
+    grid-area: nav;
+}
+
+.mobile-stats-bar {
+    grid-area: stats;
 }
 
 .aux-header {

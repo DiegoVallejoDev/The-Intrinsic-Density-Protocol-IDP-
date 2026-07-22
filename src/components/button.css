@@ -91,25 +91,27 @@
 /* Success */
 .btn--success {
     background: var(--c-success);
-    color: var(--c-text-inverse);
+    color: var(--c-gray-900);
     border-color: var(--c-success);
 }
 
 .btn--success:hover {
     background: #047857;
     border-color: #047857;
+    color: var(--c-text-inverse);
 }
 
 /* Warning */
 .btn--warning {
     background: var(--c-warning);
-    color: var(--c-text-inverse);
+    color: var(--c-gray-900);
     border-color: var(--c-warning);
 }
 
 .btn--warning:hover {
-    background: #D97706;
-    border-color: #D97706;
+    background: #92400E;
+    border-color: #92400E;
+    color: var(--c-text-inverse);
 }
 
 /* === BUTTON SIZES === */
@@ -136,6 +138,8 @@
 .btn--icon {
     padding: var(--s-xs);
     aspect-ratio: 1;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .btn--icon.btn--sm {

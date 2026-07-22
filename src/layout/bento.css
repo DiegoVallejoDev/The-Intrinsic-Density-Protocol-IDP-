@@ -8,7 +8,7 @@
     display: grid;
     gap: var(--gap-tight);
     /* Auto-fill: fits as many 180px+ columns as possible */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
     width: 100%;
 }
 
@@ -17,25 +17,25 @@
 /* Extra small: very dense data */
 .bento-grid--xs {
     gap: var(--gap-dense);
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(120px, 100%), 1fr));
 }
 
 /* Small: compact */
 .bento-grid--sm {
     gap: var(--gap-dense);
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
 }
 
 /* Large: comfortable */
 .bento-grid--lg {
     gap: var(--gap-default);
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
 }
 
 /* Extra large: spacious */
 .bento-grid--xl {
     gap: var(--gap-loose);
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
 }
 
 /* === FIXED COLUMN COUNTS === */
